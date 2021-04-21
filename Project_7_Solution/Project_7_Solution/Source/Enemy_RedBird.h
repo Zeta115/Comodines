@@ -19,16 +19,17 @@ private:
 	float waveRatio = 0.0f;
 
 	// The speed at which the wave ratio is increased
-	float waveRatioSpeed = 0.05f;
-
+	bool right = false;
+	bool left = true;
+	float speed = 1;
 	// The original spawning position. The wave will be calculated from that
 	int spawn_y = 0;
 
 	// The total height of the wave
-	int waveHeight = 15;
+	
 
 	// The enemy animation
-	Animation flyAnim;
+	Animation enemyAnim;
 };
 
 #endif // __ENEMY_REDBIRD_H__
