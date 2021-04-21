@@ -59,8 +59,8 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/bomberman/Bomberman.png");
 	currentAnimation = &idleAnim;
 
-	laserFx = App->audio->LoadFx("Assets/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/explosion.wav");
+	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
+	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
 
 	position.x = 150;
 	position.y = 120;
@@ -117,8 +117,12 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x, position.y+6, Collider::Type::PLAYER_SHOT);
-		App->audio->PlayFx(laserFx);
+		App->particles->AddParticle(App->particles->bom, position.x, position.y+6, Collider::Type::PLAYER_SHOT);
+		App->audio->PlayFx(placeFx);
+		if (App->particles->bom.isAlive == false)
+		{
+			App->audio->PlayFx(blastFx);
+		}
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
@@ -155,11 +159,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+		App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->dead, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
+		App->particles->AddParticle(App->particles->dead, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
+		App->particles->AddParticle(App->particles->dead, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
+		App->particles->AddParticle(App->particles->dead, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
 
 		App->audio->PlayFx(explosionFx);
 
