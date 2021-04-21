@@ -20,26 +20,28 @@ ModulePlayer::ModulePlayer()
 	upAnim.PushBack({ 50, 2, 15, 22 });
 	upAnim.PushBack({ 65, 2, 15, 22 });
 	upAnim.PushBack({ 82, 2, 15, 22 });
-	upAnim.loop = false;
+	upAnim.loop = true;
 	upAnim.speed = 0.1f;
 
 	// Move down
 	downAnim.PushBack({ 2, 2, 15, 22 });
 	downAnim.PushBack({ 18, 2, 15, 22 });
 	downAnim.PushBack({ 33, 2, 15, 22 });
-	downAnim.loop = false;
+	downAnim.loop = true;
 	downAnim.speed = 0.1f;
 
-	leftAnim.PushBack({ 2, 22, 15, 22 });
-	leftAnim.PushBack({ 18, 22, 15, 22 });
-	leftAnim.PushBack({ 33, 22, 15, 22 });
-	leftAnim.loop = false;
+	// Move left
+	leftAnim.PushBack({ 49, 26, 15, 22 });
+	leftAnim.PushBack({ 67, 26, 15, 22 });
+	leftAnim.PushBack({ 82, 26, 15, 22 });
+	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
 
-	rightAnim.PushBack({ 2, 22, 15, 22 });
-	rightAnim.PushBack({ 18, 22, 15, 22 });
-	rightAnim.PushBack({ 33, 22, 15, 22 });
-	rightAnim.loop = false;
+	// Move right
+	rightAnim.PushBack({ 2, 26, 15, 22 });
+	rightAnim.PushBack({ 17, 26, 15, 22 });
+	rightAnim.PushBack({ 33, 26, 15, 22 });
+	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
 }
 
@@ -121,7 +123,7 @@ update_status ModulePlayer::Update()
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
