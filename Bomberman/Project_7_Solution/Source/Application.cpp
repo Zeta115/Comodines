@@ -21,14 +21,11 @@ Application::Application()
 	modules[1] = input = new ModuleInput();
 	modules[2] = textures = new ModuleTextures();
 	modules[3] = audio = new ModuleAudio();
-
 	modules[4] = scene = new ModuleScene();
 	modules[5] = player = new ModulePlayer();
 	modules[6] = particles = new ModuleParticles();
 	modules[7] = enemies = new ModuleEnemies();
-
 	modules[8] = collisions = new ModuleCollisions();
-
 	modules[9] = render = new ModuleRender();
 }
 
