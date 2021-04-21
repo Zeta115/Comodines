@@ -75,7 +75,7 @@ update_status ModulePlayer::Update()
 	// Moving the player with the camera scroll
 	App->player->position.x += 0;
 
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
 		if (currentAnimation != &rightAnim)
@@ -85,7 +85,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
 		if (currentAnimation != &leftAnim)
@@ -95,7 +95,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -105,7 +105,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -115,15 +115,15 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser, position.x, position.y+6, Collider::Type::PLAYER_SHOT);
 		App->audio->PlayFx(laserFx);
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
