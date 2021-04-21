@@ -14,19 +14,33 @@
 ModulePlayer::ModulePlayer()
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 66, 1, 32, 14 });
+	idleAnim.PushBack({ 18, 2, 15, 22 });
 
 	// move upwards
-	upAnim.PushBack({ 100, 1, 32, 14 });
-	upAnim.PushBack({ 132, 0, 32, 14 });
+	upAnim.PushBack({ 50, 2, 15, 22 });
+	upAnim.PushBack({ 65, 2, 15, 22 });
+	upAnim.PushBack({ 82, 2, 15, 22 });
 	upAnim.loop = false;
 	upAnim.speed = 0.1f;
 
 	// Move down
-	downAnim.PushBack({ 33, 1, 32, 14 });
-	downAnim.PushBack({ 0, 1, 32, 14 });
+	downAnim.PushBack({ 2, 2, 15, 22 });
+	downAnim.PushBack({ 18, 2, 15, 22 });
+	downAnim.PushBack({ 33, 2, 15, 22 });
 	downAnim.loop = false;
 	downAnim.speed = 0.1f;
+
+	leftAnim.PushBack({ 2, 22, 15, 22 });
+	leftAnim.PushBack({ 18, 22, 15, 22 });
+	leftAnim.PushBack({ 33, 22, 15, 22 });
+	leftAnim.loop = false;
+	leftAnim.speed = 0.1f;
+
+	rightAnim.PushBack({ 2, 22, 15, 22 });
+	rightAnim.PushBack({ 18, 22, 15, 22 });
+	rightAnim.PushBack({ 33, 22, 15, 22 });
+	rightAnim.loop = false;
+	rightAnim.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -40,7 +54,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/ship.png");
+	texture = App->textures->Load("Assets/bomberman/Bomberman.png");
 	currentAnimation = &idleAnim;
 
 	laserFx = App->audio->LoadFx("Assets/laser.wav");
@@ -57,16 +71,26 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	// Moving the player with the camera scroll
-	App->player->position.x += 1;
+	App->player->position.x += 0;
 
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
+		if (currentAnimation != &rightAnim)
+		{
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
+		if (currentAnimation != &leftAnim)
+		{
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
