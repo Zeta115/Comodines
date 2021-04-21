@@ -30,9 +30,9 @@ ModulePlayer::ModulePlayer()
 	downAnim.loop = false;
 	downAnim.speed = 0.1f;
 
-	leftAnim.PushBack({ 2, 22, 15, 22 });
-	leftAnim.PushBack({ 18, 22, 15, 22 });
-	leftAnim.PushBack({ 33, 22, 15, 22 });
+	leftAnim.PushBack({ 2, 26, 15, 22 });
+	leftAnim.PushBack({ 18, 26, 15, 22 });
+	leftAnim.PushBack({ 33, 26, 15, 22 });
 	leftAnim.loop = false;
 	leftAnim.speed = 0.1f;
 
