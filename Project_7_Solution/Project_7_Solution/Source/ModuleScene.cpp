@@ -54,7 +54,7 @@ bool ModuleScene::Start()
 	//Fila 2
 	App->collisions->AddCollider({ 40, 112, 16, 10 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 72, 112, 16, 10 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 168, 112, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 112, 16, 10 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 200, 112, 16, 10 }, Collider::Type::WALL);
 
 	//Fila 3
