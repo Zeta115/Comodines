@@ -64,6 +64,8 @@ public:
 	void HandleEnemiesSpawn();
 
 	// Destroys any enemies that have moved outside the camera limits
+	uint blastFx = 0;
+	uint placeFx = 0;
 	void HandleEnemiesDespawn();
 
 private:

@@ -50,7 +50,10 @@ public:
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
-	SDL_Texture* texture = nullptr;
+	
+	SDL_Texture* bomb_texture = nullptr;
+	SDL_Texture* Fire_texture = nullptr;
+	SDL_Texture* Dead_texture = nullptr;
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };
@@ -58,9 +61,19 @@ private:
 public:
 	//Template particle for an explosion
 	Particle explosion;
+	Particle explosion_up_1;
+	Particle explosion_up_2;
 
-	//Template particle for a laser
-	Particle laser;
+	Particle explosion_Down_1;
+	Particle explosion_Down_2;
+
+	Particle explosion_right_1;
+	Particle explosion_right_2;
+
+	Particle explosion_left_1;
+	Particle explosion_left_2;
+	Particle bom;
+	Particle dead;
 };
 
 #endif // !__MODULEPARTICLES_H__
