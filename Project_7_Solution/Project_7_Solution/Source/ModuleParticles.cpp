@@ -31,15 +31,16 @@ bool ModuleParticles::Start()
 	explosion.anim.PushBack({382, 296, 33, 30});
 	explosion.anim.PushBack({419, 296, 33, 30});
 	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.loop = false;
+	explosion.anim.loop = true;
 	explosion.anim.speed = 0.5f;
 
-	laser.anim.PushBack({ 0, 0, 16, 16 });
-	laser.anim.PushBack({ 0, 0, 32, 32 });
-	laser.anim.PushBack({ 0, 0, 48, 48 });
+	laser.anim.PushBack({0, 0, 16, 16 });
+	laser.anim.PushBack({16, 0, 16, 16 });
+	laser.anim.PushBack({33, 0, 16, 16 });
 	laser.speed.x = 0;
-	laser.lifetime = 3;
-	laser.anim.speed = 0.5f;
+	laser.lifetime = 60;
+	laser.anim.speed = 0.1f;
+	laser.anim.loop = true;
 
 	return true;
 }
