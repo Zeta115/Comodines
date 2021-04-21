@@ -132,7 +132,7 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-	
+
 	SDL_Rect dstRect {
 		(int)(-camera.x * speed) + rect.x * SCREEN_SIZE,
 		(int)(-camera.y * speed) + rect.y * SCREEN_SIZE,
