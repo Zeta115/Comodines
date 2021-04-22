@@ -80,8 +80,8 @@ bool ModuleScene::Start()
 	App->collisions->AddCollider({ 200, 208, 16, 10 }, Collider::Type::WALL);
 
 	// Enemies
-	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 100, 80);
-	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 180, 80);
+	//App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 100, 80);
+	//App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 180, 80);
 
 	return ret;
 }

@@ -2,6 +2,7 @@
 #define __MODULE_ENEMIES_H__
 
 #include "Module.h"
+#include "p2Point.h"
 
 #define MAX_ENEMIES 100
 
@@ -52,6 +53,12 @@ public:
 	// Called on application exit
 	// Destroys all active enemies left in the array
 	bool CleanUp() override;
+
+	// Position of the enemy in the map
+	iPoint position;
+
+	// The enemy collider
+	Collider* collider = nullptr;
 
 	// Called when an enemi collider hits another collider
 	// The enemy is destroyed and an explosion particle is fired

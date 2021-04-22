@@ -29,7 +29,11 @@ private:
 	
 
 	// The enemy animation
-	Animation enemyAnim;
+	Animation idleAnim;
+	Animation upAnim;
+	Animation downAnim;
+	Animation rightAnim;
+	Animation leftAnim;
 };
 
 #endif // __ENEMY_REDBIRD_H__
