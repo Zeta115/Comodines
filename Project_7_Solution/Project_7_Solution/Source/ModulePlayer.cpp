@@ -127,8 +127,11 @@ update_status ModulePlayer::Update()
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
-		currentAnimation = &idleAnim;
+		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE 
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE 
+		&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
+
+	currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
 
