@@ -115,17 +115,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-<<<<<<< HEAD
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 		App->audio->PlayFx(laserFx);
-=======
-		App->particles->AddParticle(App->particles->bom, position.x, position.y+6, Collider::Type::BOMB);
-		App->audio->PlayFx(placeFx);
-		if (App->particles->bom.isAlive == false)
-		{
-			App->audio->PlayFx(blastFx);
-		}
->>>>>>> d5cc652be73efcba1ab5c03e33f95a2f3e6666e3
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
@@ -162,17 +153,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-<<<<<<< HEAD
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
 		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
 
-=======
-		App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
-	
->>>>>>> d5cc652be73efcba1ab5c03e33f95a2f3e6666e3
 		App->audio->PlayFx(explosionFx);
 
 		destroyed = true;
