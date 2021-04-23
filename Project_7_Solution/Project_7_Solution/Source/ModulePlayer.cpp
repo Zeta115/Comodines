@@ -62,10 +62,10 @@ bool ModulePlayer::Start()
 	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
 	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
 
-	position.x = 150;
-	position.y = 120;
+	position.x = 121;
+	position.y = 125;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 15, 16 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -127,8 +127,11 @@ update_status ModulePlayer::Update()
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
-		currentAnimation = &idleAnim;
+		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE 
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE 
+		&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
+
+	currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
 

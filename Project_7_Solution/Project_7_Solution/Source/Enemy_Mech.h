@@ -15,6 +15,9 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
+	// The enemy collider
+	Collider* collider = nullptr;
+
 private:
 	// The path that will define the position in the world
 	Path path;
