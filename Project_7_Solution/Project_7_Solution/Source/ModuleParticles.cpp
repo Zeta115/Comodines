@@ -37,18 +37,22 @@ bool ModuleParticles::Start()
 	bom.anim.speed = 0.1f;
 	bom.anim.loop = true;
 
+	dead.anim.PushBack({ 2, 51, 15, 20 });
+	dead.anim.PushBack({ 19, 51, 13, 19 });
+	dead.anim.PushBack({ 33, 51, 19, 20 });
+	dead.anim.PushBack({ 51, 51, 21, 19 });
+	dead.anim.PushBack({ 71, 51, 21, 19 });
+	dead.anim.PushBack({ 93, 50, 22, 21 });
+	dead.lifetime = 40;
+	dead.anim.speed = 0.2f;
+	dead.anim.loop = true;
+	
+
 	explosion.anim.PushBack({3, 3, 16, 16});
 	explosion.anim.loop = true;
 	explosion.anim.speed = 0.5f;
 	explosion.lifetime = 90;
-
-	dead.anim.PushBack({ 0, 0, 16, 16 });
-	dead.anim.PushBack({ 16, 0, 16, 16 });
-	dead.anim.PushBack({ 33, 0, 16, 16 });
-	dead.speed.x = 0;
-	dead.lifetime = 60;
-	dead.anim.speed = 0.1f;
-	dead.anim.loop = true;
+	
 	return true;
 }
 
@@ -111,8 +115,19 @@ update_status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
+			if (particle->collider->type == Collider::Type::DEAD)
+			{
+			App->render->Blit(Dead_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			}
+			if (particle->collider->type == Collider::Type::BOMB)
+			{
 			App->render->Blit(bomb_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-			App->render->Blit(Fire_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+				
+			}
+			/*if (particle->collider->type == Collider::Type::FIRE){
+				App -> render->Blit(Fire_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+				}*/
+
 		}
 	}
 

@@ -13,10 +13,11 @@ struct Collider
 		WALL,
 		PLAYER,
 		ENEMY,
-		PLAYER_SHOT,
+		BOMB,
 		ENEMY_SHOT,
-
-		MAX
+		MAX,
+		DEAD,
+		FIRE,
 	};
 
 	//Methods
