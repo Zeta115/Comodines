@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
-#include "ModuleCollisions.h"
+
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownShip.h"
@@ -27,10 +27,8 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("Assets/enemies/Enemies.png");
+	texture = App->textures->Load("Assets/enemies.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
-
-	collider = App->collisions->AddCollider({ position.x, position.y, 24, 24 }, Collider::Type::ENEMY, this);
 
 	return true;
 }
@@ -44,8 +42,6 @@ update_status ModuleEnemies::Update()
 		if(enemies[i] != nullptr)
 			enemies[i]->Update();
 	}
-
-	collider->SetPos(position.x, position.y);
 
 	HandleEnemiesDespawn();
 

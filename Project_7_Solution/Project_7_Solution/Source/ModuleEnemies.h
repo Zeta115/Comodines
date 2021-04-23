@@ -2,7 +2,6 @@
 #define __MODULE_ENEMIES_H__
 
 #include "Module.h"
-#include "p2Point.h"
 
 #define MAX_ENEMIES 100
 
@@ -54,12 +53,6 @@ public:
 	// Destroys all active enemies left in the array
 	bool CleanUp() override;
 
-	// Position of the enemy in the map
-	iPoint position;
-
-	// The enemy collider
-	Collider* collider = nullptr;
-
 	// Called when an enemi collider hits another collider
 	// The enemy is destroyed and an explosion particle is fired
 	void OnCollision(Collider* c1, Collider* c2) override;
@@ -71,8 +64,6 @@ public:
 	void HandleEnemiesSpawn();
 
 	// Destroys any enemies that have moved outside the camera limits
-	uint blastFx = 0;
-	uint placeFx = 0;
 	void HandleEnemiesDespawn();
 
 private:

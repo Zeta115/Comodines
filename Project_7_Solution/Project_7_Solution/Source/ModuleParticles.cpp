@@ -22,33 +22,24 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	bomb_texture = App->textures->Load("Assets/special_elements/Bomb.png");
-	Fire_texture = App->textures->Load("Assets/effects/Fire.png");
-	Dead_texture = App->textures->Load("Assets/bomberman/Bomberman.png");
+	texture = App->textures->Load("Assets/particles.png");
 
 	// Explosion particle
-	
+	explosion.anim.PushBack({274, 296, 33, 30});
+	explosion.anim.PushBack({313, 296, 33, 30});
+	explosion.anim.PushBack({346, 296, 33, 30});
+	explosion.anim.PushBack({382, 296, 33, 30});
+	explosion.anim.PushBack({419, 296, 33, 30});
+	explosion.anim.PushBack({457, 296, 33, 30});
+	explosion.anim.loop = false;
+	explosion.anim.speed = 0.3f;
 
-	bom.anim.PushBack({0, 0, 16, 16 });
-	bom.anim.PushBack({16, 0, 16, 16 });
-	bom.anim.PushBack({33, 0, 16, 16 });
-	bom.speed.x = 0;
-	bom.lifetime = 60;
-	bom.anim.speed = 0.1f;
-	bom.anim.loop = true;
+	laser.anim.PushBack({ 232, 103, 16, 12 });
+	laser.anim.PushBack({ 249, 103, 16, 12 });
+	laser.speed.x = 5;
+	laser.lifetime = 180;
+	laser.anim.speed = 0.2f;
 
-	explosion.anim.PushBack({3, 3, 16, 16});
-	explosion.anim.loop = true;
-	explosion.anim.speed = 0.5f;
-	explosion.lifetime = 90;
-
-	dead.anim.PushBack({ 0, 0, 16, 16 });
-	dead.anim.PushBack({ 16, 0, 16, 16 });
-	dead.anim.PushBack({ 33, 0, 16, 16 });
-	dead.speed.x = 0;
-	dead.lifetime = 60;
-	dead.anim.speed = 0.1f;
-	dead.anim.loop = true;
 	return true;
 }
 
@@ -111,8 +102,7 @@ update_status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			App->render->Blit(bomb_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-			App->render->Blit(Fire_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 
