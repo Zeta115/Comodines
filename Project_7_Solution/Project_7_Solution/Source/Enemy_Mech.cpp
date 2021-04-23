@@ -1,4 +1,5 @@
 #include "Enemy_Mech.h"
+#include "Enemy.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
