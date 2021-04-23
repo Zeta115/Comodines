@@ -46,6 +46,8 @@ public:
 
 	// The particle's collider
 	Collider* collider = nullptr;
+	
+	int tag = 0;
 };
 
 #endif //__PARTICLE_H__
