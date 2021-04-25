@@ -58,9 +58,9 @@ bool ModulePlayer::Start()
 
 	texture = App->textures->Load("Assets/bomberman/Bomberman.png");
 	currentAnimation = &idleAnim;
-
 	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
 	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
+	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
 
 	position.x = 121;
 	position.y = 125;
@@ -162,13 +162,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->dead, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->dead, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->dead, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->dead, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
-
-		App->audio->PlayFx(explosionFx);
+		App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
+		if (App->particles->dead.isAlive == false)
+		{
+			App->audio->PlayFx(deadFx);
+		}
 
 		destroyed = true;
 	}

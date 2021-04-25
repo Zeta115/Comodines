@@ -74,6 +74,7 @@ public:
 	Particle explosion_left_2;
 	Particle bom;
 	Particle dead;
+
 };
 
 #endif // !__MODULEPARTICLES_H__
