@@ -23,7 +23,10 @@ bool ModuleScene::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-	bgTexture = App->textures->Load("Assets/Map/mapa2.png");
+	bgTexture = App->textures->Load("Assets/Map/mapa.png");
+	loseScreen = App->textures->Load("Assets/Screens/lose.png");
+	winScreen = App->textures->Load("Assets/Screens/win.png");
+	hud = App->textures->Load("Assets/Hud/hud.png");
 
 	App->audio->PlayMusic("Assets/Audio/music/Area_1.ogg", 1.0f);
 
@@ -31,9 +34,9 @@ bool ModuleScene::Start()
 
 	//Limits
 	//Bottom
-	App->collisions->AddCollider({ 0, 242, 3930, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 242, 600, 16 }, Collider::Type::WALL);
 	//Top
-	App->collisions->AddCollider({ 0, 33, 3930, 30 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 33, 600, 30 }, Collider::Type::WALL);
 	//Left
 	App->collisions->AddCollider({ 0, 33, 24, 600 }, Collider::Type::WALL);
 	//Right
@@ -80,8 +83,8 @@ bool ModuleScene::Start()
 	App->collisions->AddCollider({ 200, 208, 16, 10 }, Collider::Type::WALL);
 
 	// Enemies
-	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 100, 80);
-	App->enemies->AddEnemy(ENEMY_TYPE::CARGOL, 180, 80);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 70, 180);
+	App->enemies->AddEnemy(ENEMY_TYPE::CARGOL, 85, 114);
 
 	return ret;
 }
@@ -98,6 +101,9 @@ update_status ModuleScene::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
+
+	
+	App->render->Blit(hud, 0, -20, NULL);
 
 	return update_status::UPDATE_CONTINUE;
 }

@@ -56,11 +56,12 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/bomberman/Bomberman.png");
+	player = App->textures->Load("Assets/bomberman/Bomberman.png");
 	currentAnimation = &idleAnim;
 	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
 	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
 	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
+	
 
 	position.x = 121;
 	position.y = 125;
@@ -124,8 +125,12 @@ update_status ModulePlayer::Update()
 			App->audio->PlayFx(blastFx);
 		}
 	}
-
-	// If no up/down movement detected, set the current animation back to idle
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) {
+		return update_status::UPDATE_STOP;
+	}
+	
+		
+		// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE 
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE 
@@ -139,9 +144,10 @@ update_status ModulePlayer::Update()
 
 	if (destroyed)
 	{
+
 		destroyedCountdown--;
 		if (destroyedCountdown <= 0)
-			return update_status::UPDATE_STOP;
+		return update_status::UPDATE_STOP;
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -152,7 +158,7 @@ update_status ModulePlayer::PostUpdate()
 	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(texture, position.x, position.y, &rect);
+		App->render->Blit(player, position.x, position.y, &rect);
 	}
 
 	return update_status::UPDATE_CONTINUE;
