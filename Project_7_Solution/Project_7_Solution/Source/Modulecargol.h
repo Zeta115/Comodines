@@ -16,12 +16,10 @@ public:
 
 private:
 	// The position (as ratio) in the wave at a specific moment
-	float waveRatio = 0.0f;
-
 	// The speed at which the wave ratio is increased
-	bool right = false;
-	bool left = true;
-	float speed = 1;
+	bool up = false;
+	bool down = true;
+	float speed = 0.4f;
 	// The original spawning position. The wave will be calculated from that
 	int spawn_y = 0;
 

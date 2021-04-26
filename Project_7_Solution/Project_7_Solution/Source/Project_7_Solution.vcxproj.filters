@@ -159,7 +159,7 @@
     <ClCompile Include="Path.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Cargol.cpp">
+    <ClCompile Include="Enemy_Cargol.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

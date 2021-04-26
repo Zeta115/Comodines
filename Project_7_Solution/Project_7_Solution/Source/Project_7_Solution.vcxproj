@@ -100,10 +100,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Cargol.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BrownShip.cpp" />
+    <ClCompile Include="Enemy_Cargol.cpp" />
     <ClCompile Include="Enemy_RedBird.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
