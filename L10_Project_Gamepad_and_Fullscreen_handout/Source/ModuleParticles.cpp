@@ -21,23 +21,33 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Sprites/particles.png");
+	bomb_texture = App->textures->Load("Assets/special_elements/Bomb.png");
+	Fire_texture = App->textures->Load("Assets/effects/Fire.png");
+	Dead_texture = App->textures->Load("Assets/bomberman/Bomberman.png");
 
 	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	bom.anim.PushBack({ 0, 0, 16, 16 });
+	bom.anim.PushBack({ 16, 0, 16, 16 });
+	bom.anim.PushBack({ 33, 0, 16, 16 });
+	bom.speed.x = 0;
+	bom.lifetime = 60;
+	bom.anim.speed = 0.1f;
+	bom.anim.loop = true;
 
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.speed.x = 5;
-	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;
+	dead.anim.PushBack({ 2, 51, 15, 20 });
+	dead.anim.PushBack({ 19, 51, 13, 19 });
+	dead.anim.PushBack({ 33, 51, 19, 20 });
+	dead.anim.PushBack({ 51, 51, 21, 19 });
+	dead.anim.PushBack({ 71, 51, 21, 19 });
+	dead.anim.PushBack({ 93, 50, 22, 21 });
+	dead.lifetime = 60;
+	dead.anim.speed = 0.1f;
+	dead.anim.loop = true;
+
+	explosion.anim.PushBack({ 3, 3, 16, 16 });
+	explosion.anim.loop = true;
+	explosion.anim.speed = 0.5f;
+	explosion.lifetime = 90;
 
 	return true;
 }
@@ -115,7 +125,14 @@ UpdateResult ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			App->render->DrawTexture(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			if (particle->collider->type == Collider::Type::DEAD)
+			{
+				App->render->DrawTexture(Dead_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			}
+			if (particle->collider->type == Collider::Type::PLAYER_SHOT)
+			{
+				App->render->DrawTexture(bomb_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			}
 		}
 	}
 

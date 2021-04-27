@@ -166,7 +166,8 @@ UpdateResult ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE)
-
+		currentAnimation = &idleAnim;
+	collider->SetPos(position.x, position.y);
 	// Switch gamepad debug info
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
