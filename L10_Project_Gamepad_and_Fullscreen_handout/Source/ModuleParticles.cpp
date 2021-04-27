@@ -122,7 +122,7 @@ UpdateResult ModuleParticles::PostUpdate()
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		Particle* particle = particles[i];
-
+		
 		if (particle != nullptr && particle->isAlive)
 		{
 			if (particle->collider->type == Collider::Type::DEAD)
@@ -135,7 +135,7 @@ UpdateResult ModuleParticles::PostUpdate()
 			}
 		}
 	}
-
+	
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
