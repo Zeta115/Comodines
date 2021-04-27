@@ -6,6 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+#include "ModulePlayer.h"
+#include "ModuleInput.h"
+#include "SDL/include/SDL_scancode.h"
 
 ModuleScene::ModuleScene()
 {
@@ -101,9 +104,14 @@ update_status ModuleScene::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-
-	
 	App->render->Blit(hud, 0, -20, NULL);
-
+	if (App->player->destroyed == true|| App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_REPEAT)
+	{
+		App->render->Blit(loseScreen, 0, -20, NULL);
+	}
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_REPEAT)
+	{
+		App->render->Blit(winScreen, 0, -20, NULL);
+	}
 	return update_status::UPDATE_CONTINUE;
 }

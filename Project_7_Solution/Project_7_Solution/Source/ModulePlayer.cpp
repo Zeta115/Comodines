@@ -166,14 +166,18 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
-	{
-		App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
-		if (App->particles->dead.isAlive == false)
-		{
-			App->audio->PlayFx(deadFx);
-		}
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_STATE::KEY_DOWN) {
 
-		destroyed = true;
 	}
+		if (c1 == collider && destroyed == false)
+		{
+			App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
+			if (App->particles->dead.isAlive == false)
+			{
+				App->audio->PlayFx(deadFx);
+			}
+
+			destroyed = true;
+		}
+	
 }
