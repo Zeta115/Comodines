@@ -15,20 +15,36 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	// Idle animation - just one sprite
-	idleAnim.PushBack({ 66, 1, 32, 14 });
+	// idle animation - just one sprite
+	idleAnim.PushBack({ 18, 2, 15, 22 });
 
-	// Move upwards
-	upAnim.PushBack({ 100, 1, 32, 14 });
-	upAnim.PushBack({ 132, 0, 32, 14 });
-	upAnim.loop = false;
+	// move upwards
+	upAnim.PushBack({ 50, 2, 15, 22 });
+	upAnim.PushBack({ 65, 2, 15, 22 });
+	upAnim.PushBack({ 82, 2, 15, 22 });
+	upAnim.loop = true;
 	upAnim.speed = 0.1f;
 
 	// Move down
-	downAnim.PushBack({ 33, 1, 32, 14 });
-	downAnim.PushBack({ 0, 1, 32, 14 });
-	downAnim.loop = false;
+	downAnim.PushBack({ 2, 2, 15, 22 });
+	downAnim.PushBack({ 18, 2, 15, 22 });
+	downAnim.PushBack({ 33, 2, 15, 22 });
+	downAnim.loop = true;
 	downAnim.speed = 0.1f;
+
+	// Move left
+	leftAnim.PushBack({ 49, 26, 15, 22 });
+	leftAnim.PushBack({ 67, 26, 15, 22 });
+	leftAnim.PushBack({ 82, 26, 15, 22 });
+	leftAnim.loop = true;
+	leftAnim.speed = 0.1f;
+
+	// Move right
+	rightAnim.PushBack({ 2, 26, 15, 22 });
+	rightAnim.PushBack({ 17, 26, 15, 22 });
+	rightAnim.PushBack({ 33, 26, 15, 22 });
+	rightAnim.loop = true;
+	rightAnim.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -42,20 +58,21 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Sprites/ship.png");
+	player = App->textures->Load("Assets/bomberman/Bomberman.png");
 	currentAnimation = &idleAnim;
+	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
+	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
+	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
 
-	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
-	position.x = 150;
-	position.y = 120;
+	position.x = 121;
+	position.y = 125;
 
 	// L10: DONE 4: Retrieve the player when playing a second time
 	destroyed = false;
 
 	// L6: DONE 3: Add a collider to the player
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 15, 16 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
@@ -69,7 +86,7 @@ UpdateResult ModulePlayer::Update()
 	GamePad& pad = App->input->pads[0];
 
 	// Moving the player with the camera scroll
-	App->player->position.x += 1;
+	App->player->position.x += 0;
 
 	// Debug key for gamepad rumble testing purposes
 	if (App->input->keys[SDL_SCANCODE_1] == KeyState::KEY_DOWN)
@@ -91,17 +108,27 @@ UpdateResult ModulePlayer::Update()
 
 	// L10: TODO: Implement gamepad support
 
-	if (App->input->keys[SDL_SCANCODE_A] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT)
 	{
 		position.x -= speed;
+		if (currentAnimation != &rightAnim)
+		{
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
+		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT)
 	{
 		position.x += speed;
+		if (currentAnimation != &leftAnim)
+		{
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
+		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -111,7 +138,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -121,21 +148,24 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)
 	{
-		if (shotCountdown == 0)
+		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::PLAYER_SHOT);
+		App->audio->PlayFx(placeFx);
+		if (App->particles->bom.isAlive == false)
 		{
-			Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-			newParticle->collider->AddListener(this);
-			App->audio->PlayFx(laserFx);
-			shotCountdown = shotMaxCountdown;
+			App->audio->PlayFx(blastFx);
 		}
+	}
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KeyState::KEY_DOWN) {
+		return UpdateResult::UPDATE_STOP;
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == KeyState::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KeyState::KEY_IDLE)
-		currentAnimation = &idleAnim;
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE)
 
 	// Switch gamepad debug info
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
@@ -157,7 +187,7 @@ UpdateResult ModulePlayer::PostUpdate()
 	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->DrawTexture(texture, position.x, position.y, &rect);
+		App->render->DrawTexture(player, position.x, position.y, &rect);
 	}
 
 	// Draw UI (score) --------------------------------------
@@ -175,26 +205,30 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	// L6: DONE 5: Detect collision with a wall. If so, destroy the player.
 	if ((c1 == collider) && (destroyed == false))
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+		if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
 
-		App->audio->PlayFx(explosionFx);
+		}
+		if (c1 == collider && destroyed == false)
+		{
+			App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
+			if (App->particles->dead.isAlive == false)
+			{
+				App->audio->PlayFx(deadFx);
+			}
 
-		// L10: DONE 3: Go back to the intro scene when the player gets killed
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
 
-		destroyed = true;
-	}
+			// L10: DONE 3: Go back to the intro scene when the player gets killed
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
 
-	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
-	{
-		score += 23;
+			destroyed = true;
+		}
+
+		if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+		{
+			score += 23;
+		}
 	}
 }
-
 void ModulePlayer::DebugDrawGamepadInfo()
 {
 	GamePad& pad = App->input->pads[0];

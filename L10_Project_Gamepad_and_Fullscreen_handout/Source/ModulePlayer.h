@@ -47,7 +47,7 @@ public:
 	int shotCountdown = 0;
 	
 	// The player spritesheet loaded into an SDL_Texture
-	SDL_Texture* texture = nullptr;
+	SDL_Texture* player = nullptr;
 	
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
@@ -57,16 +57,19 @@ public:
 	Animation idleAnim;
 	Animation upAnim;
 	Animation downAnim;
+	Animation rightAnim;
+	Animation leftAnim;
 
 	// The player's collider
 	Collider* collider = nullptr;
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
-
+	bool godmode = false;
 	// Sound effects indices
-	uint laserFx = 0;
-	uint explosionFx = 0;
+	uint blastFx = 0;
+	uint placeFx = 0;
+	uint deadFx = 0;
 
 	// Font score index
 	uint score = 000;
