@@ -47,7 +47,7 @@ Enemy_RedBird::Enemy_RedBird(int x, int y) : Enemy(x, y)
 void Enemy_RedBird::Update()
 {
 	if (right == true) {
-		if (position.x >= 30) {
+		if (position.x >= 20) {
 			position.x += speed;
 			if (position.x == 200) {
 				right = false;
@@ -59,9 +59,29 @@ void Enemy_RedBird::Update()
 	if (left == true) {
 		if (position.x < 300) {
 			position.x -= speed;
-			if (position.x == 30) {
-				right = true;
+			if (position.x == 20) {
+				up = true;
 				left = false;
+			}
+		}
+
+	}
+	if (up == true) {
+		if (position.y < 270) {
+			position.y -= speed;
+			if (position.y == 50) {
+				up = false;
+				down = true;
+			}
+		}
+
+	}
+	if (down == true) {
+		if (position.y >= 10) {
+			position.y += speed;
+			if (position.y == 215) {
+				down = false;
+				right = true;
 			}
 		}
 

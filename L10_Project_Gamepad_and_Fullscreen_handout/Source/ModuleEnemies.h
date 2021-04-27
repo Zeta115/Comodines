@@ -10,7 +10,7 @@ enum class Enemy_Type
 	NO_TYPE,
 	REDBIRD,
 	BROWNSHIP,
-	MECH,
+	CARGOL,
 };
 
 struct EnemySpawnpoint

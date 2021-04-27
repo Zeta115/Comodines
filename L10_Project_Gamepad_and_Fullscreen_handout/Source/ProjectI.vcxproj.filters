@@ -79,9 +79,6 @@
     <ClInclude Include="Enemy_BrownShip.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Mech.h">
-      <Filter>Source Files\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Path.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
@@ -93,6 +90,9 @@
     </ClInclude>
     <ClInclude Include="ModuleFonts.h">
       <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cargol.h">
+      <Filter>Source Files\Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -150,9 +150,6 @@
     <ClCompile Include="Enemy_BrownShip.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Mech.cpp">
-      <Filter>Source Files\Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_RedBird.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
@@ -167,6 +164,9 @@
     </ClCompile>
     <ClCompile Include="ModuleFonts.cpp">
       <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Cargol.cpp">
+      <Filter>Source Files\Classes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
