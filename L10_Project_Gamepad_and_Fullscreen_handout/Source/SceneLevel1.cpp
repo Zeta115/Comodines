@@ -25,8 +25,8 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/background.png");
-	App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	bgTexture = App->textures->Load("Assets/Map/mapa.png");
+	App->audio->PlayMusic("Assets/Music/Area_1.ogg", 1.0f);
 
 	//Bottomside collider
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
@@ -65,7 +65,7 @@ bool SceneLevel1::Start()
 
 UpdateResult SceneLevel1::Update()
 {
-	App->render->camera.x += 1 * SCREEN_SIZE;
+	
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
