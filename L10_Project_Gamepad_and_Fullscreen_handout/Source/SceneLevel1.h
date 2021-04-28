@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 
+
 struct SDL_Texture;
 
 class SceneLevel1 : public Module
@@ -34,6 +35,11 @@ public:
 	
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* winScreen = nullptr;
+	SDL_Texture* loseScreen = nullptr;
+	SDL_Texture* hud = nullptr;
+	// The sprite rectangle for the ground
+	SDL_Texture* starsTexture = nullptr;
 };
 
 #endif  // __SCENELEVEL1_H__
