@@ -47,7 +47,7 @@ void Enemy_RedBird::Update()
 		currentAnim = &rightAnim;
 		if (position.x >= 20) {
 			position.x += speed;
-			if (position.x == 200) {
+			if (position.x == 150) {
 				right = false;
 				left = true;
 			}
@@ -58,7 +58,7 @@ void Enemy_RedBird::Update()
 		currentAnim = &leftAnim;
 		if (position.x < 300) {
 			position.x -= speed;
-			if (position.x == 20) {
+			if (position.x == 53) {
 				up = true;
 				left = false;
 			}
