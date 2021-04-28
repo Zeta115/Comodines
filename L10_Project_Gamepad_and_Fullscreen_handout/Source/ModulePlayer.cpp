@@ -46,6 +46,16 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.PushBack({ 33, 26, 15, 22 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
+
+	// Dead
+	deadAnim.PushBack({ 2, 51, 15, 20 });
+	deadAnim.PushBack({ 19, 51, 13, 19 });
+	deadAnim.PushBack({ 33, 51, 19, 20 });
+	deadAnim.PushBack({ 51, 51, 21, 19 });
+	deadAnim.PushBack({ 71, 51, 21, 19 });
+	deadAnim.PushBack({ 93, 50, 22, 21 });
+	deadAnim.loop = false;
+	deadAnim.speed = 0.15f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -59,8 +69,9 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	player = App->textures->Load("Assets/bomberman/Bomberman.png");
 	currentAnimation = &idleAnim;
+
+	player = App->textures->Load("Assets/bomberman/Bomberman.png");
 	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
 	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
 	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
@@ -72,13 +83,15 @@ bool ModulePlayer::Start()
 
 	// L10: DONE 4: Retrieve the player when playing a second time
 	destroyed = false;
+	win = false;
 
 	// L6: DONE 3: Add a collider to the player
 	collider = App->collisions->AddCollider({ position.x, position.y, 15, 16 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
-
+	score = 0;
+	lifes = 3;
 	return ret;
 }
 
@@ -150,6 +163,14 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
+	if (lifes==0)
+	{
+		if (currentAnimation != &deadAnim)
+		{
+			deadAnim.Reset();
+			currentAnimation = &deadAnim;
+		}
+	}
 	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::PLAYER_SHOT);
@@ -162,11 +183,12 @@ UpdateResult ModulePlayer::Update()
 	}
 	if (score >= 3000)win = true;
 
+	
+
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KeyState::KEY_DOWN) {
 		return UpdateResult::UPDATE_STOP;
 	}
-	if (App->input->keys[SDL_SCANCODE_F4] == KeyState::KEY_DOWN) destroyed =! destroyed;
-	if (App->input->keys[SDL_SCANCODE_F3] == KeyState::KEY_DOWN) win = !win;
+	
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
