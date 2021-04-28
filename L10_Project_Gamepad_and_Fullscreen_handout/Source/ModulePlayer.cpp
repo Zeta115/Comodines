@@ -160,7 +160,8 @@ UpdateResult ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KeyState::KEY_DOWN) {
 		return UpdateResult::UPDATE_STOP;
 	}
-
+	if (App->input->keys[SDL_SCANCODE_F4] == KeyState::KEY_DOWN) destroyed =! destroyed;
+	if (App->input->keys[SDL_SCANCODE_F3] == KeyState::KEY_DOWN) win = !win;
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
@@ -203,12 +204,13 @@ UpdateResult ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	// L6: DONE 5: Detect collision with a wall. If so, destroy the player.
-	if ((c1 == collider) && (destroyed == false))
-	{
-		if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
 
-		}
+	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
+		godmode != godmode;
+	}
+	// L6: DONE 5: Detect collision with a wall. If so, destroy the player.
+	if ((c1 == collider) && (destroyed == false)&&godmode==false)
+	{
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 		{
 			speed = 0;

@@ -114,11 +114,11 @@ UpdateResult SceneLevel1::PostUpdate()
 	// Draw everything
 	App->render->DrawTexture(bgTexture, 0, 0, NULL);
 	App->render->DrawTexture(hud, 0, -8, NULL);
-	if (App->player->destroyed == true || App->input->keys[SDL_SCANCODE_F4] == KeyState::KEY_REPEAT)
+	if (App->player->destroyed == true)
 	{
 		App->render->DrawTexture(loseScreen, -20, 15, NULL);
 	}
-	if (App->input->keys[SDL_SCANCODE_F3] == KeyState::KEY_REPEAT)
+	if (App->player->win == true)
 	{
 		App->render->DrawTexture(winScreen, -10, 15, NULL);
 	}
