@@ -27,7 +27,7 @@ bool SceneLevel1::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Map/mapa.png");
-	App->audio->PlayMusic("Assets/Audio/music/Area_1.ogg", 0.5f);
+	App->audio->PlayMusic("Assets/Audio/music/Area_1.ogg", 1.0f);
 
 	// Colliders
 
