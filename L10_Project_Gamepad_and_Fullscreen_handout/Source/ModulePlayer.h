@@ -73,6 +73,7 @@ public:
 	uint blastFx = 0;
 	uint placeFx = 0;
 	uint deadFx = 0;
+	uint winFx = 0;
 
 	// Font score index
 	uint score = 000;

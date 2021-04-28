@@ -64,6 +64,7 @@ bool ModulePlayer::Start()
 	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
 	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
 	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
+	winFx = App->audio->LoadFx("Assets/Audio/Fx/stage_clear.wav");
 
 
 	position.x = 25;
@@ -159,6 +160,8 @@ UpdateResult ModulePlayer::Update()
 		}
 		score += 1000;
 	}
+	if (score >= 3000)win = true;
+
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KeyState::KEY_DOWN) {
 		return UpdateResult::UPDATE_STOP;
 	}
@@ -188,10 +191,15 @@ UpdateResult ModulePlayer::Update()
 
 UpdateResult ModulePlayer::PostUpdate()
 {
-	if (!destroyed)
+	if (!destroyed||!win)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->DrawTexture(player, position.x, position.y, &rect);
+	}
+	if (win == true)
+	{
+		App->audio->PlayFx(winFx);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
 	}
 
 	// Draw UI (score) --------------------------------------
