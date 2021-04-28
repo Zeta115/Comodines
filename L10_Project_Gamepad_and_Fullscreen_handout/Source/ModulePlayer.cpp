@@ -209,20 +209,23 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
 
 		}
-		if (c1 == collider && destroyed == false)
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 		{
+			speed = 0;
+		}
+		if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
+		{			
+				// L10: DONE 3: Go back to the intro scene when the player gets killed
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
 			App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
 			if (App->particles->dead.isAlive == false)
 			{
 				App->audio->PlayFx(deadFx);
 			}
-
-
-			// L10: DONE 3: Go back to the intro scene when the player gets killed
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
-
 			destroyed = true;
+			
 		}
+		
 
 		if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 		{

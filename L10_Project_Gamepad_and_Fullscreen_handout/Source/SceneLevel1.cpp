@@ -97,6 +97,7 @@ bool SceneLevel1::Start()
 	// L10: DONE 2: Enable (and properly disable) the player module
 	App->player->Enable();
 	App->enemies->Enable();
+	App->collisions->Enable();
 
 	return ret;
 }
@@ -132,6 +133,6 @@ bool SceneLevel1::CleanUp()
 	App->enemies->Disable();
 
 	// L10: TODO 5: Remove All Memory Leaks - no solution here... ;)
-
+	App->collisions->Disable();
 	return true;
 }
