@@ -10,9 +10,10 @@ public:
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
 	Enemy_Cargol(int x, int y);
-
+	Collider* collider = nullptr;
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
+
 
 private:
 	// The position (as ratio) in the wave at a specific moment

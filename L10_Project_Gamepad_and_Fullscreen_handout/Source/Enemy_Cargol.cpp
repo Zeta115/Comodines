@@ -38,12 +38,9 @@ Enemy_Cargol::Enemy_Cargol(int x, int y) : Enemy(x, y)
 	leftAnim.loop = true;
 	leftAnim.speed = 0.02f;
 
-
-
 	currentAnim = &upAnim;
 
-
-	//collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Cargol::Update()
@@ -68,7 +65,7 @@ void Enemy_Cargol::Update()
 		}
 
 	}
-
+	collider->SetPos(position.x, position.y);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();
