@@ -38,7 +38,7 @@ Enemy_Cargol::Enemy_Cargol(int x, int y) : Enemy(x, y)
 	leftAnim.loop = true;
 	leftAnim.speed = 0.02f;
 
-	currentAnim = &upAnim;
+	
 
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
@@ -46,6 +46,7 @@ Enemy_Cargol::Enemy_Cargol(int x, int y) : Enemy(x, y)
 void Enemy_Cargol::Update()
 {
 	if (down == true) {
+		currentAnim = &downAnim;
 		if (position.y >= 30) {
 			position.y += speed;
 			if (position.y == 215) {
@@ -56,6 +57,7 @@ void Enemy_Cargol::Update()
 	}
 
 	if (up == true) {
+		currentAnim = &upAnim;
 		if (position.y < 300) {
 			position.y -= speed;
 			if (position.y == 50) {
