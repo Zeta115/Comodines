@@ -28,6 +28,10 @@ bool SceneLevel1::Start()
 
 	bgTexture = App->textures->Load("Assets/Map/mapa.png");
 	App->audio->PlayMusic("Assets/Audio/music/Area_1.ogg", 1.0f);
+	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
+	winScreen = App->textures->Load("Assets/Screens/win.PNG");
+	hud = App->textures->Load("Assets/Hud/hud.png");
+	
 
 	// Colliders
 
@@ -108,14 +112,14 @@ UpdateResult SceneLevel1::PostUpdate()
 {
 	// Draw everything
 	App->render->DrawTexture(bgTexture, 0, 0, NULL);
-	App->render->DrawTexture(hud, 0, -20, NULL);
+	App->render->DrawTexture(hud, 0, -8, NULL);
 	if (App->player->destroyed == true || App->input->keys[SDL_SCANCODE_F4] == KeyState::KEY_REPEAT)
 	{
-		App->render->DrawTexture(loseScreen, 0, -20, NULL);
+		App->render->DrawTexture(loseScreen, -20, 15, NULL);
 	}
 	if (App->input->keys[SDL_SCANCODE_F3] == KeyState::KEY_REPEAT)
 	{
-		App->render->DrawTexture(winScreen, 0, -20, NULL);
+		App->render->DrawTexture(winScreen, -10, 15, NULL);
 	}
 	return UpdateResult::UPDATE_CONTINUE;
 	return UpdateResult::UPDATE_CONTINUE;

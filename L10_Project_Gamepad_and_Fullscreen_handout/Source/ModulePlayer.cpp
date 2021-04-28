@@ -219,7 +219,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 
 			// L10: DONE 3: Go back to the intro scene when the player gets killed
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
 
 			destroyed = true;
 		}
