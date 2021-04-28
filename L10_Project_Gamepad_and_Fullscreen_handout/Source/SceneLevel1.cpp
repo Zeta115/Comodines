@@ -82,8 +82,8 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 200, 208, 16, 10 }, Collider::Type::WALL);
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 121, 75);
-	App->enemies->AddEnemy(Enemy_Type::CARGOL, 85, 114);
+	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 150, 220);
+	App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
 
 
 
