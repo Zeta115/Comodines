@@ -65,8 +65,8 @@ bool ModulePlayer::Start()
 	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
 
 
-	position.x = 121;
-	position.y = 125;
+	position.x = 25;
+	position.y = 64;
 
 	// L10: DONE 4: Retrieve the player when playing a second time
 	destroyed = false;
