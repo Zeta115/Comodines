@@ -10,7 +10,7 @@
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
-
+	
 }
 
 SceneIntro::~SceneIntro()
@@ -39,7 +39,7 @@ bool SceneIntro::Start()
 
 UpdateResult SceneIntro::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
 	}
@@ -49,6 +49,6 @@ UpdateResult SceneIntro::Update()
 
 UpdateResult SceneIntro::PostUpdate()
 {
-	
+	App->render->DrawTexture(bgTexture, 0, 15, NULL);
 	return UpdateResult::UPDATE_CONTINUE;
 }
