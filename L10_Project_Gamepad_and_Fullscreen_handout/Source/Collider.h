@@ -17,6 +17,7 @@ struct Collider
 		ENEMY,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
+		PLANT,
 		DEAD,
 		MAX
 	};
