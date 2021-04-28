@@ -41,6 +41,8 @@ public:
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
+	int lifes = 3;
+	int timer = 0;
 
 	// Countdown to handle shot spacing
 	int shotMaxCountdown = 20;

@@ -10,6 +10,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleEnemies.h"
 
 #include <stdio.h>
 
@@ -156,6 +157,7 @@ UpdateResult ModulePlayer::Update()
 		{
 			App->audio->PlayFx(blastFx);
 		}
+		score += 1000;
 	}
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KeyState::KEY_DOWN) {
 		return UpdateResult::UPDATE_STOP;
@@ -194,7 +196,9 @@ UpdateResult ModulePlayer::PostUpdate()
 
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
-	App->fonts->DrawText(58, 248, scoreFont, scoreText);
+	App->fonts->DrawText(140, 31, scoreFont, scoreText);
+	sprintf_s(scoreText, 10, "%7d", lifes);
+	App->fonts->DrawText(185, 31, scoreFont, scoreText);
 
 	if (debugGamepadInfo == true) DebugDrawGamepadInfo();
 	else App->fonts->DrawText(5, 10, scoreFont, "press f2 to display gamepad debug info");
@@ -209,22 +213,38 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		godmode != godmode;
 	}
 	// L6: DONE 5: Detect collision with a wall. If so, destroy the player.
-	if ((c1 == collider) && (destroyed == false)&&godmode==false)
+	if ((c1 == collider) && (destroyed == false))
 	{
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 		{
 			speed = 0;
 		}
+		if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+		{
+			
+			score += 1000;
+		}
 		if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 		{			
 				// L10: DONE 3: Go back to the intro scene when the player gets killed
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
-			App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
-			if (App->particles->dead.isAlive == false)
+			if (timer <= 35)timer++;
+
+			if (timer == 35)
 			{
-				App->audio->PlayFx(deadFx);
+				lifes -= 1;
+				timer = 0;
 			}
-			destroyed = true;
+
+			if (lifes == 0)
+			{
+				App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
+				App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
+				if (App->particles->dead.isAlive == false)
+				{
+					App->audio->PlayFx(deadFx);
+				}
+				destroyed = true;
+			}
 			
 		}
 		
