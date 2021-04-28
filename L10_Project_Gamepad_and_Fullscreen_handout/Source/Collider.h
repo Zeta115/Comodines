@@ -2,6 +2,7 @@
 #define __COLLIDER_H__
 
 #include "SDL/include/SDL_Rect.h"
+#include "Point.h"
 
 #define MAX_LISTENERS 5
 
@@ -28,6 +29,7 @@ struct Collider
 	void SetPos(int x, int y);
 
 	bool Intersects(const SDL_Rect& r) const;
+	iPoint getPos();
 
 	void AddListener(Module* listener);
 

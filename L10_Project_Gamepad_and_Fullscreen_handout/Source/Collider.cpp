@@ -11,6 +11,11 @@ void Collider::SetPos(int x, int y)
 	rect.y = y;
 }
 
+iPoint Collider::getPos()
+{
+	return { rect.x, rect.y };
+}
+
 bool Collider::Intersects(const SDL_Rect& r) const
 {
 	// L6: DONE 1: Check if there is an overlap
