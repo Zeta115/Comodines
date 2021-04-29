@@ -98,6 +98,8 @@ bool ModulePlayer::Start()
 
 UpdateResult ModulePlayer::Update()
 {
+
+	prevposition = position;
 	// Get gamepad info
 	GamePad& pad = App->input->pads[0];
 
@@ -131,7 +133,6 @@ UpdateResult ModulePlayer::Update()
 		{
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
-			dir=LEFT;
 		}
 	}
 
@@ -142,7 +143,6 @@ UpdateResult ModulePlayer::Update()
 		{
 			leftAnim.Reset();
 			currentAnimation = &leftAnim;
-			dir=RIGHT;
 		}
 	}
 
@@ -153,7 +153,6 @@ UpdateResult ModulePlayer::Update()
 		{
 			downAnim.Reset();
 			currentAnimation = &downAnim;
-			dir=DOWN;
 		}
 	}
 
@@ -164,7 +163,6 @@ UpdateResult ModulePlayer::Update()
 		{
 			upAnim.Reset();
 			currentAnimation = &upAnim;
-			dir=UP;
 		}
 	}
 
@@ -256,25 +254,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 		{
-
-
-			if (dir==LEFT)
-			{
-				position.x += speed;
-			}
-			if (dir==RIGHT)
-			{
-				position.x -= speed;
-			}
-			if (dir==UP)
-			{
-				position.y += speed;
-			}
-			if (dir==DOWN)
-			{
-				position.y -= speed;
-			}
-
+			position = prevposition;
+			std::cout << "Wall!" << std::endl;
 		}
 
 		// ?
