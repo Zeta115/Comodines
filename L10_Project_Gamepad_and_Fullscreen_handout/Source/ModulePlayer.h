@@ -83,6 +83,15 @@ public:
 
 	// Debugdraw for gamepad data
 	bool debugGamepadInfo = false;
+
+	enum direction
+	{
+		RIGHT,
+		LEFT,
+		UP,
+		DOWN
+	};
+	direction dir;
 };
 
 #endif // __MODULEPLAYER_H__
