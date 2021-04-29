@@ -21,6 +21,7 @@ struct Collider
 		PLANT,
 		DEAD,
 		MACHINE,
+		POWERUP,
 		MAX
 	};
 
