@@ -126,15 +126,18 @@ UpdateResult SceneLevel1::PostUpdate()
 	App->render->DrawTexture(bgTexture, 0, 0, NULL);
 	App->render->DrawTexture(hud, 0, -8, NULL);
 	App->render->DrawTexture(machineTexture, 104, 96, NULL);
-	if (App->player->destroyed == true|| App->input->keys[SDL_SCANCODE_F4] == KeyState::KEY_DOWN)
+
+
+	if (App->player->destroyed == true)
 	{
+
 		App->render->DrawTexture(loseScreen, -20, 15, NULL);
-		App->enemies->Disable();
 	}
-	if (App->player->win == true|| App->input->keys[SDL_SCANCODE_F3] == KeyState::KEY_DOWN)
+	
+
+	if (App->player->win == true)
 	{
 		App->render->DrawTexture(winScreen, -10, 15, NULL);
-		App->enemies->Disable();
 	}
 	return UpdateResult::UPDATE_CONTINUE;
 }

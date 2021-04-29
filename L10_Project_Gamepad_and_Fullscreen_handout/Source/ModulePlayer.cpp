@@ -180,6 +180,33 @@ UpdateResult ModulePlayer::Update()
 		score += 1000;
 	}
 
+
+	//Debbug Keys
+	
+	//godmode
+	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
+		godmode = !godmode;
+	}
+
+	// Switch gamepad debug info && show colliders
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
+		debugGamepadInfo = !debugGamepadInfo;
+
+	//insta win
+	if (App->input->keys[SDL_SCANCODE_F3] == KeyState::KEY_REPEAT)
+	{
+		App->audio->PlayFx(winFx);
+		win = true;
+	}
+
+	//insta lose
+	if (App->input->keys[SDL_SCANCODE_F4] == KeyState::KEY_DOWN)
+	{
+		lifes = 0;
+		App->audio->PlayFx(deadFx);
+	}
+
+	//reset position
 	if (App->input->keys[SDL_SCANCODE_F5] == KeyState::KEY_DOWN)
 	{
 		position.x = 25;
@@ -202,13 +229,8 @@ UpdateResult ModulePlayer::Update()
 		
 	}
 	collider->SetPos(position.x, position.y);
-	// Switch gamepad debug info
-	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
-		debugGamepadInfo = !debugGamepadInfo;
-	//godmode
-	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
-		godmode = !godmode;
-	}
+	
+	
 	
 	// L6: DONE 4: Update collider position to player position
 	collider->SetPos(position.x, position.y);
@@ -229,6 +251,14 @@ UpdateResult ModulePlayer::Update()
 			timer = 0;
 		}
 	}
+	
+	if (lifes == 0)
+	{
+
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
+		currentAnimation = &deadAnim;
+		destroyed = true;
+	}
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
@@ -242,7 +272,6 @@ UpdateResult ModulePlayer::PostUpdate()
 	}
 	if (win == true)
 	{
-		App->audio->PlayFx(winFx);
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
 	}
 	// Draw UI (score) --------------------------------------
@@ -290,19 +319,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					lifes -= 1;
 					timer = 0;
 				}
-
-				if (lifes == 0)
+				if (App->particles->dead.isAlive == false&&lifes==0)
 				{
-
-					App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
-					currentAnimation = &deadAnim;
-
-					if (App->particles->dead.isAlive == false)
-					{
-						App->audio->PlayFx(deadFx);
-					}
-					destroyed = true;
-				}
+					App->audio->PlayFx(deadFx);
+				}				
 			}
 		}
 		
@@ -312,7 +332,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			score += 23;
 		}
 	}
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)win = true;
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)
+	{
+		App->audio->PlayFx(winFx);
+		win = true;
+	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::POWERUP) {
 		powerActive = false;
 		powerTouch = true;
