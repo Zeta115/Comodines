@@ -56,7 +56,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	deadAnim.PushBack({ 71, 51, 21, 19 });
 	deadAnim.PushBack({ 93, 50, 22, 21 });
 	deadAnim.loop = false;
-	deadAnim.speed = 0.1f;
+	deadAnim.speed = 0.05f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -166,17 +166,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (lifes==0)
-	{
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
-		currentAnimation = &deadAnim;
-		destroyed = true;
-		if (currentAnimation != &deadAnim)
-		{
-			deadAnim.Reset();
-			currentAnimation = &deadAnim;
-		}
-	}
+
 	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
@@ -202,8 +192,13 @@ UpdateResult ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE)
-		currentAnimation = &idleAnim;
+		&& App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE) {
+		if (lifes>0)
+		{
+			currentAnimation = &idleAnim;
+		}
+		
+	}
 	collider->SetPos(position.x, position.y);
 	// Switch gamepad debug info
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
@@ -222,6 +217,24 @@ UpdateResult ModulePlayer::Update()
 
 UpdateResult ModulePlayer::PostUpdate()
 {
+	/*if (lifes == 0)
+	{
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
+		int timer = 360;
+		destroyed = true;
+		for (int i = 0; i < timer; i++)
+		{
+			currentAnimation = &deadAnim;
+			if (currentAnimation = &deadAnim)
+			{
+				deadAnim.Reset();
+				currentAnimation = &deadAnim;
+			}
+		}
+		
+		
+	}
+	*/
 	if (!destroyed||!win)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
@@ -269,7 +282,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 		{			
-			std::cout << "Enemigo!" << std::endl;
+			std::cout << "Enemy!" << std::endl;
 			if (timer <= 35)timer++;
 
 			if (timer == 35)
@@ -280,13 +293,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			if (lifes == 0)
 			{
+	
+				speed = 0;
 				App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
+				currentAnimation = &deadAnim;
+
 				if (App->particles->dead.isAlive == false)
 				{
 					App->audio->PlayFx(deadFx);
 				}
 				destroyed = true;
 			}
+
 			
 		}
 		
