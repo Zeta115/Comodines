@@ -248,7 +248,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 		{
-			speed = 0;
+			//speed = 0;
+			position.y -= speed;
 			//speed = speed * -1;
 			std::cout << "Muro!" << std::endl;
 
