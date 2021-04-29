@@ -203,6 +203,10 @@ UpdateResult ModulePlayer::Update()
 	// Switch gamepad debug info
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
+	//godmode
+	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
+		godmode = !godmode;
+	}
 
 	// L6: DONE 4: Update collider position to player position
 	collider->SetPos(position.x, position.y);
@@ -242,53 +246,45 @@ UpdateResult ModulePlayer::PostUpdate()
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
-{
-
-	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
-		godmode != godmode;
-	}
+{	
 	// L6: DONE 5: Detect collision with a wall. If so, destroy the player.
 	if ((c1 == collider) && (destroyed == false))
 	{
-		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
+		if (godmode == false)
 		{
-			position = prevposition;
-			std::cout << "Wall!" << std::endl;
-		}
 
-		// ?
-		/*if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
-		{
-			
-			score += 1000;
-		}*/
-
-		if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
-		{			
-			std::cout << "Enemy!" << std::endl;
-			if (timer <= 35)timer++;
-
-			if (timer == 35)
+			//player and walls
+			if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 			{
-				lifes -= 1;
-				timer = 0;
+				position = prevposition;
+				std::cout << "Wall!" << std::endl;
 			}
-
-			if (lifes == 0)
+			//player and enemies
+			if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 			{
-	
-				speed = 0;
-				App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
-				currentAnimation = &deadAnim;
+				std::cout << "Enemy!" << std::endl;
+				if (timer <= 35)timer++;
 
-				if (App->particles->dead.isAlive == false)
+				if (timer == 35)
 				{
-					App->audio->PlayFx(deadFx);
+					lifes -= 1;
+					timer = 0;
 				}
-				destroyed = true;
-			}
 
-			
+				if (lifes == 0)
+				{
+
+					speed = 0;
+					App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
+					currentAnimation = &deadAnim;
+
+					if (App->particles->dead.isAlive == false)
+					{
+						App->audio->PlayFx(deadFx);
+					}
+					destroyed = true;
+				}
+			}
 		}
 		
 

@@ -144,9 +144,7 @@ bool SceneLevel1::CleanUp()
 	// L10: DONE 2: Enable (and properly disable) the player module
 	App->player->Disable();
 	App->enemies->Disable();
-	App->textures->Disable();
-	App->render->Disable();
-	App->audio->Disable();
+	
 	// L10: TODO 5: Remove All Memory Leaks - no solution here... ;)
 	App->collisions->Disable();
 	return true;
