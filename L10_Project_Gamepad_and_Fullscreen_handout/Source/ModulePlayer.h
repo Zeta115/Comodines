@@ -38,6 +38,7 @@ public:
 public:
 	// Position of the player in the map
 	iPoint position;
+	iPoint prevposition;
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
@@ -84,14 +85,6 @@ public:
 	// Debugdraw for gamepad data
 	bool debugGamepadInfo = false;
 
-	enum direction
-	{
-		RIGHT,
-		LEFT,
-		UP,
-		DOWN
-	};
-	direction dir;
 };
 
 #endif // __MODULEPLAYER_H__
