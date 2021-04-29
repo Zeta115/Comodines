@@ -31,7 +31,7 @@ bool SceneLevel1::Start()
 	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
 	hud = App->textures->Load("Assets/Hud/hud.png");
-	
+	machineTexture = App->textures->Load("Assets/Map/Reactor_1.png");
 
 	// Colliders
 
@@ -116,6 +116,7 @@ UpdateResult SceneLevel1::PostUpdate()
 	// Draw everything
 	App->render->DrawTexture(bgTexture, 0, 0, NULL);
 	App->render->DrawTexture(hud, 0, -8, NULL);
+	App->render->DrawTexture(machineTexture, 104, 96, NULL);
 	if (App->player->destroyed == true|| App->input->keys[SDL_SCANCODE_F4] == KeyState::KEY_DOWN)
 	{
 		App->render->DrawTexture(loseScreen, -20, 15, NULL);
@@ -126,7 +127,6 @@ UpdateResult SceneLevel1::PostUpdate()
 		App->render->DrawTexture(winScreen, -10, 15, NULL);
 		App->enemies->Disable();
 	}
-	return UpdateResult::UPDATE_CONTINUE;
 	return UpdateResult::UPDATE_CONTINUE;
 }
 

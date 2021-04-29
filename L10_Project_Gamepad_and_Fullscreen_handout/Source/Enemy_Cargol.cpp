@@ -20,15 +20,15 @@ Enemy_Cargol::Enemy_Cargol(int x, int y) : Enemy(x, y)
 
 	// Down
 	//downAnim.PushBack({ 110, 172, 23, 30 });
-	downAnim.PushBack({ 3, 55, 22, 28 });
-	downAnim.PushBack({ 36, 56, 22, 28 });
-	downAnim.PushBack({ 69, 56, 23, 28 });
+	downAnim.PushBack({ 2, 54, 22, 28 });
+	downAnim.PushBack({ 35, 55, 22, 28 });
+	downAnim.PushBack({ 68, 55, 23, 28 });
 	downAnim.loop = true;
 	downAnim.speed = 0.02f;
 	// Right 
-	rightAnim.PushBack({ 166, 92, 27, 29 });
-	rightAnim.PushBack({ 135, 93, 28, 28 });
-	rightAnim.PushBack({ 100, 91, 26, 30 });
+	rightAnim.PushBack({ 165, 91, 27, 29 });
+	rightAnim.PushBack({ 134, 92, 28, 28 });
+	rightAnim.PushBack({ 99, 90, 26, 30 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.02f;
 	// Left

@@ -40,6 +40,8 @@ public:
 	SDL_Texture* hud = nullptr;
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
+	SDL_Texture* machineTexture = nullptr;
+
 };
 
 #endif  // __SCENELEVEL1_H__
