@@ -77,6 +77,8 @@ bool ModulePlayer::Start()
 	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
 	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
 	winFx = App->audio->LoadFx("Assets/Audio/Fx/stage_clear.wav");
+	powerUpText = App->textures->Load("Assets/SpecialElements/Powerups.png");
+
 
 
 	position.x = 25;
@@ -207,7 +209,10 @@ UpdateResult ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
 		godmode = !godmode;
 	}
-
+	if (powerActive == true)
+	{
+		App->render->DrawTexture(powerUpText, 88, 78, NULL);
+	}
 	// L6: DONE 4: Update collider position to player position
 	collider->SetPos(position.x, position.y);
 
@@ -232,7 +237,6 @@ UpdateResult ModulePlayer::PostUpdate()
 		App->audio->PlayFx(winFx);
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
 	}
-
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
 	App->fonts->DrawText(140, 31, scoreFont, scoreText);
@@ -258,6 +262,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			{
 				position = prevposition;
 				std::cout << "Wall!" << std::endl;
+			}
+			if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
+			{
+				powerActive = false;
 			}
 			//player and enemies
 			if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))

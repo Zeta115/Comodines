@@ -51,7 +51,7 @@ public:
 	
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* player = nullptr;
-	
+	SDL_Texture* powerUpText = nullptr;
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
@@ -64,6 +64,7 @@ public:
 	Animation leftAnim;
 	Animation deadAnim;
 
+
 	// The player's collider
 	Collider* collider = nullptr;
 
@@ -71,6 +72,7 @@ public:
 	bool destroyed = false;
 	bool godmode = false;
 	bool win = false;
+	bool powerActive = true;
 	// Sound effects indices
 	uint blastFx = 0;
 	uint placeFx = 0;
