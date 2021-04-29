@@ -294,6 +294,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)win = true;
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::POWERUP) {
+	}
 
 }
 void ModulePlayer::DebugDrawGamepadInfo()
