@@ -46,16 +46,18 @@ UpdateResult SceneIntro::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
 	}
 	if (App->player->destroyed == true)sceneCount = 0;
+	if (App->player->win == true) sceneCount = 0;
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
 UpdateResult SceneIntro::PostUpdate()
 {
-	if (App->player->win == true) sceneCount = 0;
+	
 	if (sceneCount == 0)
 	{
 		App->render->DrawTexture(logoTexture, 0, 0, NULL);
 		App->player->destroyed = false;
+		App->player->win = false;
 
 		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN)sceneCount = 1;
 	}

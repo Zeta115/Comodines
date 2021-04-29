@@ -119,10 +119,12 @@ UpdateResult SceneLevel1::PostUpdate()
 	if (App->player->destroyed == true|| App->input->keys[SDL_SCANCODE_F4] == KeyState::KEY_DOWN)
 	{
 		App->render->DrawTexture(loseScreen, -20, 15, NULL);
+		App->enemies->Disable();
 	}
 	if (App->player->win == true|| App->input->keys[SDL_SCANCODE_F3] == KeyState::KEY_DOWN)
 	{
 		App->render->DrawTexture(winScreen, -10, 15, NULL);
+		App->enemies->Disable();
 	}
 	return UpdateResult::UPDATE_CONTINUE;
 	return UpdateResult::UPDATE_CONTINUE;
