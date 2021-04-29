@@ -73,7 +73,7 @@ private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* bomb_texture = nullptr;
 	SDL_Texture* Fire_texture = nullptr;
-	SDL_Texture* Dead_texture = nullptr;
+	//SDL_Texture* Dead_texture = nullptr;
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };

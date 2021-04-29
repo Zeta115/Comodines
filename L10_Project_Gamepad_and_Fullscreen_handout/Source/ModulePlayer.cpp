@@ -56,7 +56,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	deadAnim.PushBack({ 71, 51, 21, 19 });
 	deadAnim.PushBack({ 93, 50, 22, 21 });
 	deadAnim.loop = false;
-	deadAnim.speed = 0.15f;
+	deadAnim.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -168,6 +168,9 @@ UpdateResult ModulePlayer::Update()
 
 	if (lifes==0)
 	{
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
+		currentAnimation = &deadAnim;
+		destroyed = true;
 		if (currentAnimation != &deadAnim)
 		{
 			deadAnim.Reset();
@@ -176,7 +179,7 @@ UpdateResult ModulePlayer::Update()
 	}
 	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
 		App->audio->PlayFx(placeFx);
 		if (App->particles->bom.isAlive == false)
 		{
@@ -279,7 +282,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			if (lifes == 0)
 			{
 				App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
-				App->particles->AddParticle(App->particles->dead, position.x, position.y, Collider::Type::DEAD, 9);
 				if (App->particles->dead.isAlive == false)
 				{
 					App->audio->PlayFx(deadFx);
@@ -290,7 +292,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 		
 
-		if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+		if (c1->type == Collider::Type::BOMB && c2->type == Collider::Type::ENEMY)
 		{
 			score += 23;
 		}

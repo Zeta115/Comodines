@@ -16,7 +16,7 @@ struct Collider
 		WALL,
 		PLAYER,
 		ENEMY,
-		PLAYER_SHOT,
+		BOMB,
 		ENEMY_SHOT,
 		PLANT,
 		DEAD,

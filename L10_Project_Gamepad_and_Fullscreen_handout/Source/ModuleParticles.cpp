@@ -23,7 +23,7 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	bomb_texture = App->textures->Load("Assets/special_elements/Bomb.png");
 	Fire_texture = App->textures->Load("Assets/effects/Fire.png");
-	Dead_texture = App->textures->Load("Assets/bomberman/Bomberman.png");
+	//Dead_texture = App->textures->Load("Assets/bomberman/Bomberman.png");
 
 	// Explosion particle
 	bom.anim.PushBack({ 0, 0, 16, 16 });
@@ -34,20 +34,69 @@ bool ModuleParticles::Start()
 	bom.anim.speed = 0.1f;
 	bom.anim.loop = true;
 
-	dead.anim.PushBack({ 2, 51, 15, 20 });
-	dead.anim.PushBack({ 19, 51, 13, 19 });
-	dead.anim.PushBack({ 33, 51, 19, 20 });
-	dead.anim.PushBack({ 51, 51, 21, 19 });
-	dead.anim.PushBack({ 71, 51, 21, 19 });
-	dead.anim.PushBack({ 93, 50, 22, 21 });
-	dead.lifetime = 60;
-	dead.anim.speed = 0.1f;
-	dead.anim.loop = true;
 
-	explosion.anim.PushBack({ 3, 3, 16, 16 });
+	explosion.anim.PushBack({ 2, 2, 16,16 });
+	explosion.anim.PushBack({ 3, 76, 16,16 });
+	explosion.anim.PushBack({ 2, 150, 16,16 });
 	explosion.anim.loop = true;
 	explosion.anim.speed = 0.5f;
 	explosion.lifetime = 90;
+
+	explosion_up_1.anim.PushBack({ 20, 38, 14, 16 });
+	explosion_up_1.anim.PushBack({ 21, 112, 14, 16 });
+	explosion_up_1.anim.PushBack({ 20, 188, 16, 16 });
+	explosion_up_1.anim.loop = true;
+	explosion_up_1.anim.speed = 0.5f;
+	explosion_up_1.lifetime = 90;
+
+	explosion_up_2.anim.PushBack({ 3, 38, 16, 14 });
+	explosion_up_2.anim.PushBack({ 4, 112, 16, 14 });
+	explosion_up_2.anim.PushBack({ 3, 188, 16, 16 });
+	explosion_up_2.anim.loop = true;
+	explosion_up_2.anim.speed = 0.5f;
+	explosion_up_2.lifetime = 90;
+
+	explosion_Down_1.anim.PushBack({ 20, 57, 14, 16 });
+	explosion_Down_1.anim.PushBack({ 21, 131, 14, 16 });
+	explosion_Down_1.anim.PushBack({ 20, 207, 16, 16 });
+	explosion_Down_1.anim.loop = true;
+	explosion_Down_1.anim.speed = 0.5f;
+	explosion_Down_1.lifetime = 90;
+
+	explosion_Down_2.anim.PushBack({ 3, 57, 16, 14 });
+	explosion_Down_2.anim.PushBack({ 4, 131, 16, 14 });
+	explosion_Down_2.anim.PushBack({ 3, 207, 16, 16 });
+	explosion_Down_2.anim.loop = true;
+	explosion_Down_2.anim.speed = 0.5f;
+	explosion_Down_2.lifetime = 90;
+
+	explosion_right_1.anim.PushBack({ 40, 3, 16, 14 });
+	explosion_right_1.anim.PushBack({ 41, 77, 16, 14 });
+	explosion_right_1.anim.PushBack({ 41, 150, 16, 16 });
+	explosion_right_1.anim.loop = true;
+	explosion_right_1.anim.speed = 0.5f;
+	explosion_right_1.lifetime = 90;
+
+	explosion_right_2.anim.PushBack({ 21, 3, 16, 14 });
+	explosion_right_2.anim.PushBack({ 22, 3, 16, 14 });
+	explosion_right_2.anim.PushBack({ 22, 150, 16, 16 });
+	explosion_right_2.anim.loop = true;
+	explosion_right_2.anim.speed = 0.5f;
+	explosion_right_2.lifetime = 90;
+
+	explosion_left_1.anim.PushBack({ 2, 21, 15, 14 });
+	explosion_left_1.anim.PushBack({ 21, 95, 16, 14 });
+	explosion_left_1.anim.PushBack({ 22, 169, 16, 16 });
+	explosion_left_1.anim.loop = true;
+	explosion_left_1.anim.speed = 0.5f;
+	explosion_left_1.lifetime = 90;
+
+	explosion_left_2.anim.PushBack({ 20, 21, 16, 16 });
+	explosion_left_2.anim.PushBack({ 3, 95, 16, 14 });
+	explosion_left_2.anim.PushBack({ 2, 169, 16, 16 });
+	explosion_left_2.anim.loop = true;
+	explosion_left_2.anim.speed = 0.5f;
+	explosion_left_2.lifetime = 90;
 
 	return true;
 }
@@ -125,11 +174,7 @@ UpdateResult ModuleParticles::PostUpdate()
 		
 		if (particle != nullptr && particle->isAlive)
 		{
-			if (particle->collider->type == Collider::Type::DEAD)
-			{
-				App->render->DrawTexture(Dead_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-			}
-			if (particle->collider->type == Collider::Type::PLAYER_SHOT)
+			if (particle->collider->type == Collider::Type::BOMB)
 			{
 				App->render->DrawTexture(bomb_texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 			}
