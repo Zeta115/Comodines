@@ -13,6 +13,7 @@
 #include "ModuleEnemies.h"
 
 #include <stdio.h>
+#include <iostream>
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
@@ -248,15 +249,21 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 		{
 			speed = 0;
+			//speed = speed * -1;
+			std::cout << "Muro!" << std::endl;
+
 		}
-		if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
+
+		// ?
+		/*if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::ENEMY)
 		{
 			
 			score += 1000;
-		}
+		}*/
+
 		if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 		{			
-				// L10: DONE 3: Go back to the intro scene when the player gets killed
+			std::cout << "Enemigo!" << std::endl;
 			if (timer <= 35)timer++;
 
 			if (timer == 35)
