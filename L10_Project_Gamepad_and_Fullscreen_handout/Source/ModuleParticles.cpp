@@ -21,7 +21,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	bomb_texture = App->textures->Load("Assets/special_elements/Bomb.png");
+	bomb_texture = App->textures->Load("Assets/SpecialElements/Bomb.png");
 	Fire_texture = App->textures->Load("Assets/effects/Fire.png");
 	//Dead_texture = App->textures->Load("Assets/bomberman/Bomberman.png");
 

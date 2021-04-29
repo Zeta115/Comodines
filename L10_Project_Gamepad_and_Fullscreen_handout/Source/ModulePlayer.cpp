@@ -209,10 +209,7 @@ UpdateResult ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
 		godmode = !godmode;
 	}
-	if (powerActive == true)
-	{
-		App->render->DrawTexture(powerUpText, 88, 78, NULL);
-	}
+	
 	// L6: DONE 4: Update collider position to player position
 	collider->SetPos(position.x, position.y);
 
@@ -245,6 +242,10 @@ UpdateResult ModulePlayer::PostUpdate()
 
 	if (debugGamepadInfo == true) DebugDrawGamepadInfo();
 	else App->fonts->DrawText(5, 10, scoreFont, "press f2 to display gamepad debug info");
+	if (powerActive == true)
+	{
+		App->render->DrawTexture(powerUpText, 88, 78, NULL);
+	}
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
@@ -302,6 +303,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)win = true;
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::POWERUP) {
+		powerActive = false;
+
 	}
 
 }
