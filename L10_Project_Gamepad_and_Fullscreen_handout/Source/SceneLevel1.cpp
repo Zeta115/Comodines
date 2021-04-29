@@ -50,40 +50,40 @@ bool SceneLevel1::Start()
 
 	//First two columns colliders
 	//Fila 1
-	App->collisions->AddCollider({ 40, 80, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 72, 80, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104, 80, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 136, 80, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 80, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 80, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 42, 83, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 74, 83, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 106, 83, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 138, 83, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 170, 83, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 202, 83, 13, 10 }, Collider::Type::WALL);
 
 	//Fila 2
-	App->collisions->AddCollider({ 40, 112, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 72, 112, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 112, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 112, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 42, 115, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 74, 115, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 170, 115, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 202, 115, 13, 10 }, Collider::Type::WALL);
 
 	//Fila 3
-	App->collisions->AddCollider({ 40, 144, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 72, 144, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 144, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 144, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 42, 147, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 74, 147, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 170, 147, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 202, 147, 13, 10 }, Collider::Type::WALL);
 
 	//Fila 4
-	App->collisions->AddCollider({ 40, 176, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 72, 176, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104, 176, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 136, 176, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 176, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 176, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 42, 179, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 74, 179, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 106, 179, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 138, 179, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 170, 179, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 202, 179, 13, 10 }, Collider::Type::WALL);
 
 	//Fila 5
-	App->collisions->AddCollider({ 40, 208, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 72, 208, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104, 208, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 136, 208, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 208, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 208, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 42, 211, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 74, 211, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 106, 211, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 138, 211, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 170, 211, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 202, 211, 13, 10 }, Collider::Type::WALL);
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 150, 220);

@@ -40,7 +40,7 @@ Enemy_Cargol::Enemy_Cargol(int x, int y) : Enemy(x, y)
 
 	
 
-	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({0, 0, 21, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Cargol::Update()
