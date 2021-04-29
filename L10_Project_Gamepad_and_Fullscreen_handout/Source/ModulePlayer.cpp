@@ -274,7 +274,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				if (lifes == 0)
 				{
 
-					speed = 0;
 					App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
 					currentAnimation = &deadAnim;
 
