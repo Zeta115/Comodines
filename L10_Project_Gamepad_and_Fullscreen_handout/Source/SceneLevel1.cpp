@@ -70,6 +70,8 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 136, 139, 15, 15 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 120, 139, 14, 14 }, Collider::Type::MACHINE);
 
+	//
+	App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::WALL);
 	//Fila 3
 	App->collisions->AddCollider({ 42, 147, 13, 10 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 74, 147, 13, 10 }, Collider::Type::WALL);
