@@ -64,10 +64,10 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 202, 115, 13, 10 }, Collider::Type::WALL);
 
 	//machine
-	App->collisions->AddCollider({ 104, 115, 48, 24 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104, 139, 16, 20 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 136, 139, 16, 20 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 120, 139, 16, 16 }, Collider::Type::MACHINE);
+	App->collisions->AddCollider({ 105, 117, 46, 22 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 105, 139, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 136, 139, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 120, 139, 14, 14 }, Collider::Type::MACHINE);
 
 	//Fila 3
 	App->collisions->AddCollider({ 42, 147, 13, 10 }, Collider::Type::WALL);
