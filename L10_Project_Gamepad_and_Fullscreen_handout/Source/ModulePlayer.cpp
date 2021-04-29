@@ -217,24 +217,7 @@ UpdateResult ModulePlayer::Update()
 
 UpdateResult ModulePlayer::PostUpdate()
 {
-	/*if (lifes == 0)
-	{
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
-		int timer = 360;
-		destroyed = true;
-		for (int i = 0; i < timer; i++)
-		{
-			currentAnimation = &deadAnim;
-			if (currentAnimation = &deadAnim)
-			{
-				deadAnim.Reset();
-				currentAnimation = &deadAnim;
-			}
-		}
-		
-		
-	}
-	*/
+
 	if (!destroyed||!win)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();

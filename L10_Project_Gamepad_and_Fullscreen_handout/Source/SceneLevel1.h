@@ -41,6 +41,7 @@ public:
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
 	SDL_Texture* machineTexture = nullptr;
+	SDL_Texture* PowerUp = nullptr;
 
 };
 
