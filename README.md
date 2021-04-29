@@ -2,7 +2,7 @@
 
 ##From team Comodines we present MEGA Bomberman:
 
-In this game you control the Bomberman in order to clear stages to win the game, but be aware, you have 3 lifes and if you die you will have to restart the stage. To clear a stage you'll have to kill every enemie in it to earn enough points to advance.
+In this game you control the Bomberman and you need to go to the center the machine to win the game, but be aware, you have 3 lifes and if you die you get returned to main menu. now you can't kill enemies and when you drop a bomb u get points.
 
 ##Key features:
 
