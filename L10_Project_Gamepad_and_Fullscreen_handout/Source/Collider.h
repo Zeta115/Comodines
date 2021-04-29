@@ -20,6 +20,7 @@ struct Collider
 		ENEMY_SHOT,
 		PLANT,
 		DEAD,
+		MACHINE,
 		MAX
 	};
 

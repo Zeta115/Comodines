@@ -63,6 +63,12 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 170, 115, 13, 10 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 202, 115, 13, 10 }, Collider::Type::WALL);
 
+	//machine
+	App->collisions->AddCollider({ 104, 115, 48, 24 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104, 139, 16, 20 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 136, 139, 16, 20 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 120, 139, 16, 16 }, Collider::Type::MACHINE);
+
 	//Fila 3
 	App->collisions->AddCollider({ 42, 147, 13, 10 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 74, 147, 13, 10 }, Collider::Type::WALL);
@@ -84,6 +90,7 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 138, 211, 13, 10 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 170, 211, 13, 10 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 202, 211, 13, 10 }, Collider::Type::WALL);
+
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 150, 220);

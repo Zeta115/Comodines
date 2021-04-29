@@ -187,7 +187,6 @@ UpdateResult ModulePlayer::Update()
 		}
 		score += 1000;
 	}
-	if (score >= 3000)win = true;
 
 	if (App->input->keys[SDL_SCANCODE_F5] == KeyState::KEY_DOWN)
 	{
@@ -297,6 +296,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			score += 23;
 		}
 	}
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)win = true;
+
 }
 void ModulePlayer::DebugDrawGamepadInfo()
 {

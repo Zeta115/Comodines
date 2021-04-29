@@ -18,6 +18,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::BOMB] = true;
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY_SHOT] = true;
 
+
+	
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	//matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
@@ -39,6 +41,9 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLANT][Collider::Type::BOMB] = true;
 	matrix[Collider::Type::PLANT][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::PLANT][Collider::Type::ENEMY] = true;
+
+	matrix[Collider::Type::MACHINE][Collider::Type::PLAYER] = true;
+
 
 	/*matrix[Collider::Type::ENEMY_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER] = true;
