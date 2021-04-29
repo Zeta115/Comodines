@@ -73,6 +73,7 @@ public:
 	bool godmode = false;
 	bool win = false;
 	bool powerActive = true;
+	bool powerTouch = false;
 	// Sound effects indices
 	uint blastFx = 0;
 	uint placeFx = 0;

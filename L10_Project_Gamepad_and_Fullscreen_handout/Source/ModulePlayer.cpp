@@ -218,6 +218,17 @@ UpdateResult ModulePlayer::Update()
 	// Update shot countdown
 	if (shotCountdown > 0) --shotCountdown;
 
+	if (powerTouch == true){
+		if (timer < 150) {
+			timer++;
+			godmode = true;
+		}
+		if (timer == 150) {
+			godmode = false;
+			powerTouch = false;
+			timer = 0;
+		}
+	}
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
@@ -304,7 +315,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)win = true;
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::POWERUP) {
 		powerActive = false;
-
+		powerTouch = true;
+		
 	}
 
 }
