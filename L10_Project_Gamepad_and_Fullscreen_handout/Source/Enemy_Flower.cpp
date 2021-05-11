@@ -14,7 +14,7 @@ Enemy_Flower::Enemy_Flower(int x, int y) : Enemy(x, y)
 
 void Enemy_Flower::Update()
 {
-	
+	currentAnim = &idleAnim;
 	collider->SetPos(position.x, position.y);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
