@@ -1,0 +1,22 @@
+#include "Enemy_Flower.h"
+
+#include "Application.h"
+#include "ModuleCollisions.h"
+
+
+Enemy_Flower::Enemy_Flower(int x, int y) : Enemy(x, y)
+{
+	// idle animation - just one sprite
+	idleAnim.PushBack({ 2, 149, 16, 16 });
+
+	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FLOWER, (Module*)App->enemies);
+}
+
+void Enemy_Flower::Update()
+{
+	
+	collider->SetPos(position.x, position.y);
+	// Call to the base class. It must be called at the end
+	// It will update the collider depending on the position
+	Enemy::Update();
+}

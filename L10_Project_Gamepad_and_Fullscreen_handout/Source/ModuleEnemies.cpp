@@ -10,6 +10,7 @@
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownShip.h"
 #include "Enemy_Cargol.h"
+#include "Enemy_Flower.h"
 
 #define SPAWN_MARGIN 50
 
@@ -166,6 +167,10 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::CARGOL:
 					enemies[i] = new Enemy_Cargol(info.x, info.y);
 					break;
+				case Enemy_Type::PLANT:
+					enemies[i] = new Enemy_Flower(info.x, info.y);
+					break;
+
 			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;

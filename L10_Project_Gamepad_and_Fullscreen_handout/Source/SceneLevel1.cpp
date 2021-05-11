@@ -97,7 +97,7 @@ bool SceneLevel1::Start()
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 150, 220);
 	App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
-
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 182, 114);
 
 
 	App->render->camera.x = 0;

@@ -18,7 +18,7 @@ struct Collider
 		ENEMY,
 		BOMB,
 		ENEMY_SHOT,
-		PLANT,
+		FLOWER,
 		DEAD,
 		MACHINE,
 		POWERUP,
