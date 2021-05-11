@@ -302,7 +302,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 			{
 				position = prevposition;
-				std::cout << "Wall!" << std::endl;
+				
 			}
 			if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
 			{
@@ -311,7 +311,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			//player and enemies
 			if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 			{
-				std::cout << "Enemy!" << std::endl;
 				if (timer <= 35)timer++;
 
 				if (timer == 35)
