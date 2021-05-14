@@ -26,7 +26,7 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Map/mapa.png");
+	bgTexture = App->textures->Load("Assets/Map/Mapa.png");
 	App->audio->PlayMusic("Assets/Audio/music/Area_1.ogg", 1.0f);
 	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
@@ -37,11 +37,11 @@ bool SceneLevel1::Start()
 
 //Limits
 //Bottom
-	App->collisions->AddCollider({ 0, 242, 600, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 239, 600, 17 }, Collider::Type::WALL);
 	//Top
-	App->collisions->AddCollider({ 0, 33, 600, 30 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 600, 57 }, Collider::Type::WALL);
 	//Left
-	App->collisions->AddCollider({ 0, 33, 24, 600 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 33, 25, 600 }, Collider::Type::WALL);
 	//Right
 	App->collisions->AddCollider({ 232, 33, 25, 600 }, Collider::Type::WALL);
 
@@ -50,18 +50,18 @@ bool SceneLevel1::Start()
 
 	//First two columns colliders
 	//Fila 1
-	App->collisions->AddCollider({ 42, 83, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 74, 83, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 106, 83, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 138, 83, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 170, 83, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 202, 83, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 79, 16, 10 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 73, 79, 16, 10 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 79, 16, 10 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 79, 16, 10 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 79, 16, 10 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 79, 16, 10 }, Collider::Type::WALL);//6
 
 	//Fila 2
-	App->collisions->AddCollider({ 42, 115, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 74, 115, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 170, 115, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 202, 115, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 111, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 73, 111, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 111, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 111, 16, 10 }, Collider::Type::WALL);
 
 	//machine
 	App->collisions->AddCollider({ 105, 117, 46, 22 }, Collider::Type::WALL);
@@ -69,35 +69,38 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 136, 139, 15, 15 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 120, 139, 14, 14 }, Collider::Type::MACHINE);
 
-	//
+	//PowerUp
 	App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
+
 	//Fila 3
-	App->collisions->AddCollider({ 42, 147, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 74, 147, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 170, 147, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 202, 147, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 143, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 73, 143, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 143, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 143, 16, 10 }, Collider::Type::WALL);
 
 	//Fila 4
-	App->collisions->AddCollider({ 42, 179, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 74, 179, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 106, 179, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 138, 179, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 170, 179, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 202, 179, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 175, 16, 10 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 73, 175, 16, 10 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 175, 16, 10 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 175, 16, 10 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 175, 16, 10 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 175, 16, 10 }, Collider::Type::WALL);//6
 
 	//Fila 5
-	App->collisions->AddCollider({ 42, 211, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 74, 211, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 106, 211, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 138, 211, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 170, 211, 13, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 202, 211, 13, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 207, 16, 10 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 73, 207, 16, 10 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 207, 16, 10 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 207, 16, 10 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 207, 16, 10 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 207, 16, 10 }, Collider::Type::WALL);//6
 
+	//flower collider
+	App->collisions->AddCollider({ 56, 111, 15, 10 }, Collider::Type::WALL);
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 150, 220);
 	App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 182, 114);
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 56, 112);
 
 
 	App->render->camera.x = 0;
