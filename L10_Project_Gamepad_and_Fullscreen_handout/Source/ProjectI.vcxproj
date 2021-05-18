@@ -89,7 +89,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Enemy_BrownShip.h" />
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Enemy_Cargol.h" />
     <ClInclude Include="Enemy_RedBird.h" />
     <ClInclude Include="Enemy_Flower.h" />
@@ -117,7 +117,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Enemy_BrownShip.cpp" />
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Enemy_Cargol.cpp" />
     <ClCompile Include="Enemy_RedBird.cpp" />
     <ClCompile Include="Enemy_Flower.cpp" />

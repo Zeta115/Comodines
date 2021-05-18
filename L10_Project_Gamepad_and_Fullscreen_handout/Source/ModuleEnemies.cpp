@@ -8,7 +8,7 @@
 
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
-#include "Enemy_BrownShip.h"
+#include "Bomb.h"
 #include "Enemy_Cargol.h"
 #include "Enemy_Flower.h"
 
@@ -162,7 +162,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					enemies[i] = new Enemy_RedBird(info.x, info.y);
 					break;
 				case Enemy_Type::BROWNSHIP:
-					enemies[i] = new Enemy_BrownShip(info.x, info.y);
+					enemies[i] = new Bomb(info.x, info.y);
 					break;
 				case Enemy_Type::CARGOL:
 					enemies[i] = new Enemy_Cargol(info.x, info.y);

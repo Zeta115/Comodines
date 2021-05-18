@@ -1,21 +1,15 @@
-#include "Enemy_BrownShip.h"
+#include "Bomb.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
 
-Enemy_BrownShip::Enemy_BrownShip(int x, int y) : Enemy(x, y)
+Bomb::Bomb(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({5,72,21,22});
-	currentAnim = &fly;
-	
-	path.PushBack({-1.0f, -0.5f}, 100);
-	path.PushBack({-1.0f, 0.5f}, 80);
-	path.PushBack({-1.0f, 1.0f}, 80);
 	
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
-void Enemy_BrownShip::Update()
+void Bomb::Update()
 {
 	path.Update();
 	position = spawnPos + path.GetRelativePosition();
