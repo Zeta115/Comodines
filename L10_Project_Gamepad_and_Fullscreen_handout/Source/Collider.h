@@ -17,7 +17,7 @@ struct Collider
 		PLAYER,
 		ENEMY,
 		BOMB,
-		ENEMY_SHOT,
+		FIRE,
 		FLOWER,
 		DEAD,
 		MACHINE,

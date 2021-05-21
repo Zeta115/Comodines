@@ -9,7 +9,8 @@ enum class Enemy_Type
 {
 	NO_TYPE,
 	REDBIRD,
-	BROWNSHIP,
+	BOMB,
+	FIRE,
 	CARGOL,
 	PLANT,
 };

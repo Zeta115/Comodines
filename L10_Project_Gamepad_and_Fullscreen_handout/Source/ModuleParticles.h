@@ -58,8 +58,8 @@ public:
 	Particle explosion_up_1;
 	Particle explosion_up_2;
 
-	Particle explosion_Down_1;
-	Particle explosion_Down_2;
+	Particle explosion_down_1;
+	Particle explosion_down_2;
 
 	Particle explosion_right_1;
 	Particle explosion_right_2;
@@ -72,7 +72,6 @@ public:
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* bomb_texture = nullptr;
-	SDL_Texture* Fire_texture = nullptr;
 	//SDL_Texture* Dead_texture = nullptr;
 
 	// An array to store and handle all the particles

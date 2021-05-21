@@ -81,6 +81,7 @@ bool ModulePlayer::Start()
 
 
 
+
 	position.x = 25;
 	position.y = 64;
 
@@ -89,7 +90,7 @@ bool ModulePlayer::Start()
 	win = false;
 
 	// L6: DONE 3: Add a collider to the player
-	collider = App->collisions->AddCollider({ position.x, position.y, 15, 22 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y + 7, 15, 15 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
@@ -171,10 +172,28 @@ UpdateResult ModulePlayer::Update()
 
 	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)
 	{
+		if (App->particles->bom.isAlive == true)
+		{
 		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
 		App->audio->PlayFx(placeFx);
-		if (App->particles->bom.isAlive == false)
+		}
+		
+		else if (App->particles->bom.isAlive == false)
 		{
+			//centre
+			App->particles->AddParticle(App->particles->explosion, position.x, position.y + 6, Collider::Type::FIRE);
+			//up
+			App->particles->AddParticle(App->particles->explosion_up_2, position.x, position.y + -10, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_up_1, position.x, position.y + -26, Collider::Type::FIRE);
+			//donw
+			App->particles->AddParticle(App->particles->explosion_down_2, position.x, position.y + 21, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_down_1, position.x, position.y + 37, Collider::Type::FIRE);
+			//right
+			App->particles->AddParticle(App->particles->explosion_right_2, position.x + 15, position.y, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_right_1, position.x + 31, position.y , Collider::Type::FIRE);
+			//left
+			App->particles->AddParticle(App->particles->explosion_left_2, position.x + -16, position.y, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_left_1, position.x + -32, position.y, Collider::Type::FIRE);
 			App->audio->PlayFx(blastFx);
 		}
 		score += 1000;
@@ -227,13 +246,10 @@ UpdateResult ModulePlayer::Update()
 			currentAnimation = &idleAnim;
 		}
 		
-	}
-	collider->SetPos(position.x, position.y);
-	
-	
+	}	
 	
 	// L6: DONE 4: Update collider position to player position
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x, position.y + 7);
 
 	currentAnimation->Update();
 
@@ -290,19 +306,36 @@ UpdateResult ModulePlayer::PostUpdate()
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
+
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {	
 	// L6: DONE 5: Detect collision with a wall. If so, destroy the player.
 	if ((c1 == collider) && (destroyed == false))
 	{
+		
 		if (godmode == false)
-		{
+				{
 
-			//player and walls
-			if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
-			{
-				position = prevposition;
-				
+			if (c1 == collider && destroyed == false){
+				switch (c2->type){
+				case Collider::Type::WALL:
+					if (c1->rect.y < c2->rect.y) // up
+					{
+						position.y -= speed;
+					}
+					else if (c1->rect.y + 2 > c2->rect.y + c2->rect.h) // down
+					{
+						position.y += speed;
+					}
+					if (c1->rect.x < c2->rect.x) // left
+					{
+						position.x -= speed;
+					}
+					else if (c1->rect.x + 2 > c2->rect.x + c2->rect.w) // right
+					{
+						position.x += speed;
+					}; break;
+				}
 			}
 			if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
 			{

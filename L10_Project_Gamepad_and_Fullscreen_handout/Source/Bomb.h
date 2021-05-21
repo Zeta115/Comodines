@@ -1,6 +1,5 @@
-#ifndef __ENEMY_BROWNSHIP_H__
-#define __ENEMY_BROWNSHIP_H__
-
+#ifndef __BOMB_H__
+#define __BOMB_H__
 #include "Enemy.h"
 #include "Path.h"
 
@@ -25,4 +24,4 @@ private:
 	Animation fly;
 };
 
-#endif // __ENEMY_BROWNSHIP_H__
+#endif // __BOMB_H__
