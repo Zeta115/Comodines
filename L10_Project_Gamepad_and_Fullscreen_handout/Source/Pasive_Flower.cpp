@@ -1,18 +1,18 @@
-#include "Enemy_Flower.h"
+#include "Pasive_Flower.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
 
 
-Enemy_Flower::Enemy_Flower(int x, int y) : Enemy(x, y)
+Pasive_Flower::Pasive_Flower(int x, int y) : Enemy(x, y)
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 2, 149, 16, 16 });
+	idleAnim.PushBack({ 3, 237, 16, 16 });
 
-	collider = App->collisions->AddCollider({ 0, 0, 16, 10 }, Collider::Type::PASIVEFLOWER, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 16, 10 }, Collider::Type::FLOWER, (Module*)App->enemies);
 }
 
-void Enemy_Flower::Update()
+void Pasive_Flower::Update()
 {
 	currentAnim = &idleAnim;
 	collider->SetPos(position.x, position.y);

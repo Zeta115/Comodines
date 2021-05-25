@@ -11,6 +11,7 @@
 #include "Bomb.h"
 #include "Enemy_Cargol.h"
 #include "Enemy_Flower.h"
+#include "Pasive_Flower.h"
 
 #define SPAWN_MARGIN 50
 
@@ -173,7 +174,8 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::PLANT:
 					enemies[i] = new Enemy_Flower(info.x, info.y);
 					break;
-
+				case Enemy_Type::PASIVEPLANT:
+					enemies[i] = new Pasive_Flower(info.x, info.y);
 			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;

@@ -22,6 +22,7 @@ struct Collider
 		DEAD,
 		MACHINE,
 		POWERUP,
+		PASIVEFLOWER,
 		MAX
 	};
 

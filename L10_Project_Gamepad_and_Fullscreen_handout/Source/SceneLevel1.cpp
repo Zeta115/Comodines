@@ -95,15 +95,15 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 200, 208, 15, 15 }, Collider::Type::WALL);//6
 
 	//flower collider
-	App->collisions->AddCollider({ 56, 112, 15, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 88, 112, 15, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 56, 112, 15, 10 }, Collider::Type::FLOWER);
+	App->collisions->AddCollider({ 88, 112, 15, 10 }, Collider::Type::FLOWER);
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 150, 220);
 	App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 56, 111);
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 111);
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 111);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 114, 111);
 
 
 	App->render->camera.x = 0;

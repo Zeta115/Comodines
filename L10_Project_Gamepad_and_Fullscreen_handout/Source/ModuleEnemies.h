@@ -13,6 +13,7 @@ enum class Enemy_Type
 	FIRE,
 	CARGOL,
 	PLANT,
+	PASIVEPLANT,
 };
 
 struct EnemySpawnpoint
