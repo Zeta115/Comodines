@@ -91,7 +91,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Enemy_Cargol.h" />
-    <ClInclude Include="Enemy_RedBird.h" />
+    <ClInclude Include="Enemy_BrownRobot.h" />
     <ClInclude Include="Enemy_Flower.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
@@ -119,7 +119,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Enemy_Cargol.cpp" />
-    <ClCompile Include="Enemy_RedBird.cpp" />
+    <ClCompile Include="Enemy_BrownRobot.cpp" />
     <ClCompile Include="Enemy_Flower.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
