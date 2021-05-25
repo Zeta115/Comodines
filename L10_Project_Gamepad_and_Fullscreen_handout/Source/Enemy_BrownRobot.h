@@ -28,7 +28,7 @@ private:
 	bool left = true;
 	bool up = false;
 	bool down = false;
-	float speed = 1;
+	float speed = 0.25f;
 
 	// The total height of the wave
 	int waveHeight = 0;

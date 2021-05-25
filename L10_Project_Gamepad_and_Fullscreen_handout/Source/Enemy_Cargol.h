@@ -20,7 +20,7 @@ private:
 	// The speed at which the wave ratio is increased
 	bool up = false;
 	bool down = true;
-	float speed = 1;
+	float speed = 0.25f;
 	// The original spawning position. The wave will be calculated from that
 	int spawn_y = 0;
 
