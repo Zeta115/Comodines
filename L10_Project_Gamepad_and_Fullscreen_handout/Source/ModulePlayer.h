@@ -38,11 +38,11 @@ public:
 
 public:
 	// Position of the player in the map
-	iPoint position;
-	iPoint prevposition;
+	fPoint position;
+	fPoint prevposition;
 
 	// The speed in which we move the player (pixels per frame)
-	int speed = 1;
+	float speed = 0.5f;
 	int lifes = 3;
 	int timer = 0;
 
