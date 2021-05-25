@@ -50,18 +50,18 @@ bool SceneLevel1::Start()
 
 	//First two columns colliders
 	//Fila 1
-	App->collisions->AddCollider({ 40, 79, 16, 10 }, Collider::Type::WALL);//1
-	App->collisions->AddCollider({ 73, 79, 16, 10 }, Collider::Type::WALL);//2
-	App->collisions->AddCollider({ 104, 79, 16, 10 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 79, 16, 10 }, Collider::Type::WALL);//4
-	App->collisions->AddCollider({ 168, 79, 16, 10 }, Collider::Type::WALL);//5
-	App->collisions->AddCollider({ 200, 79, 16, 10 }, Collider::Type::WALL);//6
+	App->collisions->AddCollider({ 40, 80, 15, 15 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 73, 80, 15, 15 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 80, 15, 15 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 80, 15, 15 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 80, 15, 15 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 80, 15, 15 }, Collider::Type::WALL);//6
 
 	//Fila 2
-	App->collisions->AddCollider({ 40, 111, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 73, 111, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 111, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 111, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 112, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 73, 112, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 112, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 112, 15, 15 }, Collider::Type::WALL);
 
 	//machine
 	App->collisions->AddCollider({ 105, 117, 46, 22 }, Collider::Type::WALL);
@@ -73,26 +73,26 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
 
 	//Fila 3
-	App->collisions->AddCollider({ 40, 143, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 73, 143, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 143, 16, 10 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 143, 16, 10 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 145, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 73, 145,  15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 145, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 145,  15, 15 }, Collider::Type::WALL);
 
 	//Fila 4
-	App->collisions->AddCollider({ 40, 175, 16, 10 }, Collider::Type::WALL);//1
-	App->collisions->AddCollider({ 73, 175, 16, 10 }, Collider::Type::WALL);//2
-	App->collisions->AddCollider({ 104, 175, 16, 10 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 175, 16, 10 }, Collider::Type::WALL);//4
-	App->collisions->AddCollider({ 168, 175, 16, 10 }, Collider::Type::WALL);//5
-	App->collisions->AddCollider({ 200, 175, 16, 10 }, Collider::Type::WALL);//6
+	App->collisions->AddCollider({ 40, 176, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 73, 176,  15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104, 176, 15, 15 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 176, 15, 15 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 176, 15, 15 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 176, 15, 15 }, Collider::Type::WALL);//6
 
 	//Fila 5
-	App->collisions->AddCollider({ 40, 207, 16, 10 }, Collider::Type::WALL);//1
-	App->collisions->AddCollider({ 73, 207, 16, 10 }, Collider::Type::WALL);//2
-	App->collisions->AddCollider({ 104, 207, 16, 10 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 207, 16, 10 }, Collider::Type::WALL);//4
-	App->collisions->AddCollider({ 168, 207, 16, 10 }, Collider::Type::WALL);//5
-	App->collisions->AddCollider({ 200, 207, 16, 10 }, Collider::Type::WALL);//6
+	App->collisions->AddCollider({ 40, 208, 15, 15 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 73, 208, 15, 15 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 208, 15, 15 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 208, 15, 15 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 208, 15, 15 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 208, 15, 15 }, Collider::Type::WALL);//6
 
 	//flower collider
 	App->collisions->AddCollider({ 56, 112, 15, 10 }, Collider::Type::WALL);
