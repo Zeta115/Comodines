@@ -180,12 +180,12 @@ UpdateResult ModulePlayer::Update()
 		
 		else if (App->particles->bom.isAlive == false)
 		{
-			//centre
+			//center
 			App->particles->AddParticle(App->particles->explosion, position.x, position.y + 6, Collider::Type::FIRE);
 			//up
 			App->particles->AddParticle(App->particles->explosion_up_2, position.x, position.y + -10, Collider::Type::FIRE);
 			App->particles->AddParticle(App->particles->explosion_up_1, position.x, position.y + -26, Collider::Type::FIRE);
-			//donw
+			//down
 			App->particles->AddParticle(App->particles->explosion_down_2, position.x, position.y + 21, Collider::Type::FIRE);
 			App->particles->AddParticle(App->particles->explosion_down_1, position.x, position.y + 37, Collider::Type::FIRE);
 			//right
