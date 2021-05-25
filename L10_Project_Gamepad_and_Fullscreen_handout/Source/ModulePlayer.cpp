@@ -259,10 +259,8 @@ UpdateResult ModulePlayer::Update()
 	if (powerTouch == true){
 		if (timer < 150) {
 			timer++;
-			godmode = true;
 		}
 		if (timer == 150) {
-			godmode = false;
 			powerTouch = false;
 			timer = 0;
 		}
@@ -314,10 +312,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		
 		if (godmode == false)
-				{
+		{
 
-			if (c1 == collider && destroyed == false){
-				switch (c2->type){
+			if (c1 == collider && destroyed == false) {
+				switch (c2->type) {
 				case Collider::Type::WALL:
 					if (c1->rect.y < c2->rect.y) // up
 					{
@@ -344,20 +342,21 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			//player and enemies
 			if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 			{
-				if (timer <= 35)timer++;
+				if (powerTouch == false) {
+					if (timer <= 35)timer++;
 
-				if (timer == 35)
-				{
-					lifes -= 1;
-					timer = 0;
+					if (timer == 35)
+					{
+						lifes -= 1;
+						timer = 0;
+					}
+					if (App->particles->dead.isAlive == false && lifes == 0)
+					{
+						App->audio->PlayFx(deadFx);
+					}
 				}
-				if (App->particles->dead.isAlive == false&&lifes==0)
-				{
-					App->audio->PlayFx(deadFx);
-				}				
 			}
 		}
-		
 
 		if (c1->type == Collider::Type::BOMB && c2->type == Collider::Type::ENEMY)
 		{
