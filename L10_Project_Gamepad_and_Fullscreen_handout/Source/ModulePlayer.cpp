@@ -333,10 +333,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					{
 						position.x += speed;
 					}; break;
-				}
-				if (c1 == collider && destroyed == false) {
-					switch (c2->type) {
-					case Collider::Type::FLOWER:
+				case Collider::Type::FLOWER:
 						if (c1->rect.y < c2->rect.y) // up
 						{
 							position.y -= speed;
@@ -353,7 +350,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 						{
 							position.x += speed;
 						}; break;
-					}
 				}
 				if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
 				{
