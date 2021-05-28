@@ -14,6 +14,7 @@ enum class Enemy_Type
 	CARGOL,
 	PLANT,
 	PASIVEPLANT,
+	BLUE_MACHINE,
 };
 
 struct EnemySpawnpoint

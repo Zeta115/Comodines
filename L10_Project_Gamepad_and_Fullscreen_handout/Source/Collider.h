@@ -23,6 +23,7 @@ struct Collider
 		MACHINE,
 		POWERUP,
 		PASIVEFLOWER,
+		BLUEMACHINE,
 		MAX
 	};
 

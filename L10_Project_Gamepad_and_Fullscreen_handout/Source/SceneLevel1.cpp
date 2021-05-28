@@ -98,13 +98,13 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 88, 192, 16, 10 }, Collider::Type::FLOWER);
 	App->collisions->AddCollider({ 88, 112, 16, 10 }, Collider::Type::FLOWER);
 
-
+	
 	//Flowers
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 192);	
+	//App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 192);	
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 96);
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 96);
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 80);
+	//App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 80);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 64);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 112);
 	//App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 96);
@@ -114,6 +114,7 @@ bool SceneLevel1::Start()
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 150, 220);
 	App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
+	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 182, 114);
 	
 
 
