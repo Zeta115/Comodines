@@ -7,7 +7,7 @@
 Enemy_Flower::Enemy_Flower(int x, int y) : Enemy(x, y)
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 2, 149, 16, 16 });
+	idleAnim.PushBack({ 239, 237, 16, 16 });
 
 	collider = App->collisions->AddCollider({ 0, 0, 16, 10 }, Collider::Type::PASIVEFLOWER, (Module*)App->enemies);
 }

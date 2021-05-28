@@ -36,14 +36,14 @@ bool SceneLevel1::Start()
 	// Colliders
 
 //Limits
-//Bottom
+    //Bottom
 	App->collisions->AddCollider({ 0, 239, 600, 17 }, Collider::Type::WALL);
 	//Top
 	App->collisions->AddCollider({ 0, 0, 600, 57 }, Collider::Type::WALL);
 	//Left
-	App->collisions->AddCollider({ 0, 33, 25, 600 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 33, 23, 600 }, Collider::Type::WALL);
 	//Right
-	App->collisions->AddCollider({ 232, 33, 25, 600 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 232, 33, 23, 600 }, Collider::Type::WALL);
 
 	// Stones
 	/// 1r: donde empieza la piedra a partir de la x - 2n: donde empieza la piedra a partir de la y - 3r: ample de la pedra - 4rt: alçada de la pedra
@@ -95,15 +95,26 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 200, 208, 15, 15 }, Collider::Type::WALL);//6
 
 	//flower collider
-	App->collisions->AddCollider({ 56, 112, 15, 10 }, Collider::Type::FLOWER);
-	App->collisions->AddCollider({ 88, 112, 15, 10 }, Collider::Type::FLOWER);
+	App->collisions->AddCollider({ 88, 192, 16, 10 }, Collider::Type::FLOWER);
+	App->collisions->AddCollider({ 88, 112, 16, 10 }, Collider::Type::FLOWER);
+
+
+	//Flowers
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 192);	
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 96);
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 96);
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 192);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 80);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 64);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 112);
+	//App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 96);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 112);
+	//App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 176);
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 150, 220);
 	App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 56, 111);
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 111);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 114, 111);
+	
 
 
 	App->render->camera.x = 0;

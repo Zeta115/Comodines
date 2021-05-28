@@ -310,7 +310,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	// L6: DONE 5: Detect collision with a wall. If so, destroy the player.
 	if ((c1 == collider) && (destroyed == false))
 	{
-		
+
 		if (godmode == false)
 		{
 
@@ -334,46 +334,69 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 						position.x += speed;
 					}; break;
 				}
-			}
-			if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
-			{
-				powerActive = false;
-			}
-			//player and enemies
-			if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
-			{
-				if (powerTouch == false) {
-					if (timer <= 35)timer++;
-
-					if (timer == 35)
-					{
-						lifes -= 1;
-						timer = 0;
+				if (c1 == collider && destroyed == false) {
+					switch (c2->type) {
+					case Collider::Type::FLOWER:
+						if (c1->rect.y < c2->rect.y) // up
+						{
+							position.y -= speed;
+						}
+						else if (c1->rect.y + 2 > c2->rect.y + c2->rect.h) // down
+						{
+							position.y += speed;
+						}
+						if (c1->rect.x < c2->rect.x) // left
+						{
+							position.x -= speed;
+						}
+						else if (c1->rect.x + 2 > c2->rect.x + c2->rect.w) // right
+						{
+							position.x += speed;
+						}; break;
 					}
-					if (App->particles->dead.isAlive == false && lifes == 0)
-					{
-						App->audio->PlayFx(deadFx);
+				}
+				if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
+				{
+					powerActive = false;
+				}
+				//player and enemies
+				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
+				{
+					if (powerTouch == false) {
+						if (timer <= 35)timer++;
+
+						if (timer == 35)
+						{
+							lifes -= 1;
+							timer = 0;
+						}
+						if (App->particles->dead.isAlive == false && lifes == 0)
+						{
+							App->audio->PlayFx(deadFx);
+						}
 					}
 				}
 			}
+			if (c1->type == Collider::Type::BOMB && c2->type == Collider::Type::ENEMY)
+			{
+				score += 23;
+			}
+			if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::ENEMY)
+			{
+				score += 23;
+			}
 		}
-
-		if (c1->type == Collider::Type::BOMB && c2->type == Collider::Type::ENEMY)
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)
 		{
-			score += 23;
+			App->audio->PlayFx(winFx);
+			win = true;
+		}
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::POWERUP) {
+			powerActive = false;
+			powerTouch = true;
+
 		}
 	}
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)
-	{
-		App->audio->PlayFx(winFx);
-		win = true;
-	}
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::POWERUP) {
-		powerActive = false;
-		powerTouch = true;
-		
-	}
-
 }
 void ModulePlayer::DebugDrawGamepadInfo()
 {
