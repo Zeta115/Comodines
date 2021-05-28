@@ -28,7 +28,7 @@ bool SceneIntro::Start()
 
 	bgTexture = App->textures->Load("Assets/Screens/title.png");
 	logoTexture = App->textures->Load("Assets/Screens/logo.png");
-	App->audio->PlayMusic("Assets/Audio/music/Title_Theme.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/music/title_theme.ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

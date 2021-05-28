@@ -26,12 +26,12 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Map/Mapa.png");
-	App->audio->PlayMusic("Assets/Audio/music/Area_1.ogg", 1.0f);
+	bgTexture = App->textures->Load("Assets/Map/mapa.png");
+	App->audio->PlayMusic("Assets/Audio/music/area_1.ogg", 1.0f);
 	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
 	hud = App->textures->Load("Assets/Hud/hud.png");
-	machineTexture = App->textures->Load("Assets/Map/Reactor_1.png");
+	machineTexture = App->textures->Load("Assets/Map/reactor_1.png");
 
 	// Colliders
 
