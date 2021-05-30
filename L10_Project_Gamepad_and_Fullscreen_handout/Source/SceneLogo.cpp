@@ -1,4 +1,4 @@
-#include "SceneIntro.h"
+#include "SceneLogo.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -12,26 +12,25 @@
 using namespace std;
 
 
-SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
+SceneLogo::SceneLogo(bool startEnabled) : Module(startEnabled)
 {
-	
+
 }
 
-SceneIntro::~SceneIntro()
+SceneLogo::~SceneLogo()
 {
 
 }
 
 // Load assets
-bool SceneIntro::Start()
+bool SceneLogo::Start()
 {
 	LOG("Loading background assets");
 
 	bool ret = true;
 
-	cout << "ESTOY EN SCENE INTRO";
+	cout << "ESTOY EN SCENE LOGO";
 
-	bgTexture = App->textures->Load("Assets/Screens/title.png");
 	logoTexture = App->textures->Load("Assets/Screens/logo.png");
 	logo2Texture = App->textures->Load("Assets/Screens/logo_sega.png");
 	logo3Texture = App->textures->Load("Assets/Screens/logo_hudson_soft.png");
@@ -42,12 +41,12 @@ bool SceneIntro::Start()
 	return ret;
 }
 
-UpdateResult SceneIntro::Update()
+UpdateResult SceneLogo::Update()
 {
 
-	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN && sceneCount == 0)
+	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN && sceneCount == 2)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
 
 	if (App->player->destroyed == true)sceneCount = 0;
@@ -55,40 +54,21 @@ UpdateResult SceneIntro::Update()
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
-UpdateResult SceneIntro::PostUpdate()
+UpdateResult SceneLogo::PostUpdate()
 {
-	/*sceneCount == 0;
-	cout << sceneCount << endl;
+
 
 	if (sceneCount == 0)
 	{
 		App->render->DrawTexture(logoTexture, 0, 0, NULL);
 		App->player->destroyed = false;
 		App->player->win = false;
-
 		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
 			sceneCount++;
 			cout << sceneCount << endl;
 		}
 	}
-
-	if (sceneCount == 1)
-	{
-		App->render->DrawTexture(bgTexture, 0, 15, NULL); 
-	}*/
-
-
-	if (sceneCount == 0)
-	{
-		App->render->DrawTexture(bgTexture, 0, 15, NULL);
-		App->player->destroyed = false;
-		App->player->win = false;
-		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
-			sceneCount++;
-			cout << sceneCount << endl;
-		}
-	}
-	/*else if (sceneCount == 1)
+	else if (sceneCount == 1)
 	{
 		App->render->DrawTexture(logo2Texture, 0, 0, NULL);
 		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
@@ -104,14 +84,6 @@ UpdateResult SceneIntro::PostUpdate()
 			cout << sceneCount << endl;
 		}
 	}
-	else if (sceneCount == 3)
-	{
-		App->render->DrawTexture(bgTexture, 0, 0, NULL);
-		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
-			sceneCount++;
-			cout << sceneCount << endl;
-		}
-	}*/
 
 
 	return UpdateResult::UPDATE_CONTINUE;

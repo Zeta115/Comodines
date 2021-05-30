@@ -1,19 +1,19 @@
-#ifndef __SCENEINTRO_H__
-#define __SCENEINTRO_H__
+#ifndef __SCENELOGO_H__
+#define __SCENELOGO_H__
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class SceneIntro : public Module
+class SceneLogo : public Module
 {
 public:
 	// Constructor
-	SceneIntro(bool startEnabled);
+	SceneLogo(bool startEnabled);
 
 	// Destructor
-	~SceneIntro();
+	~SceneLogo();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -29,15 +29,12 @@ public:
 
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
-	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* logoTexture = nullptr;
 	SDL_Texture* logo2Texture = nullptr;
 	SDL_Texture* logo3Texture = nullptr;
-
-	SDL_Texture* logoImages[4];
 
 	int sceneCount = 0;
 
 };
 
-#endif	// __SCENEINTRO_H__
+#endif	// __SCENELOGO_H__
