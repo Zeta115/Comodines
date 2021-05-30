@@ -161,7 +161,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-				case Enemy_Type::REDBIRD:
+				case Enemy_Type::BROWNROBOT:
 					enemies[i] = new Enemy_BrownRobot(info.x, info.y);
 					break;
 				case Enemy_Type::BOMB:
@@ -178,10 +178,13 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case Enemy_Type::PASIVEPLANT:
 					enemies[i] = new Pasive_Flower(info.x, info.y);
+					break;
 				case Enemy_Type::BLUE_MACHINE:
 					enemies[i] = new Win_Blue_Machine(info.x, info.y);
-				case Enemy_Type::CONILL:
+					break;
+				case Enemy_Type::RABBIT:
 					enemies[i] = new Enemy_Conill(info.x, info.y);
+					break;
 			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;

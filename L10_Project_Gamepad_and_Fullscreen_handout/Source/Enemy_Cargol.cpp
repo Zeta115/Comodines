@@ -12,29 +12,29 @@ Enemy_Cargol::Enemy_Cargol(int x, int y) : Enemy(x, y)
 	idleAnim.PushBack({ 3, 55, 22, 28 });
 
 	// Up
-	upAnim.PushBack({ 200, 52, 22, 32 });
-	upAnim.PushBack({ 233, 53, 22, 31 });
-	upAnim.PushBack({ 2, 93, 22, 30 });
+	upAnim.PushBack({ 200, 66, 22, 32 });
+	upAnim.PushBack({ 233, 67, 22, 31 });
+	upAnim.PushBack({ 2, 107, 22, 30 });
 	upAnim.loop = true;
 	upAnim.speed = 0.05f;
 
 	// Down
 	//downAnim.PushBack({ 110, 172, 23, 30 });
-	downAnim.PushBack({ 2, 54, 22, 28 });
-	downAnim.PushBack({ 35, 55, 22, 28 });
-	downAnim.PushBack({ 68, 55, 23, 28 });
+	downAnim.PushBack({ 2, 68, 22, 28 });
+	downAnim.PushBack({ 35, 69, 22, 28 });
+	downAnim.PushBack({ 68, 69, 22, 28 });
 	downAnim.loop = true;
 	downAnim.speed = 0.05f;
 	// Right 
-	rightAnim.PushBack({ 165, 91, 27, 29 });
-	rightAnim.PushBack({ 134, 92, 28, 28 });
-	rightAnim.PushBack({ 99, 90, 26, 30 });
+	rightAnim.PushBack({ 100, 105, 26, 30 });
+	rightAnim.PushBack({ 135, 107, 28, 28 });
+	rightAnim.PushBack({ 166, 106, 27, 39 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.05f;
 	// Left
-	leftAnim.PushBack({ 99, 53, 27, 29 });
-	leftAnim.PushBack({ 129, 54, 28, 28 });
-	leftAnim.PushBack({ 166, 52, 26, 30 });
+	leftAnim.PushBack({ 99, 67, 27, 29 });
+	leftAnim.PushBack({ 129, 68, 28, 28 });
+	leftAnim.PushBack({ 166, 66, 26, 30 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.05f;
 
@@ -67,7 +67,7 @@ void Enemy_Cargol::Update()
 		}
 
 	}
-	//collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x, position.y);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();

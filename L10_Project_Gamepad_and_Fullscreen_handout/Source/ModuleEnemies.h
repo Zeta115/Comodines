@@ -8,14 +8,14 @@
 enum class Enemy_Type
 {
 	NO_TYPE,
-	REDBIRD,
+	BROWNROBOT,
 	BOMB,
 	FIRE,
 	CARGOL,
 	PLANT,
 	PASIVEPLANT,
 	BLUE_MACHINE,
-	CONILL,
+	RABBIT,
 };
 
 struct EnemySpawnpoint

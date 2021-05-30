@@ -9,15 +9,15 @@ Enemy_Conill::Enemy_Conill(int x, int y) : Enemy(x, y)
 	idleAnim.PushBack({ 15, 27, 2, 2 });
 
 	// Up
-	upAnim.PushBack({ 137, 2, 15, 26 });
-	upAnim.PushBack({ 104, 2, 15, 27 });
 	upAnim.PushBack({ 121, 2, 15, 26 });
+	upAnim.PushBack({ 104, 2, 15, 27 });
+	upAnim.PushBack({ 137, 2, 15, 26 });
 	upAnim.loop = true;
 	upAnim.speed = 0.05f;
 
 	// Down
 	//downAnim.PushBack({ 110, 172, 23, 30 });
-	downAnim.PushBack({ 19, 215, 26 });
+	downAnim.PushBack({ 19, 2, 15, 26 });
 	downAnim.PushBack({ 2, 2, 15, 27 });
 	downAnim.PushBack({ 36, 2, 15, 26 });
 	downAnim.loop = true;
@@ -39,7 +39,7 @@ Enemy_Conill::Enemy_Conill(int x, int y) : Enemy(x, y)
 
 
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 16, 26 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Conill::Update()
@@ -59,7 +59,7 @@ void Enemy_Conill::Update()
 		currentAnim = &leftAnim;
 		if (position.x < 300) {
 			position.x -= speed;
-			if (position.x == 53) {
+			if (position.x == 50) {
 				up = true;
 				left = false;
 			}
@@ -67,7 +67,7 @@ void Enemy_Conill::Update()
 
 	}
 	if (up == true) {
-		currentAnim = &downAnim;
+		currentAnim = &upAnim;
 		if (position.y < 270) {
 			position.y -= speed;
 			if (position.y == 50) {
@@ -78,7 +78,7 @@ void Enemy_Conill::Update()
 
 	}
 	if (down == true) {
-		currentAnim = &upAnim;
+		currentAnim = &downAnim;
 		if (position.y >= 10) {
 			position.y += speed;
 			if (position.y == 215) {
@@ -88,7 +88,7 @@ void Enemy_Conill::Update()
 		}
 
 	}
-	//collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x, position.y);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();
