@@ -9,31 +9,31 @@ Enemy_Conill::Enemy_Conill(int x, int y) : Enemy(x, y)
 	idleAnim.PushBack({ 15, 27, 2, 2 });
 
 	// Up
-	upAnim.PushBack({ 15, 26, 137, 2 });
-	upAnim.PushBack({ 15, 27, 104, 2 });
-	upAnim.PushBack({ 15, 26, 121, 2 });
+	upAnim.PushBack({ 137, 2, 15, 26 });
+	upAnim.PushBack({ 104, 2, 15, 27 });
+	upAnim.PushBack({ 121, 2, 15, 26 });
 	upAnim.loop = true;
 	upAnim.speed = 0.05f;
 
 	// Down
 	//downAnim.PushBack({ 110, 172, 23, 30 });
-	downAnim.PushBack({ 15, 26, 19, 2 });
-	downAnim.PushBack({ 15, 27, 2, 2 });
-	downAnim.PushBack({ 15, 26, 36, 2 });
+	downAnim.PushBack({ 19, 215, 26 });
+	downAnim.PushBack({ 2, 2, 15, 27 });
+	downAnim.PushBack({ 36, 2, 15, 26 });
 	downAnim.loop = true;
 	downAnim.speed = 0.05f;
 
 	// Right
-	rightAnim.PushBack({ 15, 26, 154, 2 });
-	rightAnim.PushBack({ 15, 27, 171, 2 });
-	rightAnim.PushBack({ 15, 26, 188, 2 });
+	rightAnim.PushBack({ 154, 2, 15, 26 });
+	rightAnim.PushBack({ 171, 2, 15, 27 });
+	rightAnim.PushBack({ 188, 2, 15, 26 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.05f;
 
 	// Left 
-	leftAnim.PushBack({ 15, 26, 53, 2 });
-	leftAnim.PushBack({ 15, 27, 71, 2 });
-	leftAnim.PushBack({ 15, 26, 88, 2 });
+	leftAnim.PushBack({ 53, 2, 15, 26 });
+	leftAnim.PushBack({ 71, 2, 15, 27 });
+	leftAnim.PushBack({ 88, 2, 15, 26 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.05f;
 
@@ -88,7 +88,7 @@ void Enemy_Conill::Update()
 		}
 
 	}
-	collider->SetPos(position.x, position.y);
+	//collider->SetPos(position.x, position.y);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();

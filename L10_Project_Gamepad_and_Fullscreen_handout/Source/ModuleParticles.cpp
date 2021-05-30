@@ -56,7 +56,7 @@ bool ModuleParticles::Start()
 	explosion_down_1.anim.PushBack({ 20, 57, 14, 16 });
 	explosion_down_1.anim.PushBack({ 21, 131, 14, 16 });
 	explosion_down_1.anim.PushBack({ 20, 207, 16, 16 });
-	explosion_down_1.anim.loop = true;
+	explosion_down_1.anim.loop = false;
 	explosion_down_1.anim.speed = 0.5f;
 	explosion_down_1.lifetime = 60;
 
