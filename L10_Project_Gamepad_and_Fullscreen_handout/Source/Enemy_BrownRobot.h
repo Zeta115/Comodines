@@ -41,6 +41,7 @@ private:
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+	Animation Death;
 };
 
 #endif // __ENEMY_REDBIRD_H__

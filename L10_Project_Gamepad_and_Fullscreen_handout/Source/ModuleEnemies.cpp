@@ -6,6 +6,9 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
+#include "Collider.h"
+
+#include "ModulePlayer.h"
 #include "Enemy.h"
 #include "Enemy_BrownRobot.h"
 #include "Bomb.h"
@@ -59,8 +62,23 @@ UpdateResult ModuleEnemies::Update()
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(enemies[i] != nullptr)
+		if (enemies[i] != nullptr)
+		{
 			enemies[i]->Update();
+
+			if (enemies[i]->death)
+			{
+				if (enemies[i]->cooldown >= 100)
+				{
+					delete enemies[i];
+					enemies[i] = nullptr;
+				}
+				else
+				{
+					enemies[i]->cooldown++;
+				}
+			}
+		}
 	}
 
 	HandleEnemiesDespawn();
@@ -187,7 +205,6 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 			}
 			enemies[i]->texture = texture;
-			enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
 		}
 	}
@@ -197,10 +214,28 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
+		
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-			break;
+			App->player->score += 400;
+			switch (c2->type)
+			{
+			    case Collider::Type::WALL:
+				if (enemies[i]->death == false)
+				{
+						switch (enemies[i]->type)
+						{
+						case TypeEnemy::BROWNROBOT:
+							App->player->score += 400;
+							break;
+						}
+						enemies[i]->death = true;
+					}
+					break;
+				default:
+					break;
 		}
+			break;
+			}
 	}
 }
