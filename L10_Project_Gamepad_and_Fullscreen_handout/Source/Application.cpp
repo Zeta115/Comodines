@@ -27,9 +27,11 @@ Application::Application()
 	modules[2] =	textures =		new ModuleTextures(true);
 	modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[4] =	sceneLogo =		new SceneLogo(true);
-	modules[5] =	sceneIntro =	new SceneIntro(false);
+	modules[4] =	sceneLogo =		new SceneLogo(true);              // Escena de logos i animació
+	modules[5] =	sceneIntro =	new SceneIntro(false);			  // Escena menú principal
 	modules[6] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
+	//modules[7] =	sceneLevel_2 =  new SceneLevel2(false);
+	//modules[8] =	sceneLevel_boss = new SceneLevelBoss(false);
 	modules[7] =	player =		new ModulePlayer(false);	//Player starts disabled
 	modules[8] =	particles =		new ModuleParticles(true);
 	modules[9] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled

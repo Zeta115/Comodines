@@ -1,5 +1,4 @@
 #include "SceneLogo.h"
-
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -7,9 +6,6 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
-
-#include <iostream>
-using namespace std;
 
 
 SceneLogo::SceneLogo(bool startEnabled) : Module(startEnabled)
@@ -29,12 +25,10 @@ bool SceneLogo::Start()
 
 	bool ret = true;
 
-	cout << "ESTOY EN SCENE LOGO";
-
 	logoTexture = App->textures->Load("Assets/Screens/logo.png");
 	logo2Texture = App->textures->Load("Assets/Screens/logo_sega.png");
 	logo3Texture = App->textures->Load("Assets/Screens/logo_hudson_soft.png");
-	App->audio->PlayMusic("Assets/Audio/music/title_theme.ogg", 1.0f);
+	//App->audio->PlayMusic("Assets/Audio/music/title_theme.ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -44,7 +38,7 @@ bool SceneLogo::Start()
 UpdateResult SceneLogo::Update()
 {
 
-	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN && sceneCount == 2)
+	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN && sceneCount == 1)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
@@ -65,7 +59,6 @@ UpdateResult SceneLogo::PostUpdate()
 		App->player->win = false;
 		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
 			sceneCount++;
-			cout << sceneCount << endl;
 		}
 	}
 	else if (sceneCount == 1)
@@ -73,7 +66,6 @@ UpdateResult SceneLogo::PostUpdate()
 		App->render->DrawTexture(logo2Texture, 0, 0, NULL);
 		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
 			sceneCount++;
-			cout << sceneCount << endl;
 		}
 	}
 	else if (sceneCount == 2)
@@ -81,7 +73,6 @@ UpdateResult SceneLogo::PostUpdate()
 		App->render->DrawTexture(logo3Texture, 0, 0, NULL);
 		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
 			sceneCount++;
-			cout << sceneCount << endl;
 		}
 	}
 

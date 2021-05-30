@@ -30,11 +30,6 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	SDL_Texture* logoTexture = nullptr;
-	SDL_Texture* logo2Texture = nullptr;
-	SDL_Texture* logo3Texture = nullptr;
-
-	SDL_Texture* logoImages[4];
 
 	int sceneCount = 0;
 
