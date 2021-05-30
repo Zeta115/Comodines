@@ -1,15 +1,15 @@
-#ifndef __ENEMY_REDBIRD_H__
-#define __ENEMY_REDBIRD_H__
+#ifndef __ENEMY_CONILL_H__
+#define __ENEMY_CONILL_H__
 
 #include "Enemy.h"
 
-class Enemy_BrownRobot : public Enemy
+class Enemy_Conill : public Enemy
 {
 public:
 
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
-	Enemy_BrownRobot(int x, int y);
+	Enemy_Conill(int x, int y);
 	Collider* collider = nullptr;
 
 	// The enemy is going to perform a sinusoidal movement

@@ -13,6 +13,7 @@
 #include "Enemy_Flower.h"
 #include "Pasive_Flower.h"
 #include "Win_Blue_Machine.h"
+#include "Enemy_Conill.h"
 
 #define SPAWN_MARGIN 50
 
@@ -161,7 +162,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			switch (info.type)
 			{
 				case Enemy_Type::REDBIRD:
-					enemies[i] = new Enemy_RedBird(info.x, info.y);
+					enemies[i] = new Enemy_BrownRobot(info.x, info.y);
 					break;
 				case Enemy_Type::BOMB:
 					enemies[i] = new Bomb(info.x, info.y);
@@ -179,6 +180,8 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					enemies[i] = new Pasive_Flower(info.x, info.y);
 				case Enemy_Type::BLUE_MACHINE:
 					enemies[i] = new Win_Blue_Machine(info.x, info.y);
+				case Enemy_Type::CONILL:
+					enemies[i] = new Enemy_Conill(info.x, info.y);
 			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;

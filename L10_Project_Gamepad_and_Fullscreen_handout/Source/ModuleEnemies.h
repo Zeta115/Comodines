@@ -15,6 +15,7 @@ enum class Enemy_Type
 	PLANT,
 	PASIVEPLANT,
 	BLUE_MACHINE,
+	CONILL,
 };
 
 struct EnemySpawnpoint

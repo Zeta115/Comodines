@@ -1,47 +1,48 @@
-#include "Enemy_BrownRobot.h"
+#include "Enemy_Conill.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
 
-Enemy_BrownRobot::Enemy_BrownRobot(int x, int y) : Enemy(x, y)
+Enemy_Conill::Enemy_Conill(int x, int y) : Enemy(x, y)
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 110, 172, 23, 30 });
+	idleAnim.PushBack({ 15, 27, 2, 2 });
 
 	// Up
-	upAnim.PushBack({ 84, 204, 23, 27 });
-	upAnim.PushBack({ 109, 206, 23, 27 });
-	upAnim.PushBack({ 134, 206, 23, 28 });
+	upAnim.PushBack({ 15, 26, 137, 2 });
+	upAnim.PushBack({ 15, 27, 104, 2 });
+	upAnim.PushBack({ 15, 26, 121, 2 });
 	upAnim.loop = true;
 	upAnim.speed = 0.05f;
 
 	// Down
 	//downAnim.PushBack({ 110, 172, 23, 30 });
-	downAnim.PushBack({ 84, 174, 23, 28 });
-	downAnim.PushBack({ 135, 174, 23, 28 });
+	downAnim.PushBack({ 15, 26, 19, 2 });
+	downAnim.PushBack({ 15, 27, 2, 2 });
+	downAnim.PushBack({ 15, 26, 36, 2 });
 	downAnim.loop = true;
 	downAnim.speed = 0.05f;
 
 	// Right
-	rightAnim.PushBack({ 2, 177, 24, 27 });
-	rightAnim.PushBack({ 28, 179, 25, 25 });
-	rightAnim.PushBack({ 55, 179, 24, 25 });
+	rightAnim.PushBack({ 15, 26, 154, 2 });
+	rightAnim.PushBack({ 15, 27, 171, 2 });
+	rightAnim.PushBack({ 15, 26, 188, 2 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.05f;
 
 	// Left 
-	leftAnim.PushBack({ 2, 208, 24, 27 });
-	leftAnim.PushBack({ 28, 208, 25, 25 });
-	leftAnim.PushBack({ 55, 206, 24, 27 });
+	leftAnim.PushBack({ 15, 26, 53, 2 });
+	leftAnim.PushBack({ 15, 27, 71, 2 });
+	leftAnim.PushBack({ 15, 26, 88, 2 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.05f;
 
-	
 
-	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
+
+	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
-void Enemy_BrownRobot::Update()
+void Enemy_Conill::Update()
 {
 	if (right == true) {
 		currentAnim = &rightAnim;
