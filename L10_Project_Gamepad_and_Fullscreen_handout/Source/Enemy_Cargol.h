@@ -2,6 +2,7 @@
 #define __ENEMY_CARGOL_H__
 
 #include "Enemy.h"
+#include "path.h"
 
 class Enemy_Cargol : public Enemy
 {
@@ -26,6 +27,7 @@ private:
 
 	// The total height of the wave
 
+	Path path;
 
 	// The enemy animation
 	Animation idleAnim;

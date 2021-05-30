@@ -37,57 +37,23 @@ Enemy_BrownRobot::Enemy_BrownRobot(int x, int y) : Enemy(x, y)
 	leftAnim.loop = true;
 	leftAnim.speed = 0.05f;
 
-	
+	path.PushBack({ 0.4f, 0.0f }, 40 * 6, &rightAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.0f, 0.4f }, 40 * 2, &downAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ -0.4f, 0.0f }, 40 * 6, &leftAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.0f, -0.4f }, 40 * 2, &upAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
 
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_BrownRobot::Update()
 {
-	if (right == true) {
-		currentAnim = &rightAnim;
-		if (position.x >= 20) {
-			position.x += speed;
-			if (position.x == 150) {
-				right = false;
-				left = true;
-			}
-		}
-	}
-
-	if (left == true) {
-		currentAnim = &leftAnim;
-		if (position.x < 300) {
-			position.x -= speed;
-			if (position.x == 53) {
-				up = true;
-				left = false;
-			}
-		}
-
-	}
-	if (up == true) {
-		currentAnim = &downAnim;
-		if (position.y < 270) {
-			position.y -= speed;
-			if (position.y == 50) {
-				up = false;
-				down = true;
-			}
-		}
-
-	}
-	if (down == true) {
-		currentAnim = &upAnim;
-		if (position.y >= 10) {
-			position.y += speed;
-			if (position.y == 215) {
-				down = false;
-				right = true;
-			}
-		}
-
-	}
+	path.Update();
+	position = spawnPos + path.GetRelativePosition();
+	currentAnim = path.GetCurrentAnimation();
 	collider->SetPos(position.x, position.y);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position

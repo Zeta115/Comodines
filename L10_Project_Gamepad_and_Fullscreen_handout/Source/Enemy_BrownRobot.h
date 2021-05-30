@@ -2,6 +2,7 @@
 #define __ENEMY_REDBIRD_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_BrownRobot : public Enemy
 {
@@ -32,6 +33,7 @@ private:
 
 	// The total height of the wave
 	int waveHeight = 0;
+	Path path;
 
 	// The enemy animation
 	Animation idleAnim;

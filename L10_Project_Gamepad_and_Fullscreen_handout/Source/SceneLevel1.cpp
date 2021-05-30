@@ -115,7 +115,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::RABBIT, 150, 200);
 	App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
 	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 182, 114);
-	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 150, 220);
+	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 53, 155);
 	
 
 
