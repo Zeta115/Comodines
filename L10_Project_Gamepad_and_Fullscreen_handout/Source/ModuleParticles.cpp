@@ -28,8 +28,8 @@ bool ModuleParticles::Start()
 	bom.anim.PushBack({ 18, 226, 16, 16 });
 	bom.anim.PushBack({ 35, 226, 16, 16 });
 	bom.speed.x = 0;
-	bom.lifetime = 800;
-	bom.anim.speed = 0.1f;
+	bom.lifetime = 120;
+	bom.anim.speed = 0.07f;
 	bom.anim.loop = true;
 
 	explosion.anim.PushBack({ 2, 2, 16,16 });
