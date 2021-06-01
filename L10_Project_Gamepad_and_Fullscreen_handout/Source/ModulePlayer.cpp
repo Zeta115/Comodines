@@ -172,7 +172,7 @@ UpdateResult ModulePlayer::Update()
 
 
 
-	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)
+	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN) || (pad.x))
 	{
 		if (App->particles->bom.isAlive == true)
 		{
@@ -197,7 +197,7 @@ UpdateResult ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->explosion_left_2, position.x + -16, position.y, Collider::Type::FIRE);
 			App->particles->AddParticle(App->particles->explosion_left_1, position.x + -32, position.y, Collider::Type::FIRE);
 			App->audio->PlayFx(blastFx);
-			//App->input->ShakeController(0, 60, 1.0f);
+			App->input->ShakeController(0, 60, 1.0f);
 		}
 		score += 1000;
 	}
