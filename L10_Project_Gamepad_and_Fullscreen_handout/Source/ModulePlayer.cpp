@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <SDL/include/SDL_gamecontroller.h>
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
@@ -132,7 +133,7 @@ UpdateResult ModulePlayer::Update()
 
 	// L10: TODO: Implement gamepad support
 
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT)
+	if ((App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT) || (pad.left))
 	{
 		position.x -= speed;
 		if (currentAnimation != &rightAnim)
@@ -142,7 +143,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT)
+	if ((App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT) || (pad.right))
 	{
 		position.x += speed;
 		if (currentAnimation != &leftAnim)
@@ -152,7 +153,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
+	if ((App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT) || (pad.down))
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -162,7 +163,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT)
+	if ((App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT) || (pad.up))
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -173,7 +174,8 @@ UpdateResult ModulePlayer::Update()
 	}
 
 
-	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)
+
+	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN) || (pad.x))
 	{
 		if (App->particles->bom.isAlive == true)
 		{
@@ -198,6 +200,7 @@ UpdateResult ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->explosion_left_2, position.x + -16, position.y, Collider::Type::FIRE);
 			App->particles->AddParticle(App->particles->explosion_left_1, position.x + -32, position.y, Collider::Type::FIRE);
 			App->audio->PlayFx(blastFx);
+			App->input->ShakeController(0, 60, 1.0f);
 		}
 		score += 1000;
 	}
@@ -392,6 +395,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				{
 					powerActive = false;
 				}
+
+
 				//player and enemies
 				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 				{
