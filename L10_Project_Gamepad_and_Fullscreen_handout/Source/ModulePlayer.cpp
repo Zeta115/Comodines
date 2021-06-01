@@ -130,7 +130,7 @@ UpdateResult ModulePlayer::Update()
 
 	// L10: TODO: Implement gamepad support
 
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT) //|| (App->input->pads[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == GamePad::up))
+	if ((App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT) || (pad.left))
 	{
 		position.x -= speed;
 		if (currentAnimation != &rightAnim)
@@ -140,7 +140,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT) //|| (App->input->pads[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == GamePad::KEY_REPEAT))
+	if ((App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT) || (pad.right))
 	{
 		position.x += speed;
 		if (currentAnimation != &leftAnim)
@@ -150,7 +150,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT) //|| (App->input->pads[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == GamePad::KEY_REPEAT))
+	if ((App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT) || (pad.down))
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -160,7 +160,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT) //|| (App->input->pads[SDL_CONTROLLER_BUTTON_DPAD_UP] == GamePad::contr))
+	if ((App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT) || (pad.up))
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -169,6 +169,7 @@ UpdateResult ModulePlayer::Update()
 			currentAnimation = &upAnim;
 		}
 	}
+
 
 
 	if (App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)
@@ -357,6 +358,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				{
 					powerActive = false;
 				}
+
+
 				//player and enemies
 				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 				{
