@@ -177,14 +177,15 @@ UpdateResult ModulePlayer::Update()
 
 	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN) || (pad.x))
 	{
+
 		if (App->particles->bom.isAlive == true)
 		{
 		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
 		App->audio->PlayFx(placeFx);
-
+		App->particles->bom.isAlive = false;
 		}
 		
-		else if (App->particles->bom.isAlive == false) //ara no entra aqui
+		if (App->particles->bom.isAlive == false) //ara no entra aqui
 		{
 			//center
 			App->particles->AddParticle(App->particles->explosion, position.x, position.y + 6, Collider::Type::FIRE);
@@ -192,14 +193,14 @@ UpdateResult ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->explosion_up_2, position.x, position.y + -10, Collider::Type::FIRE);
 			App->particles->AddParticle(App->particles->explosion_up_1, position.x, position.y + -26, Collider::Type::FIRE);
 			//down
-			App->particles->AddParticle(App->particles->explosion_down_2, position.x, position.y + 21, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_down_1, position.x, position.y + 37, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_down_2, position.x, position.y + 22, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_down_1, position.x, position.y + 38, Collider::Type::FIRE);
 			//right
-			App->particles->AddParticle(App->particles->explosion_right_2, position.x + 15, position.y, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_right_1, position.x + 31, position.y , Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_right_2, position.x + 16, position.y + 6, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_right_1, position.x + 32, position.y + 6, Collider::Type::FIRE);
 			//left
-			App->particles->AddParticle(App->particles->explosion_left_2, position.x + -16, position.y, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_left_1, position.x + -32, position.y, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_left_2, position.x + -16, position.y + 6, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_left_1, position.x + -32, position.y + 6, Collider::Type::FIRE);
 			App->audio->PlayFx(blastFx);
 			App->input->ShakeController(0, 60, 1.0f);
 			App->particles->bom.isAlive = true;

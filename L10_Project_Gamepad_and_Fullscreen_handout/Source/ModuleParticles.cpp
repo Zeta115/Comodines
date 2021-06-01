@@ -46,12 +46,12 @@ bool ModuleParticles::Start()
 	explosion_up_1.anim.speed = 0.5f;
 	explosion_up_1.lifetime = 60;
 
-	explosion_up_2.anim.PushBack({ 3, 38, 16, 14 });
-	explosion_up_2.anim.PushBack({ 4, 112, 16, 14 });
-	explosion_up_2.anim.PushBack({ 3, 188, 16, 16 });
-	explosion_up_2.anim.loop = false;
-	explosion_up_2.anim.speed = 0.5f;
-	explosion_up_2.lifetime = 60;
+	explosion_down_2.anim.PushBack({ 3, 38, 14, 16 });
+	explosion_down_2.anim.PushBack({ 4, 112, 14, 16 });
+	explosion_down_2.anim.PushBack({ 2, 188, 16, 16 });
+	explosion_down_2.anim.loop = false;
+	explosion_down_2.anim.speed = 0.5f;
+	explosion_down_2.lifetime = 60;
 
 	explosion_down_1.anim.PushBack({ 20, 57, 14, 16 });
 	explosion_down_1.anim.PushBack({ 21, 131, 14, 16 });
@@ -60,12 +60,12 @@ bool ModuleParticles::Start()
 	explosion_down_1.anim.speed = 0.5f;
 	explosion_down_1.lifetime = 60;
 
-	explosion_down_2.anim.PushBack({ 3, 57, 16, 14 });
-	explosion_down_2.anim.PushBack({ 4, 131, 16, 14 });
-	explosion_down_2.anim.PushBack({ 3, 207, 16, 16 });
-	explosion_down_2.anim.loop = false;
-	explosion_down_2.anim.speed = 0.5f;
-	explosion_down_2.lifetime = 60;
+	explosion_up_2.anim.PushBack({ 3, 57, 16, 14 });
+	explosion_up_2.anim.PushBack({ 4, 131, 16, 14 });
+	explosion_up_2.anim.PushBack({ 2, 207, 16, 16 });
+	explosion_up_2.anim.loop = false;
+	explosion_up_2.anim.speed = 0.5f;
+	explosion_up_2.lifetime = 60;
 
 	explosion_right_1.anim.PushBack({ 40, 3, 16, 14 });
 	explosion_right_1.anim.PushBack({ 41, 77, 16, 14 });
