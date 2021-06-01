@@ -28,7 +28,7 @@ bool ModuleParticles::Start()
 	bom.anim.PushBack({ 18, 226, 16, 16 });
 	bom.anim.PushBack({ 35, 226, 16, 16 });
 	bom.speed.x = 0;
-	bom.lifetime = 60;
+	bom.lifetime = 800;
 	bom.anim.speed = 0.1f;
 	bom.anim.loop = true;
 
@@ -137,8 +137,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (particles[i] != nullptr && particles[i]->collider == c1)
 		{
-			particles[i]->pendingToDelete = true;
-			particles[i]->collider->pendingToDelete = true;
+		//	particles[i]->pendingToDelete = true;
+			//particles[i]->collider->pendingToDelete = true;
 			break;
 		}
 	}

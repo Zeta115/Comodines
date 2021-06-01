@@ -114,6 +114,7 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="SceneLevel1.h" />
+    <ClInclude Include="SceneLevel2.h" />
     <ClInclude Include="SceneLogo.h" />
     <ClInclude Include="Win_Blue_Machine.h" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="SceneLevel1.cpp" />
+    <ClCompile Include="SceneLevel2.cpp" />
     <ClCompile Include="SceneLogo.cpp" />
     <ClCompile Include="Win_Blue_Machine.cpp" />
   </ItemGroup>

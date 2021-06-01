@@ -79,7 +79,7 @@ bool ModulePlayer::Start()
 	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
 	winFx = App->audio->LoadFx("Assets/Audio/Fx/stage_clear.wav");
 	powerUpText = App->textures->Load("Assets/SpecialElements/Powerups.png");
-
+	//machineTraking = App->textures->Load("Assets/Hud/Machine_Traking.png");
 
 
 
@@ -177,7 +177,7 @@ UpdateResult ModulePlayer::Update()
 
 	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN) || (pad.x))
 	{
-		if (App->particles->bom.isAlive == true)
+		if (App->particles->bom.isAlive == true) // no entra a aquest if
 		{
 		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
 		App->audio->PlayFx(placeFx);
@@ -185,7 +185,7 @@ UpdateResult ModulePlayer::Update()
 		
 		else if (App->particles->bom.isAlive == false)
 		{
-			//center
+			/*//center
 			App->particles->AddParticle(App->particles->explosion, position.x, position.y + 6, Collider::Type::FIRE);
 			//up
 			App->particles->AddParticle(App->particles->explosion_up_2, position.x, position.y + -10, Collider::Type::FIRE);
@@ -200,7 +200,7 @@ UpdateResult ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->explosion_left_2, position.x + -16, position.y, Collider::Type::FIRE);
 			App->particles->AddParticle(App->particles->explosion_left_1, position.x + -32, position.y, Collider::Type::FIRE);
 			App->audio->PlayFx(blastFx);
-			App->input->ShakeController(0, 60, 1.0f);
+			App->input->ShakeController(0, 60, 1.0f);*/
 		}
 		score += 1000;
 	}
@@ -303,6 +303,7 @@ UpdateResult ModulePlayer::PostUpdate()
 	App->fonts->DrawText(-32, 31, scoreFont, scoreText);
 	sprintf_s(scoreText, 10, "%7d", timerS);
 	App->fonts->DrawText(-10, 31, scoreFont, scoreText);
+	
 
 
 	if (comodin <= 60){

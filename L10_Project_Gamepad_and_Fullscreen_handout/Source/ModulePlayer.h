@@ -57,6 +57,7 @@ public:
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* player = nullptr;
 	SDL_Texture* powerUpText = nullptr;
+	SDL_Texture* machineTraking = nullptr;
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
