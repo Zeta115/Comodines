@@ -100,15 +100,15 @@ bool SceneLevel1::Start()
 
 	
 	//Flowers
-	//App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 192);	
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 192);	
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 96);
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 96);
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 192);
-	//App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 80);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 80);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 64);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 112);
-	//App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 112);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 96);
+	//App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 112);
 	//App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 176);
 
 	// Enemies ---
@@ -117,7 +117,6 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 182, 114);
 	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 53, 155);
 	
-
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -139,20 +138,16 @@ UpdateResult SceneLevel1::Update()
 
 UpdateResult SceneLevel1::PostUpdate()
 {
-	
-	
 	// Draw everything
 	App->render->DrawTexture(bgTexture, 0, 0, NULL);
 	App->render->DrawTexture(hud, 0, -8, NULL);
 	App->render->DrawTexture(machineTexture, 104, 96, NULL);
-
 
 	if (App->player->destroyed == true)
 	{
 
 		App->render->DrawTexture(loseScreen, -20, 15, NULL);
 	}
-	
 
 	if (App->player->win == true)
 	{

@@ -96,6 +96,9 @@ bool ModulePlayer::Start()
 	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
 	score = 0;
 	lifes = 3;
+	timerS = 60;
+	timerM = 4;
+	comodin = 0;
 	return ret;
 }
 
@@ -293,7 +296,41 @@ UpdateResult ModulePlayer::PostUpdate()
 	App->fonts->DrawText(140, 31, scoreFont, scoreText);
 	sprintf_s(scoreText, 10, "%7d", lifes);
 	App->fonts->DrawText(185, 31, scoreFont, scoreText);
+	sprintf_s(scoreText, 10, "%7d ", timerM);
+	App->fonts->DrawText(-32, 31, scoreFont, scoreText);
+	sprintf_s(scoreText, 10, "%7d", timerS);
+	App->fonts->DrawText(-10, 31, scoreFont, scoreText);
 
+
+	if (comodin <= 60){
+		comodin++;	
+	}
+	if (comodin == 60){
+		comodin = 0;
+		if (timerM != 0 || timerS != 0)
+		{
+			timerS--;
+			
+		}
+		
+	}
+	if (timerM != 0 && timerS == 0) {
+
+		if (timerS == 0)
+		{
+			timerM--;
+			timerS = 60;
+			
+		}
+		
+	}
+	if (timerM==0 && timerS==0)	{
+		destroyed = true;
+
+	}
+		
+	
+	
 	if (debugGamepadInfo == true) DebugDrawGamepadInfo();
 	else App->fonts->DrawText(5, 10, scoreFont, "press f2 to display gamepad debug info");
 	if (powerActive == true)

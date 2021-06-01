@@ -45,6 +45,10 @@ public:
 	float speed = 0.5f;
 	int lifes = 3;
 	int timer = 0;
+	int timerS = 00;
+	int timerM = 4;
+	int comodin = 0;
+
 
 	// Countdown to handle shot spacing
 	int shotMaxCountdown = 20;
