@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <SDL/include/SDL_gamecontroller.h>
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
@@ -129,7 +130,7 @@ UpdateResult ModulePlayer::Update()
 
 	// L10: TODO: Implement gamepad support
 
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT) //|| (App->input->pads[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == GamePad::up))
 	{
 		position.x -= speed;
 		if (currentAnimation != &rightAnim)
@@ -139,7 +140,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT) //|| (App->input->pads[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == GamePad::KEY_REPEAT))
 	{
 		position.x += speed;
 		if (currentAnimation != &leftAnim)
@@ -149,7 +150,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT) //|| (App->input->pads[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == GamePad::KEY_REPEAT))
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -159,7 +160,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT) //|| (App->input->pads[SDL_CONTROLLER_BUTTON_DPAD_UP] == GamePad::contr))
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -195,6 +196,7 @@ UpdateResult ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->explosion_left_2, position.x + -16, position.y, Collider::Type::FIRE);
 			App->particles->AddParticle(App->particles->explosion_left_1, position.x + -32, position.y, Collider::Type::FIRE);
 			App->audio->PlayFx(blastFx);
+			//App->input->ShakeController(0, 60, 1.0f);
 		}
 		score += 1000;
 	}
