@@ -1,4 +1,4 @@
-/*#include "SceneLevel2.h"
+#include "SceneLevel2.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 
@@ -26,7 +27,7 @@ bool SceneLevel2::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Map/Mapa.png");
+	//bgTexture = App->textures->Load("Assets/Map/Mapa.png");
 	App->audio->PlayMusic("Assets/Audio/music/area_1.ogg", 1.0f);
 	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
@@ -131,7 +132,15 @@ bool SceneLevel2::Start()
 
 UpdateResult SceneLevel2::Update()
 {
+	/*if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneBoss, 90);
+	}*/
 
+	if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+	}
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
@@ -165,4 +174,4 @@ bool SceneLevel2::CleanUp()
 	// L10: TODO 5: Remove All Memory Leaks - no solution here... ;)
 	App->collisions->Disable();
 	return true;
-}*/
+}

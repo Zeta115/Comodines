@@ -82,9 +82,8 @@ bool ModulePlayer::Start()
 	//machineTraking = App->textures->Load("Assets/Hud/Machine_Traking.png");
 
 
-
-	position.x = 25;
-	position.y = 64;
+	position.x = 40;
+	position.y = 24;
 
 	// L10: DONE 4: Retrieve the player when playing a second time
 	destroyed = false;
@@ -297,15 +296,17 @@ UpdateResult ModulePlayer::PostUpdate()
 	{
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
 	}
+	
+	
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
-	App->fonts->DrawText(140, 31, scoreFont, scoreText);
+	App->fonts->DrawText(140, 7, scoreFont, scoreText);
 	sprintf_s(scoreText, 10, "%7d", lifes);
-	App->fonts->DrawText(185, 31, scoreFont, scoreText);
+	App->fonts->DrawText(184, 7, scoreFont, scoreText);
 	sprintf_s(scoreText, 10, "%7d ", timerM);
-	App->fonts->DrawText(-32, 31, scoreFont, scoreText);
+	App->fonts->DrawText(-32, 7, scoreFont, scoreText);
 	sprintf_s(scoreText, 10, "%7d", timerS);
-	App->fonts->DrawText(-10, 31, scoreFont, scoreText);
+	App->fonts->DrawText(-10, 7, scoreFont, scoreText);
 	
 
 
@@ -336,14 +337,13 @@ UpdateResult ModulePlayer::PostUpdate()
 
 	}
 		
-	
-	
-	if (debugGamepadInfo == true) DebugDrawGamepadInfo();
+	// DEBUG INFO
+	/*if (debugGamepadInfo == true) DebugDrawGamepadInfo();
 	else App->fonts->DrawText(5, 10, scoreFont, "press f2 to display gamepad debug info");
 	if (powerActive == true)
 	{
 		App->render->DrawTexture(powerUpText, 88, 78, NULL);
-	}
+	}*/
 
 	return UpdateResult::UPDATE_CONTINUE;
 }

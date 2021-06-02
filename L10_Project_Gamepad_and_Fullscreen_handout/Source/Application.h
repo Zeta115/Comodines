@@ -2,8 +2,9 @@
 #define __APPLICATION_H__
 
 #include "Globals.h"
+#include "SceneLevel2.h"
 
-#define NUM_MODULES 14
+#define NUM_MODULES 15
 
 class Module;
 class ModuleWindow;
@@ -56,6 +57,7 @@ public:
 	SceneLogo* sceneLogo = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	SceneLevel1* sceneLevel_1 = nullptr;
+	SceneLevel2* sceneLevel_2 = nullptr;
 
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;

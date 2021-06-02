@@ -50,7 +50,7 @@ UpdateResult SceneIntro::PostUpdate()
 {
 	if (sceneCount == 0)
 	{
-		App->render->DrawTexture(bgTexture, 0, 15, NULL);
+		App->render->DrawTexture(bgTexture, 0, 0, NULL);
 		App->player->destroyed = false;
 		App->player->win = false;
 		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {

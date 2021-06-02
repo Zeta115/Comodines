@@ -1,4 +1,4 @@
-/*#ifndef __SCENELEVEL2_H__
+#ifndef __SCENELEVEL2_H__
 #define __SCENELEVEL2_H__
 
 #include "Module.h"
@@ -45,4 +45,4 @@ public:
 
 };
 
-#endif  // __SCENELEVEL2_H__*/
+#endif  // __SCENELEVEL2_H__

@@ -5,6 +5,7 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 
@@ -25,21 +26,21 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Map/Mapa.png");
-	decoration = App->textures->Load("Assets/Map/MapaDecoration.png");
+	bgTexture = App->textures->Load("Assets/Map/mapa1_fixed.png");
+	decoration = App->textures->Load("Assets/Map/MapaDecoration_fixed.png");
 	App->audio->PlayMusic("Assets/Audio/music/area_1.ogg", 1.0f);
 	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
-	hud = App->textures->Load("Assets/Hud/hud.png");
+	hud = App->textures->Load("Assets/Hud/hud_fixed.png");
 	machineTexture = App->textures->Load("Assets/Map/reactor_1.png");
 
 	// Colliders
 
 //Limits
     //Bottom
-	App->collisions->AddCollider({ 0, 239, 600, 17 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 208, 600, 17 }, Collider::Type::WALL);
 	//Top
-	App->collisions->AddCollider({ 0, 0, 600, 57 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 600, 31 }, Collider::Type::WALL);
 	//Left
 	App->collisions->AddCollider({ 0, 33, 23, 600 }, Collider::Type::WALL);
 	//Right
@@ -50,94 +51,94 @@ bool SceneLevel1::Start()
 
 	//First two columns colliders
 	//Fila 1
-	App->collisions->AddCollider({ 40, 80, 15, 15 }, Collider::Type::WALL);//1
-	App->collisions->AddCollider({ 73, 80, 15, 15 }, Collider::Type::WALL);//2
-	App->collisions->AddCollider({ 104, 80, 15, 15 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 80, 15, 15 }, Collider::Type::WALL);//4
-	App->collisions->AddCollider({ 168, 80, 15, 15 }, Collider::Type::WALL);//5
-	App->collisions->AddCollider({ 200, 80, 15, 15 }, Collider::Type::WALL);//6
+	App->collisions->AddCollider({ 40, 47, 16, 16 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 72, 47, 16, 16 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 47, 16, 16 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 47, 16, 16 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 47, 16, 16 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 47, 16, 16 }, Collider::Type::WALL);//6
 
 	//Fila 2
-	App->collisions->AddCollider({ 40, 112, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 73, 112, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 112, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 112, 15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 79, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 72, 79, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 79, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 79, 16, 16 }, Collider::Type::WALL);
 
 	//machine
-	App->collisions->AddCollider({ 105, 117, 46, 22 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 105, 139, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 136, 139, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 120, 139, 14, 14 }, Collider::Type::MACHINE);
+	App->collisions->AddCollider({ 104, 79, 48, 22 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104, 101, 16, 26 }, Collider::Type::FLOWER);
+	App->collisions->AddCollider({ 136, 101, 16, 26 }, Collider::Type::FLOWER);
+	//App->collisions->AddCollider({ 120, 99, 14, 14 }, Collider::Type::MACHINE);
 
 	//PowerUp
 	App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
 
 	//Fila 3
-	App->collisions->AddCollider({ 40, 145, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 73, 145,  15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 168, 145, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 145,  15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 111, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 72, 111,  16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 111, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 111,  16, 16 }, Collider::Type::WALL);
 
 	//Fila 4
-	App->collisions->AddCollider({ 40, 176, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 73, 176,  15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104, 176, 15, 15 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 176, 15, 15 }, Collider::Type::WALL);//4
-	App->collisions->AddCollider({ 168, 176, 15, 15 }, Collider::Type::WALL);//5
-	App->collisions->AddCollider({ 200, 176, 15, 15 }, Collider::Type::WALL);//6
+	App->collisions->AddCollider({ 40, 143, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 72, 143,  16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104, 143, 16, 16 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 143, 16, 16 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 143, 16, 16 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 143, 16, 16 }, Collider::Type::WALL);//6
 
 	//Fila 5
-	App->collisions->AddCollider({ 40, 208, 15, 15 }, Collider::Type::WALL);//1
-	App->collisions->AddCollider({ 73, 208, 15, 15 }, Collider::Type::WALL);//2
-	App->collisions->AddCollider({ 104, 208, 15, 15 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 208, 15, 15 }, Collider::Type::WALL);//4
-	App->collisions->AddCollider({ 168, 208, 15, 15 }, Collider::Type::WALL);//5
-	App->collisions->AddCollider({ 200, 208, 15, 15 }, Collider::Type::WALL);//6
+	App->collisions->AddCollider({ 40, 175, 16, 16 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 72, 175, 16, 16 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 175, 16, 16 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 175, 16, 16 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 175, 16, 16 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 175, 16, 16 }, Collider::Type::WALL);//6
 	
 	//Flowers
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 96);
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 96);
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 192);	
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 192);
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 63);
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 63);
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 159);	
+	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 159);
 
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 136, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 80);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 80);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 80);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 136, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 112);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 112);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 112);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 130, 112);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 112);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 128);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 128);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 128);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 128);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 208);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 208);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 208);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 208);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 208);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 208);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 224);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 224);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 31);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 31);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 136, 31);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 31); //64
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 47);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 47); //80
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 47);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 63);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 63);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 136, 63);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 63);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 79);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 79);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 79);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 130, 79);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 79);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 95);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 95);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 95);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 95);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 127);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 127);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 127);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 127);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 159);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 159);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 159);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 159);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 159);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 159);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 175);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 175);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 175);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 175);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 175);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 175);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 191);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 191);
 	
 
 	// Enemies ---
@@ -160,9 +161,14 @@ bool SceneLevel1::Start()
 
 UpdateResult SceneLevel1::Update()
 {
-	/*if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
+	}
+
+	/*if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}*/
 
 	return UpdateResult::UPDATE_CONTINUE;
@@ -172,20 +178,20 @@ UpdateResult SceneLevel1::PostUpdate()
 {
 	// Draw everything
 	
-	App->render->DrawTexture(bgTexture, 0, 0, NULL);
-	App->render->DrawTexture(decoration, 0, 0, NULL);
-	App->render->DrawTexture(hud, 0, -8, NULL);
-	App->render->DrawTexture(machineTexture, 104, 96, NULL);
+	App->render->DrawTexture(bgTexture, 0, 15, NULL); //App->render->DrawTexture(bgTexture, 0, 24, NULL);
+	App->render->DrawTexture(decoration, 0, 15, NULL);
+	App->render->DrawTexture(hud, 0, 0, NULL);   //App->render->DrawTexture(hud, 0, -8, NULL);
+	App->render->DrawTexture(machineTexture, 104, 64, NULL);
 
 	if (App->player->destroyed == true)
 	{
 
-		App->render->DrawTexture(loseScreen, -20, 15, NULL);
+		App->render->DrawTexture(loseScreen, -20, 0, NULL);
 	}
 
 	if (App->player->win == true)
 	{
-		App->render->DrawTexture(winScreen, -10, 15, NULL);
+		App->render->DrawTexture(winScreen, -10, 0, NULL);
 	}
 	return UpdateResult::UPDATE_CONTINUE;
 }
