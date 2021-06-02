@@ -21,7 +21,7 @@ In this game you control the Bomberman and you need to go to the center the mach
 - Down pad: Moves the character down.
 - Left pad: Moves the character left.
 - Right pad: Moves the character right.
-- &#9421; / ▢ : Bomb placing.
+- &#9421; (Xbox controller) / ▢ (PS controller) : Bomb placing.
 ### Debug keys:
 
 - F1: Godmode.
