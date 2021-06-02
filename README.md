@@ -29,6 +29,15 @@ In this game you control the Bomberman and you need to go to the center the mach
 - **F3:** Instant win.
 - **F4:** Instant lose.
 - **F5:** Reset to initial position.
+- **F6:**
+- **F7:**
+- **F8:**
+- **F9:**
+- **F10:**
+- **F11:**
+- **F12:**
+- **0:** Next level.
+- **9:** Previous level.
 
 ## Team members
 
