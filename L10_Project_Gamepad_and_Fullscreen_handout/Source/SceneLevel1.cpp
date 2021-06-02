@@ -1,5 +1,4 @@
 #include "SceneLevel1.h"
-
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -161,7 +160,10 @@ bool SceneLevel1::Start()
 
 UpdateResult SceneLevel1::Update()
 {
-	
+	/*if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+	}*/
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
