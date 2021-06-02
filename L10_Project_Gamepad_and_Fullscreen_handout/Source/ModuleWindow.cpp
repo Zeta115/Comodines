@@ -1,5 +1,6 @@
 #include "ModuleWindow.h"
 
+#include "ModuleInput.h"
 #include "Application.h"
 #include "Globals.h"
 
@@ -53,6 +54,25 @@ bool ModuleWindow::Init()
 	return ret;
 }
 
+UpdateResult ModuleWindow::Update() {
+	if (App->input->keys[SDL_SCANCODE_P] == KeyState::KEY_DOWN) {
+		App->window->fullscreen = !App->window->fullscreen;
+	}
+
+	if (fullscreen == true)
+	{
+		SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN); 
+		SCREEN_SIZE == 1;
+	}
+
+	if (fullscreen == false) 
+	{
+		SDL_SetWindowFullscreen(window, 0); 
+		SCREEN_SIZE == 3;
+	}
+
+	return UpdateResult::UPDATE_CONTINUE;
+}
 bool ModuleWindow::CleanUp()
 {
 	// L2: DONE 5: Fill with code the CleanUp() method
