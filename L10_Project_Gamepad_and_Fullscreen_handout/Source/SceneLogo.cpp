@@ -28,7 +28,7 @@ bool SceneLogo::Start()
 	logoTexture = App->textures->Load("Assets/Screens/logo.png");
 	logo2Texture = App->textures->Load("Assets/Screens/logo_sega.png");
 	logo3Texture = App->textures->Load("Assets/Screens/logo_hudson_soft.png");
-	//App->audio->PlayMusic("Assets/Audio/music/title_theme.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/music/Opening.ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
