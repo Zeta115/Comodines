@@ -14,13 +14,15 @@ In this game you control the Bomberman and you need to go to the center the mach
 - Right arrow: Moves the character right.
 - D: Bomb placing.
 
+- Compatible with gamepad.
+
 ###Debug keys:
 
 - F1: Godmode.
 - F2: Debug info on/off.
-- F3: instant win.
+- F3: Instant win.
 - F4: Instant lose.
-- F5: reset to initial position.
+- F5: Reset to initial position.
 
 ##Team members
 
