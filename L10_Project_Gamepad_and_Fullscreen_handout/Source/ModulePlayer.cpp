@@ -132,6 +132,8 @@ UpdateResult ModulePlayer::Update()
 
 	// L10: TODO: Implement gamepad support
 
+	//if ((pad->left_x<0.0f) || (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT))
+
 	if ((App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT) || (pad.left))
 	{
 		position.x -= speed;
