@@ -1,12 +1,13 @@
 # MEGA Bomberman
 
-##From team Comodines we present MEGA Bomberman:
+## From team Comodines we present MEGA Bomberman:
 
 In this game you control the Bomberman and you need to go to the center the machine to win the game, but be aware, you have 3 lifes and if you die you get returned to main menu. now you can't kill enemies and when you drop a bomb u get points.
 
-##Key features:
+## Key features:
 
-###Controls:
+### Controls
+#### Keyboard:
 
 - Up arrow: Moves the character up.
 - Down arrow: Moves the character down.
@@ -14,9 +15,14 @@ In this game you control the Bomberman and you need to go to the center the mach
 - Right arrow: Moves the character right.
 - D: Bomb placing.
 
-- Compatible with gamepad.
+#### Gamepad:
 
-###Debug keys:
+- Up: Moves the character up.
+- Down: Moves the character down.
+- Left: Moves the character left.
+- Right: Moves the character right.
+- X / ▢ &#9421; : Bomb placing.
+### Debug keys:
 
 - F1: Godmode.
 - F2: Debug info on/off.
@@ -24,7 +30,7 @@ In this game you control the Bomberman and you need to go to the center the mach
 - F4: Instant lose.
 - F5: Reset to initial position.
 
-##Team members
+## Team members
 
 [Roger Rus](https://github.com/rusroger)
 
