@@ -5,7 +5,7 @@
 #include "SceneLevel2.h"
 #include "SceneLevelBoss.h"
 
-#define NUM_MODULES 15
+#define NUM_MODULES 16
 
 class Module;
 class ModuleWindow;

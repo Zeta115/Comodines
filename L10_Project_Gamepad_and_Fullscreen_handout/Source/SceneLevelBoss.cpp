@@ -53,39 +53,46 @@ bool SceneLevelBoss::Start()
 
 	//First two columns colliders
 	//Fila 1
-	App->collisions->AddCollider({ 104, 48, 15, 15 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 48, 15, 15 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 40, 47, 16, 16 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 72, 47, 16, 16 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 47, 16, 16 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 47, 16, 16 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 47, 16, 16 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 47, 16, 16 }, Collider::Type::WALL);//6
+
 	//Fila 2
-	App->collisions->AddCollider({ 40, 80, 15, 15 }, Collider::Type::WALL);//1
-	App->collisions->AddCollider({ 73, 80, 15, 15 }, Collider::Type::WALL);//2
-	App->collisions->AddCollider({ 104, 80, 15, 35 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 80, 15, 15 }, Collider::Type::WALL);//4
-	App->collisions->AddCollider({ 168, 80, 15, 15 }, Collider::Type::WALL);//5
-	App->collisions->AddCollider({ 200, 80, 15, 15 }, Collider::Type::WALL);//6
+	App->collisions->AddCollider({ 40, 79, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 72, 79, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104, 79, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 136, 79, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 79, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 79, 16, 16 }, Collider::Type::WALL);
 
 	//Fila 3
-	App->collisions->AddCollider({ 40, 112, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 73, 112, 47, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 137, 112, 45, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 137, 112, 15, 45 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 112, 15, 15 }, Collider::Type::WALL);
-
+	App->collisions->AddCollider({ 40, 111, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 72, 111,  16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104, 111, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 136, 111, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 111, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 111,  16, 16 }, Collider::Type::WALL);
 
 	//Fila 4
-	App->collisions->AddCollider({ 40, 145, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 73, 145,  15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104, 145, 15, 15 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 168, 145, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 200, 145,  15, 15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 40, 143, 16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 72, 143,  16, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 104, 143, 16, 16 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 143, 16, 16 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 143, 16, 16 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 143, 16, 16 }, Collider::Type::WALL);//6
 
 	//Fila 5
-	App->collisions->AddCollider({ 104, 176, 15, 15 }, Collider::Type::WALL);//3
-	App->collisions->AddCollider({ 136, 176, 15, 15 }, Collider::Type::WALL);//4
-
+	App->collisions->AddCollider({ 40, 175, 16, 16 }, Collider::Type::WALL);//1
+	App->collisions->AddCollider({ 72, 175, 16, 16 }, Collider::Type::WALL);//2
+	App->collisions->AddCollider({ 104, 175, 16, 16 }, Collider::Type::WALL);//3
+	App->collisions->AddCollider({ 136, 175, 16, 16 }, Collider::Type::WALL);//4
+	App->collisions->AddCollider({ 168, 175, 16, 16 }, Collider::Type::WALL);//5
+	App->collisions->AddCollider({ 200, 175, 16, 16 }, Collider::Type::WALL);//6
 
 	// Enemies ---
-
-
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
@@ -116,8 +123,7 @@ UpdateResult SceneLevelBoss::PostUpdate()
 {
 	// Draw everything
 	App->render->DrawTexture(bgTexture, 0, 0, NULL);
-	App->render->DrawTexture(hud, 0, -32, NULL);
-	//App->render->DrawTexture(machineTexture, 104, 96, NULL);
+	App->render->DrawTexture(hud, 0, 0, NULL);
 
 	if (App->player->destroyed == true)
 	{

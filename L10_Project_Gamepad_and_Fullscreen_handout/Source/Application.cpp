@@ -31,15 +31,15 @@ Application::Application()
 	modules[5] =	sceneIntro =	new SceneIntro(false);			  // Escena menú principal
 	modules[6] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
 	modules[7] =	sceneLevel_2 =  new SceneLevel2(false);
-	//modules[8] =	sceneLevel_boss = new SceneLevelBoss(false);
-	modules[8] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[9] =	particles =		new ModuleParticles(true);
-	modules[10] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[8] =	sceneLevel_Boss = new SceneLevelBoss(false);
+	modules[9] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[10] =	particles =		new ModuleParticles(true);
+	modules[11] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[11] =	collisions =	new ModuleCollisions(true);
-	modules[12] =	fade =			new ModuleFadeToBlack(true);
-	modules[13] =	fonts =			new ModuleFonts(true);
-	modules[14] =	render =		new ModuleRender(true);
+	modules[12] =	collisions =	new ModuleCollisions(true);
+	modules[13] =	fade =			new ModuleFadeToBlack(true);
+	modules[14] =	fonts =			new ModuleFonts(true);
+	modules[15] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()

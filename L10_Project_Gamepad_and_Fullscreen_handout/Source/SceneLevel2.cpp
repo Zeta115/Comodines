@@ -86,14 +86,7 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 104, 176, 15, 15 }, Collider::Type::WALL);//3
 	App->collisions->AddCollider({ 136, 176, 15, 15 }, Collider::Type::WALL);//4
 
-	
-	//machine
-	/*
-	App->collisions->AddCollider({ 105, 117, 46, 22 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 105, 139, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 136, 139, 15, 15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 120, 139, 14, 14 }, Collider::Type::MACHINE);
-	*/
+
 	//PowerUp
 	//App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
 
@@ -167,10 +160,10 @@ bool SceneLevel2::Start()
 
 UpdateResult SceneLevel2::Update()
 {
-	/*if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_Boss, 90);
-	}*/
+	}
 
 	/*if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
 	{
