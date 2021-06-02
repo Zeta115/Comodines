@@ -3,6 +3,7 @@
 
 #include "Globals.h"
 #include "SceneLevel2.h"
+#include "SceneLevelBoss.h"
 
 #define NUM_MODULES 15
 
@@ -58,6 +59,7 @@ public:
 	SceneIntro* sceneIntro = nullptr;
 	SceneLevel1* sceneLevel_1 = nullptr;
 	SceneLevel2* sceneLevel_2 = nullptr;
+	SceneLevelBoss* sceneLevel_Boss = nullptr;
 
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;

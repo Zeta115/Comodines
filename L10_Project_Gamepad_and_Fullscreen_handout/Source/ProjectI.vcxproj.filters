@@ -112,6 +112,9 @@
     <ClInclude Include="SceneLevel2.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="SceneLevelBoss.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -202,6 +205,9 @@
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
     <ClCompile Include="SceneLevel2.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLevelBoss.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>

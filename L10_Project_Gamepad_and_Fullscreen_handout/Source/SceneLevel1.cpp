@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "SceneLevel2.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -26,25 +27,25 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Map/mapa1_fixed.png");
-	decoration = App->textures->Load("Assets/Map/MapaDecoration_fixed.png");
+	bgTexture = App->textures->Load("Assets/Map/Mapa.png");
+	decoration = App->textures->Load("Assets/Map/MapaDecoration.png");
 	App->audio->PlayMusic("Assets/Audio/music/area_1.ogg", 1.0f);
 	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
-	hud = App->textures->Load("Assets/Hud/hud_fixed.png");
+	hud = App->textures->Load("Assets/Hud/hud.png");
 	machineTexture = App->textures->Load("Assets/Map/reactor_1.png");
 
 	// Colliders
 
 //Limits
     //Bottom
-	App->collisions->AddCollider({ 0, 208, 600, 17 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 208, 400, 17 }, Collider::Type::WALL);
 	//Top
-	App->collisions->AddCollider({ 0, 0, 600, 31 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 400, 31 }, Collider::Type::WALL);
 	//Left
-	App->collisions->AddCollider({ 0, 33, 23, 600 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 25, 400 }, Collider::Type::WALL);
 	//Right
-	App->collisions->AddCollider({ 232, 33, 23, 600 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 232, 0, 25, 400 }, Collider::Type::WALL);
 
 	// Stones
 	/// 1r: donde empieza la piedra a partir de la x - 2n: donde empieza la piedra a partir de la y - 3r: ample de la pedra - 4rt: alçada de la pedra
@@ -105,38 +106,46 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 31);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 136, 31);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 31); //64
+
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 47);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 47); //80
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 47);
+
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 63);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 63);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 136, 63);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 63);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 63);
+
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 79);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 79);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 79);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 130, 79);
+	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 79);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 79);
+
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 95);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 95);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 95);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 95);
+
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 127);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 127);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 127);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 127);
+
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 159);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 159);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 159);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 159);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 159);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 159);
+
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 175);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 175);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 175);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 175);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 175);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 175);
+
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 191);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 191);
 	
@@ -178,9 +187,9 @@ UpdateResult SceneLevel1::PostUpdate()
 {
 	// Draw everything
 	
-	App->render->DrawTexture(bgTexture, 0, 15, NULL); //App->render->DrawTexture(bgTexture, 0, 24, NULL);
+	App->render->DrawTexture(bgTexture, 0, 15, NULL); 
 	App->render->DrawTexture(decoration, 0, 15, NULL);
-	App->render->DrawTexture(hud, 0, 0, NULL);   //App->render->DrawTexture(hud, 0, -8, NULL);
+	App->render->DrawTexture(hud, 0, 0, NULL);   
 	App->render->DrawTexture(machineTexture, 104, 64, NULL);
 
 	if (App->player->destroyed == true)

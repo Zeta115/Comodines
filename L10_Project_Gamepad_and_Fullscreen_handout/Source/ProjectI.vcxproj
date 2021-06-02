@@ -112,6 +112,7 @@
     <ClInclude Include="Pasive_Flower.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="SceneLevelBoss.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="SceneLevel1.h" />
     <ClInclude Include="SceneLevel2.h" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Pasive_Flower.cpp" />
     <ClCompile Include="Path.cpp" />
+    <ClCompile Include="SceneLevelBoss.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="SceneLevel1.cpp" />
     <ClCompile Include="SceneLevel2.cpp" />
