@@ -16,6 +16,7 @@ public:
 	// Destructor
 	~ModuleWindow();
 
+	UpdateResult Update() override;
 	// Called on application start.
 	// Initializes the SDL Library and creates a window.
 	bool Init() override;
@@ -28,6 +29,8 @@ public:
 	void SetWinTitle(const char* title);
 
 public:
+
+	bool fullscreen = true;
 	//The window we'll be rendering to
 	SDL_Window* window = nullptr;
 

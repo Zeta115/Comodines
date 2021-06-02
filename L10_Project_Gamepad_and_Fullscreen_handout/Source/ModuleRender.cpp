@@ -5,6 +5,7 @@
 #include "ModuleWindow.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
+#include "Globals.h"
 
 #include "SDL/include/SDL_render.h"
 #include "SDL/include/SDL_scancode.h"
@@ -36,7 +37,7 @@ bool ModuleRender::Init()
 	}
 
 	// L10: TODO: Set render logical size
-
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	return ret;
 }
