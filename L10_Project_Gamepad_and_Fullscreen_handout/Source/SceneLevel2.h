@@ -38,6 +38,8 @@ public:
 	SDL_Texture* winScreen = nullptr;
 	SDL_Texture* loseScreen = nullptr;
 	SDL_Texture* hud = nullptr;
+	SDL_Texture* decoration = nullptr;
+	SDL_Texture* decoration2 = nullptr;
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
 	SDL_Texture* machineTexture = nullptr;

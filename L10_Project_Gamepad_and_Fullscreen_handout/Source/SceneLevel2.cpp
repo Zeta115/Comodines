@@ -29,6 +29,8 @@ bool SceneLevel2::Start()
 
 	bgTexture = App->textures->Load("Assets/Map/Mapa_2.png");
 	App->audio->PlayMusic("Assets/Audio/music/area_1.ogg", 1.0f);
+	decoration = App->textures->Load("Assets/Map/MapaDecoration.png");
+	decoration2 = App->textures->Load("Assets/Map/MapaDecoration_Lvl2.png");
 	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
 	hud = App->textures->Load("Assets/Hud/hud.png");
@@ -182,8 +184,9 @@ UpdateResult SceneLevel2::PostUpdate()
 {
 	// Draw everything
 	App->render->DrawTexture(bgTexture, 0, 0, NULL);
+	App->render->DrawTexture(decoration2, 0, 0, NULL);
+	App->render->DrawTexture(decoration, 0, 0, NULL);
 	App->render->DrawTexture(hud, 0, 0, NULL);
-	//App->render->DrawTexture(machineTexture, 104, 96, NULL);
 
 	if (App->player->destroyed == true)
 	{
