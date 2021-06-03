@@ -84,6 +84,7 @@ public:
 	bool powerTouch = false;
 	bool BombUp = true;
 	bool ExplosionUp = false;
+	bool death = false;
 	// Sound effects indices
 	uint blastFx = 0;
 	uint placeFx = 0;
@@ -94,6 +95,7 @@ public:
 	uint score = 000;
 	int scoreFont = -1;
 	char scoreText[150] = { "\0" };
+	
 
 	// Debugdraw for gamepad data
 	bool debugGamepadInfo = false;

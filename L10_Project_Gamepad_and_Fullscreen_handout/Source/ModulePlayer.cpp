@@ -254,7 +254,7 @@ UpdateResult ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE) {
-		if (lifes>0)
+		if (lifes > 2)
 		{
 			currentAnimation = &idleAnim;
 		}
@@ -279,12 +279,12 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 	
-	if (lifes == 0)
+	if (death == true)
 	{
-
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 360);
-		currentAnimation = &deadAnim;
-		destroyed = true;
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_1, 160);
+			currentAnimation = &deadAnim;
+			destroyed = true;
+			death = false;
 	}
 	if (BombUp == false) {
 		if (timerB < 150) {
@@ -419,19 +419,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				//player and enemies
 				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
 				{
-					if (powerTouch == false) {
-						if (timer <= 35)timer++;
-
-						if (timer == 35)
-						{
-							lifes -= 1;
-							timer = 0;
-						}
-						if (App->particles->dead.isAlive == false && lifes == 0)
-						{
-							App->audio->PlayFx(deadFx);
-						}
+					if (powerTouch == false)
+					{
+						death = true;
+						App->audio->PlayFx(deadFx);
+						lifes--;
 					}
+				
 				}
 			}
 			

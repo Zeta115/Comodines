@@ -2,6 +2,7 @@
 
 #include "Application.h"
 
+#include "Enemy.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
@@ -149,6 +150,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->textures->Disable();
 	}
+
 }
 
 UpdateResult ModuleParticles::Update()
