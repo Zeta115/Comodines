@@ -18,6 +18,7 @@ enum class Enemy_Type
 	RABBIT,
 	MONKEY,
 	BANANA_BOSS,
+	MONKEY_BOSS
 };
 
 struct EnemySpawnpoint

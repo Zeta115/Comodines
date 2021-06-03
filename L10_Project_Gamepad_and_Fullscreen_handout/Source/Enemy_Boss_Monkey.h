@@ -1,16 +1,16 @@
-#ifndef __ENEMY_BROWNROBOT_H__
+#ifndef __ENEMY_BOSS_MONKEY_H__
 #define __ENEMY_BOSS_MONKEY_H__
 
 #include "Enemy.h"
 #include "Path.h"
 
-class Enemy_BrownRobot : public Enemy
+class Enemy_Boss_Monkey : public Enemy
 {
 public:
 
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
-	Enemy_BrownRobot(int x, int y);
+	Enemy_Boss_Monkey(int x, int y);
 	Collider* collider = nullptr;
 
 	// The enemy is going to perform a sinusoidal movement

@@ -210,6 +210,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case Enemy_Type::BANANA_BOSS:
 					enemies[i] = new Enemy_Boss_Banana(info.x, info.y);
+					break; 
+				case Enemy_Type::MONKEY_BOSS:
+					enemies[i] = new Enemy_Boss_Monkey(info.x, info.y);
 					break;
 			}
 			enemies[i]->texture = texture;
@@ -229,16 +232,14 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			switch (c2->type)
 			{
 			    case Collider::Type::WALL:
-				if (enemies[i]->death == false)
-				{
-						switch (enemies[i]->type)
+	
+					switch (enemies[i]->type)
 						{
 						case TypeEnemy::BROWNROBOT:
 							App->player->score += 400;
 							break;
 						}
-						enemies[i]->death = true;
-					}
+					enemies[i]->death = true;
 					break;
 				default:
 					break;
