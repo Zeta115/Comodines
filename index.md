@@ -7,7 +7,7 @@
 ### Members and roles of the Comodines Team:
 
 
-![](https://github.com/Zeta115/Comodines/blob/main/wiki/Images/TeamPhoto/TeamPhoto.jpg)
+![TeamPhoto](https://github.com/Zeta115/Comodines/blob/main/wiki/Images/TeamPhoto/TeamPhoto.jpg)
 
 From left to right:
 
@@ -75,27 +75,33 @@ Our version includes:
 - Gamepad and keyboard suport.
 
 
-## List of Controls
+## List of Keyboard Controls
 
-- 
--
--
--
--
--
--
+- Up arrow: Move player up.
+- Down: Move player down.
+- Left: Move player left.
+- Right: Move player right.
+- D: place bomb.
+
+## List of Gamepad controls
+
+- Left Joystick up: Move player up.
+- Left Joystick Down: Move player down.
+- Left Joystick Left: Move player left.
+- Left Joystick Right: Move player right.
+- X/A: place bomb.
 
 ### Debugg:
 
--
--
--
--
--
--
--
--
--
--
--
--
+- F1: Toggle godmode.
+- F2: Show debugg gamepad info and colliders
+- F3: Instant Win
+- F4: Instant Lose
+- F5
+- F6
+- F7
+- F8
+- F9
+- F10
+- P: Toggle fullscreen
+- 0: Go to next level
