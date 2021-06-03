@@ -17,6 +17,8 @@
 #include "Pasive_Flower.h"
 #include "Win_Blue_Machine.h"
 #include "Enemy_Conill.h"
+#include "Enemy_Monkey.h"
+#include "Enemy_Boss_Banana.h"
 
 #define SPAWN_MARGIN 50
 
@@ -35,6 +37,9 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	texture = App->textures->Load("Assets/enemies/enemies.png");
+	texture = App->Monkey->Load("Assets/Boss/Monkey.png");
+	texture = App->Monkey_Dead->Load("Assets/Boss/Monkey_Dead.png");
+	texture = App->Banana->Load("Assets/Boss/Banana.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	return true;
@@ -202,6 +207,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case Enemy_Type::RABBIT:
 					enemies[i] = new Enemy_Conill(info.x, info.y);
+					break;
+				case Enemy_Type::MONKEY:
+					enemies[i] = new Enemy_Monkey(info.x, info.y);
 					break;
 			}
 			enemies[i]->texture = texture;

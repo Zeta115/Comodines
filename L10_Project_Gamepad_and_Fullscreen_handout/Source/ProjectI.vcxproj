@@ -90,10 +90,12 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Bomb.h" />
+    <ClInclude Include="Enemy_Boss_Banana.h" />
     <ClInclude Include="Enemy_Cargol.h" />
     <ClInclude Include="Enemy_BrownRobot.h" />
     <ClInclude Include="Enemy_Conill.h" />
     <ClInclude Include="Enemy_Flower.h" />
+    <ClInclude Include="Enemy_Monkey.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleEnemies.h" />
@@ -124,10 +126,12 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="Enemy_Boss_Banana.cpp" />
     <ClCompile Include="Enemy_Cargol.cpp" />
     <ClCompile Include="Enemy_BrownRobot.cpp" />
     <ClCompile Include="Enemy_Conill.cpp" />
     <ClCompile Include="Enemy_Flower.cpp" />
+    <ClCompile Include="Enemy_Monkey.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />

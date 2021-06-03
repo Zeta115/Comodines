@@ -16,6 +16,8 @@ enum class Enemy_Type
 	PASIVEPLANT,
 	BLUE_MACHINE,
 	RABBIT,
+	MONKEY,
+	BANANA_BOSS,
 };
 
 struct EnemySpawnpoint
