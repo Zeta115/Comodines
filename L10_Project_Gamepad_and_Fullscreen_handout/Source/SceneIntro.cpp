@@ -53,31 +53,7 @@ UpdateResult SceneIntro::PostUpdate()
 		App->render->DrawTexture(bgTexture, 0, 0, NULL);
 		App->player->destroyed = false;
 		App->player->win = false;
-		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
-			sceneCount++;
-		}
 	}
-
-	/*sceneCount == 0;
-	cout << sceneCount << endl;
-
-	if (sceneCount == 0)
-	{
-		App->render->DrawTexture(logoTexture, 0, 0, NULL);
-		App->player->destroyed = false;
-		App->player->win = false;
-
-		if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN) {
-			sceneCount++;
-			cout << sceneCount << endl;
-		}
-	}
-
-	if (sceneCount == 1)
-	{
-		App->render->DrawTexture(bgTexture, 0, 15, NULL);
-	}*/
-
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
