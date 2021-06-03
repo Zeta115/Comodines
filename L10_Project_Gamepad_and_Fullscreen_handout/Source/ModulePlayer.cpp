@@ -178,7 +178,8 @@ UpdateResult ModulePlayer::Update()
 
 	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN) || (pad.x))
 	{
-
+		App->particles->bom.position.x = position.x;
+		App->particles->bom.position.y = position.y+6;
 		if (BombUp == true)
 		{
 		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
