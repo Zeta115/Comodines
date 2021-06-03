@@ -93,6 +93,9 @@ bool SceneLevelBoss::Start()
 	App->collisions->AddCollider({ 200, 175, 16, 16 }, Collider::Type::WALL);//6
 
 	// Enemies ---
+	App->enemies->AddEnemy(Enemy_Type::BANANA_BOSS, 156, 192);
+
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 

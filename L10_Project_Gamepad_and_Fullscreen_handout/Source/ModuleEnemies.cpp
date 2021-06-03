@@ -37,9 +37,6 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	texture = App->textures->Load("Assets/enemies/enemies.png");
-	texture = App->Monkey->Load("Assets/Boss/Monkey.png");
-	texture = App->Monkey_Dead->Load("Assets/Boss/Monkey_Dead.png");
-	texture = App->Banana->Load("Assets/Boss/Banana.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	return true;
@@ -210,6 +207,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case Enemy_Type::MONKEY:
 					enemies[i] = new Enemy_Monkey(info.x, info.y);
+					break;
+				case Enemy_Type::BANANA_BOSS:
+					enemies[i] = new Enemy_Boss_Banana(info.x, info.y);
 					break;
 			}
 			enemies[i]->texture = texture;

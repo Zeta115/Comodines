@@ -1,5 +1,5 @@
-#ifndef __ENEMY_REDBIRD_H__
-#define __ENEMY_REDBIRD_H__
+#ifndef __ENEMY_BROWNROBOT_H__
+#define __ENEMY_BROWNROBOT_H__
 
 #include "Enemy.h"
 #include "Path.h"
@@ -44,4 +44,4 @@ private:
 	Animation Death;
 };
 
-#endif // __ENEMY_REDBIRD_H__
+#endif // __ENEMY_BROWNROBOT_H__

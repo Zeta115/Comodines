@@ -51,9 +51,7 @@ public:
 	ModuleWindow* window = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
-	ModuleTextures* Banana = nullptr;
-	ModuleTextures* Monkey = nullptr;
-	ModuleTextures* Monkey_Dead = nullptr;
+
 	ModuleAudio* audio = nullptr;
 
 	ModulePlayer* player = nullptr;
