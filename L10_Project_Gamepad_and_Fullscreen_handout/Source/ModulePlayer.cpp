@@ -179,7 +179,7 @@ UpdateResult ModulePlayer::Update()
 	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN) || (pad.x))
 	{
 		App->particles->bom.position.x = position.x;
-		App->particles->bom.position.y = position.y+6;
+		App->particles->bom.position.y = position.y;
 		if (BombUp == true)
 		{
 		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
@@ -243,13 +243,6 @@ UpdateResult ModulePlayer::Update()
 	{
 		lifes = 0;
 		App->audio->PlayFx(deadFx);
-	}
-
-	//reset position
-	if (App->input->keys[SDL_SCANCODE_F5] == KeyState::KEY_DOWN)
-	{
-		position.x = 25;
-		position.y = 64;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KeyState::KEY_DOWN) {
@@ -441,14 +434,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					}
 				}
 			}
-			if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::BOMB)
-			{
-				score += 23;
-			}
-			if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::ENEMY)
-			{
-				score += 23;
-			}
+			
 		}
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::MACHINE)
 		{

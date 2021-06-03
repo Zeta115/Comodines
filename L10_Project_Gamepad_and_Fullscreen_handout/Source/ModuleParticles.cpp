@@ -5,7 +5,8 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
-
+#include "ModulePlayer.h"
+#include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
 
 ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
@@ -141,6 +142,12 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			//particles[i]->collider->pendingToDelete = true;
 			break;
 		}
+	}
+	// Here we delete enemies as they touch the fire
+
+	if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::ENEMY)
+	{
+		App->textures->Disable();
 	}
 }
 
