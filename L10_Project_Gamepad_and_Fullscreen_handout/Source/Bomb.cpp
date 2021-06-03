@@ -6,7 +6,7 @@
 Bomb::Bomb(int x, int y) : Enemy(x, y)
 {
 	
-	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::BOMB, (Module*)App->enemies);
 }
 
 void Bomb::Update()

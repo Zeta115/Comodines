@@ -179,36 +179,45 @@ UpdateResult ModulePlayer::Update()
 	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN) || (pad.x))
 	{
 
-		if (App->particles->bom.isAlive == true)
+		if (BombUp == true)
 		{
 		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
 		App->audio->PlayFx(placeFx);
-		App->particles->bom.isAlive = false;
+		BombUp = false;
+		ExplosionUp = true;
 		}
 		
-		if (App->particles->bom.isAlive == false) //ara no entra aqui
-		{
-			//center
-			App->particles->AddParticle(App->particles->explosion, position.x, position.y + 6, Collider::Type::FIRE);
-			//up
-			App->particles->AddParticle(App->particles->explosion_up_2, position.x, position.y + -10, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_up_1, position.x, position.y + -26, Collider::Type::FIRE);
-			//down
-			App->particles->AddParticle(App->particles->explosion_down_2, position.x, position.y + 22, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_down_1, position.x, position.y + 38, Collider::Type::FIRE);
-			//right
-			App->particles->AddParticle(App->particles->explosion_right_2, position.x + 16, position.y + 6, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_right_1, position.x + 32, position.y + 6, Collider::Type::FIRE);
-			//left
-			App->particles->AddParticle(App->particles->explosion_left_2, position.x + -16, position.y + 6, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_left_1, position.x + -32, position.y + 6, Collider::Type::FIRE);
-			App->audio->PlayFx(blastFx);
-			App->input->ShakeController(0, 60, 1.0f);
-			App->particles->bom.isAlive = true;
-		}
-		score += 1000;
 	}
-
+	if (ExplosionUp == true) {
+		if (timerE <= 100) {
+			timerE++;
+		}
+		if (timerE >= 100) {
+			timerE = 0;
+			App->particles->bom.isAlive = false;
+			ExplosionUp = false;
+		}
+	}
+	if (App->particles->bom.isAlive == false) //ara no entra aqui
+	{
+		//center
+		App->particles->AddParticle(App->particles->explosion, App->particles->bom.position.x, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+		//up
+		App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRE);
+		App->particles->AddParticle(App->particles->explosion_up_1, App->particles->bom.position.x, App->particles->bom.position.y + -26, Collider::Type::FIRE);
+		//down
+		App->particles->AddParticle(App->particles->explosion_down_2, App->particles->bom.position.x, App->particles->bom.position.y + 22, Collider::Type::FIRE);
+		App->particles->AddParticle(App->particles->explosion_down_1, App->particles->bom.position.x, App->particles->bom.position.y + 38, Collider::Type::FIRE);
+		//right
+		App->particles->AddParticle(App->particles->explosion_right_2, App->particles->bom.position.x + 16, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+		App->particles->AddParticle(App->particles->explosion_right_1, App->particles->bom.position.x + 32, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+		//left
+		App->particles->AddParticle(App->particles->explosion_left_2, App->particles->bom.position.x + -16, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+		App->particles->AddParticle(App->particles->explosion_left_1, App->particles->bom.position.x + -32, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+		App->audio->PlayFx(blastFx);
+		App->input->ShakeController(0, 60, 1.0f);
+		App->particles->bom.isAlive = true;
+	}
 
 	//Debbug Keys
 	
@@ -283,6 +292,16 @@ UpdateResult ModulePlayer::Update()
 		currentAnimation = &deadAnim;
 		destroyed = true;
 	}
+	if (BombUp == false) {
+		if (timerB < 150) {
+			timerB++;
+		}
+		if (timerB == 150) {
+			timerB = 0;
+			BombUp = true;
+		}
+	}
+
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
@@ -421,7 +440,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					}
 				}
 			}
-			if (c1->type == Collider::Type::BOMB && c2->type == Collider::Type::ENEMY)
+			if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::BOMB)
 			{
 				score += 23;
 			}
