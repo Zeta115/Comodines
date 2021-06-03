@@ -19,6 +19,7 @@
 #include "Enemy_Conill.h"
 #include "Enemy_Monkey.h"
 #include "Enemy_Boss_Banana.h"
+#include "Enemy_Boss_Monkey.h"
 
 #define SPAWN_MARGIN 50
 

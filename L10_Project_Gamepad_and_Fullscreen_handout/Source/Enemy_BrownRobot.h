@@ -1,5 +1,5 @@
 #ifndef __ENEMY_BROWNROBOT_H__
-#define __ENEMY_BOSS_MONKEY_H__
+#define __ENEMY_BROWNROBOT_H__
 
 #include "Enemy.h"
 #include "Path.h"
