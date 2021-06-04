@@ -165,10 +165,10 @@ UpdateResult SceneLevel2::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_Boss, 90);
 	}
 
-	/*if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
-	}*/
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+	}
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
