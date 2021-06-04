@@ -11,10 +11,17 @@ public:
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
 	Enemy_Cargol(int x, int y);
+
+	//destructor
+	~Enemy_Cargol();
+
+	void OnCollision(Collider* c1, Collider* c2);
 	Collider* collider = nullptr;
+
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
-
+	void SetToDelete();
+	
 
 private:
 	// The position (as ratio) in the wave at a specific moment
@@ -22,6 +29,10 @@ private:
 	bool up = false;
 	bool down = true;
 	float speed = 0.25f;
+
+	bool destroyed = false;
+	bool pendingToDelete = false;
+	bool death = false;
 	// The original spawning position. The wave will be calculated from that
 	int spawn_y = 0;
 

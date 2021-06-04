@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "Enemy_Cargol.h"
 
 Enemy::Enemy(int x, int y) : position(x, y)
 {
@@ -44,6 +45,7 @@ void Enemy::OnCollision(Collider* collider)
 
 	SetToDelete();
 }
+
 
 void Enemy::SetToDelete()
 {
