@@ -84,6 +84,7 @@ public:
 	bool powerTouch = false;
 	bool BombUp = true;
 	bool death = false;
+	bool stop = false;
 	// Sound effects indices
 	uint blastFx = 0;
 	uint placeFx = 0;
