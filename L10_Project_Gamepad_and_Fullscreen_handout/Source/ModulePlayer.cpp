@@ -56,8 +56,8 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	deadAnim.PushBack({ 50, 50, 19, 20 });
 	deadAnim.PushBack({ 70, 51, 21, 19 });
 	deadAnim.PushBack({ 92, 49, 22, 21 });
-	deadAnim.loop = true;
-	deadAnim.speed = 0.035f;
+	deadAnim.loop = false;
+	deadAnim.speed = 0.07f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -70,7 +70,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
-
+	deadAnim.Reset();
 	currentAnimation = &idleAnim;
 
 	player = App->textures->Load("Assets/bomberman/Bomberman.png");
