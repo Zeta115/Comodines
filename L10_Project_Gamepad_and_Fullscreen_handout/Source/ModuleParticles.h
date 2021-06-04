@@ -69,6 +69,9 @@ public:
 	Particle bom;
 	Particle dead;
 
+	bool ExplosionUp = false;
+	int timerE;
+
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* bomb_texture = nullptr;

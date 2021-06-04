@@ -9,6 +9,7 @@
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
+#include "ModuleInput.h"
 
 ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
 {
@@ -26,7 +27,7 @@ bool ModuleParticles::Start()
 	bomb_texture = App->textures->Load("Assets/SpecialElements/Bomb.png");
 
 	// Explosion particle
-	bom.anim.PushBack({ 2, 227, 16, 16 });
+	bom.anim.PushBack({ 2, 227, 16, 16 }); //BOMB COL
 	bom.anim.PushBack({ 18, 226, 16, 16 });
 	bom.anim.PushBack({ 35, 226, 16, 16 });
 	bom.speed.x = 0;
@@ -34,7 +35,7 @@ bool ModuleParticles::Start()
 	bom.anim.speed = 0.07f;
 	bom.anim.loop = true;
 
-	explosion.anim.PushBack({ 2, 2, 16,16 });
+	explosion.anim.PushBack({ 2, 2, 16,16 }); //FIRE COL
 	explosion.anim.PushBack({ 3, 76, 16,16 });
 	explosion.anim.PushBack({ 2, 150, 16,16 });
 	explosion.anim.loop = false;
@@ -134,27 +135,82 @@ bool ModuleParticles::CleanUp()
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
+	
+
+	if (ExplosionUp == true) {
+
+		if (timerE <= 100) {
+			timerE++;
+		}
+
+		if (timerE >= 100) {
+			
+			App->particles->bom.isAlive = false;
+			ExplosionUp = false;
+			timerE = 0;
+		}
+	}
+
+	if (c1->type == Collider::Type::FIRE != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIRE != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+		{
+			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRE);
+		}
 		// Always destroy particles that collide
-		if (particles[i] != nullptr && particles[i]->collider == c1)
+		/*if (particles[i] != nullptr && particles[i]->collider == c1)
 		{
 		//	particles[i]->pendingToDelete = true;
 			//particles[i]->collider->pendingToDelete = true;
 			break;
-		}
-	}
+		}*/
+	/*for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		
+	}*/
 	// Here we delete enemies as they touch the fire
 
-	if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::ENEMY)
+	/*if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::ENEMY)
 	{
 		App->textures->Disable();
-	}
+	}*/
 
 }
 
 UpdateResult ModuleParticles::Update()
 {
+	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)) //|| (pad.x))
+	{
+		App->particles->bom.position.x = App->player->position.x;
+		App->particles->bom.position.y = App->player->position.y;
+
+		if (App->player->BombUp == true)
+		{
+			App->particles->AddParticle(App->particles->bom, App->particles->bom.position.x, App->particles->bom.position.y + 6, Collider::Type::BOMB);
+			App->audio->PlayFx(App->player->placeFx);
+			App->player->BombUp = false;
+			ExplosionUp = true;
+		}
+		
+	}
+	if (App->particles->bom.isAlive == false) //ara no entra aqui
+		{
+			//center
+			App->particles->AddParticle(App->particles->explosion, App->particles->bom.position.x, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+			//up
+		/*	App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_up_1, App->particles->bom.position.x, App->particles->bom.position.y + -26, Collider::Type::FIRE);
+			//down
+			App->particles->AddParticle(App->particles->explosion_down_2, App->particles->bom.position.x, App->particles->bom.position.y + 22, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_down_1, App->particles->bom.position.x, App->particles->bom.position.y + 38, Collider::Type::FIRE);
+			//right
+			App->particles->AddParticle(App->particles->explosion_right_2, App->particles->bom.position.x + 16, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_right_1, App->particles->bom.position.x + 32, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+			//left
+			App->particles->AddParticle(App->particles->explosion_left_2, App->particles->bom.position.x + -16, App->particles->bom.position.y + 6, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_left_1, App->particles->bom.position.x + -32, App->particles->bom.position.y + 6, Collider::Type::FIRE);*/
+			App->audio->PlayFx(App->player->blastFx);
+			App->input->ShakeController(0, 60, 1.0f);
+			App->particles->bom.isAlive = true;
+		}
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		Particle* particle = particles[i];

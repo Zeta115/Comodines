@@ -186,12 +186,6 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::BROWNROBOT:
 					enemies[i] = new Enemy_BrownRobot(info.x, info.y);
 					break;
-				case Enemy_Type::BOMB:
-					enemies[i] = new Bomb(info.x, info.y);
-					break;
-				case Enemy_Type::FIRE:
-					enemies[i] = new Bomb(info.x, info.y);
-					break;
 				case Enemy_Type::CARGOL:
 					enemies[i] = new Enemy_Cargol(info.x, info.y);
 					break;

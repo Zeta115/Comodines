@@ -83,7 +83,6 @@ public:
 	bool powerActive = true;
 	bool powerTouch = false;
 	bool BombUp = true;
-	bool ExplosionUp = false;
 	bool death = false;
 	// Sound effects indices
 	uint blastFx = 0;
