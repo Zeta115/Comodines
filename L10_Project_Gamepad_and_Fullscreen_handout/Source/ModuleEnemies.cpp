@@ -201,6 +201,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::BLUE_MACHINE:
 					enemies[i] = new Win_Blue_Machine(info.x, info.y);
 					break;
+				case Enemy_Type::BLUE_MACHINE2:
+					enemies[i] = new Win_Blue_Machine(info.x, info.y);
+					break;
 				case Enemy_Type::RABBIT:
 					enemies[i] = new Enemy_Conill(info.x, info.y);
 					break;
