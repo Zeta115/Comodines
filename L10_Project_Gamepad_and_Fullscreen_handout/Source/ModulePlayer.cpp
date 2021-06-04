@@ -88,6 +88,7 @@ bool ModulePlayer::Start()
 	// L10: DONE 4: Retrieve the player when playing a second time
 	destroyed = false;
 	win = false;
+	stop = false;
 
 	// L6: DONE 3: Add a collider to the player
 	collider = App->collisions->AddCollider({ (int)position.x, (int)position.y + 7, 15, 15 }, Collider::Type::PLAYER, this);
@@ -95,7 +96,6 @@ bool ModulePlayer::Start()
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
 	score = 0;
-	lifes = 3;
 	timerS = 60;
 	timerM = 4;
 	comodin = 0;
@@ -134,7 +134,7 @@ UpdateResult ModulePlayer::Update()
 
 	//if ((pad->left_x<0.0f) || (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT))
 
-	if ((App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT) || (pad.left))
+	if ((App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT && stop == false) || (pad.left && stop == false))
 	{
 		position.x -= speed;
 		if (currentAnimation != &rightAnim)
@@ -144,7 +144,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT) || (pad.right))
+	if ((App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT && stop == false) || (pad.right && stop == false))
 	{
 		position.x += speed;
 		if (currentAnimation != &leftAnim)
@@ -154,7 +154,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT) || (pad.down))
+	if ((App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT && stop == false) || (pad.down && stop == false))
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -164,7 +164,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT) || (pad.up))
+	if ((App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT && stop == false) || (pad.up && stop == false))
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -178,7 +178,7 @@ UpdateResult ModulePlayer::Update()
 	//Debbug Keys
 	
 	//godmode
-	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_F1] == KeyState::KEY_DOWN ) {
 		godmode = !godmode;
 	}
 
@@ -239,7 +239,7 @@ UpdateResult ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE) {
-		if (lifes > 2)
+		if (lifes > 0 && stop == false)
 		{
 			currentAnimation = &idleAnim;
 		}
@@ -408,6 +408,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					{
 						death = true;
 						App->audio->PlayFx(deadFx);
+						stop = true;
 						lifes--;
 					}
 				
