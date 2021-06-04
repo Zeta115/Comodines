@@ -1,6 +1,7 @@
 #include "ModuleEnemies.h"
 
 #include "Application.h"
+#include "ModuleInput.h"
 
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
@@ -221,6 +222,8 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		}
 	}
 }
+
+
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {

@@ -237,6 +237,32 @@ UpdateResult ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
 
+
+	//spawn enemy robot
+	if (App->input->keys[SDL_SCANCODE_F9] == KeyState::KEY_DOWN)
+		App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 53, 155);
+
+	//spawn enemy rabbit
+	if (App->input->keys[SDL_SCANCODE_F10] == KeyState::KEY_DOWN)
+		App->enemies->AddEnemy(Enemy_Type::RABBIT, 150, 200);
+
+	//spawn enemy snail
+	if (App->input->keys[SDL_SCANCODE_F11] == KeyState::KEY_DOWN)
+		App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
+
+	//spawn powerup bomb+1
+	if (App->input->keys[SDL_SCANCODE_F6] == KeyState::KEY_DOWN)
+
+
+	//spawn powerUp ?
+	if (App->input->keys[SDL_SCANCODE_F7] == KeyState::KEY_DOWN)
+
+
+	//spawn powerUp invincible
+	if (App->input->keys[SDL_SCANCODE_F8] == KeyState::KEY_DOWN)
+
+
+
 	//insta win
 	if (App->input->keys[SDL_SCANCODE_F3] == KeyState::KEY_REPEAT)
 	{
@@ -251,9 +277,13 @@ UpdateResult ModulePlayer::Update()
 		App->audio->PlayFx(deadFx);
 	}
 
+	//close game
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KeyState::KEY_DOWN) {
 		return UpdateResult::UPDATE_STOP;
 	}
+
+
+
 	
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
