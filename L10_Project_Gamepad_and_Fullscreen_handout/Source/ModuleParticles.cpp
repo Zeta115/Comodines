@@ -136,14 +136,15 @@ bool ModuleParticles::CleanUp()
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
 	
-
-	if (ExplosionUp == true) {
+	if (ExplosionUp == true)
+	{
 
 		if (timerE <= 100) {
 			timerE++;
 		}
 
-		if (timerE >= 100) {
+		if (timerE >= 100)
+		{
 			
 			App->particles->bom.isAlive = false;
 			ExplosionUp = false;
@@ -151,10 +152,51 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 
-	if (c1->type == Collider::Type::FIRE != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIRE != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+	if (c1->type == Collider::Type::FIREUP2 != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIREUP2 != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
 		{
-			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRE);
+			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIREUP2);
+			
+			if (c1->type == Collider::Type::FIREUP1 != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIREUP1!= c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+			{
+				App->particles->AddParticle(App->particles->explosion_up_1, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIREUP1);
+			}
 		}
+
+	if (c1->type == Collider::Type::FIREDOWN2 != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIREDOWN2 != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+	{
+		App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIREDOWN2);
+
+		if (c1->type == Collider::Type::FIREDOWN1 != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIREDOWN1 != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+		{
+			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIREDOWN1);
+		}
+	}
+
+	if (c1->type == Collider::Type::FIRERIGHT2 != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIRERIGHT2 != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+	{
+		App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRERIGHT2);
+
+		if (c1->type == Collider::Type::FIRERIGHT1 != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIRERIGHT1 != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+		{
+			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRERIGHT1);
+		}
+	}
+
+	if (c1->type == Collider::Type::FIRELEFT1 != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIRELEFT1 != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+	{
+		App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRELEFT1);
+
+		if (c1->type == Collider::Type::FIRELEFT2 != c2->type == Collider::Type::WALL && App->particles->bom.isAlive == false || c1->type == Collider::Type::FIRELEFT2 != c2->type == Collider::Type::FLOWER && App->particles->bom.isAlive == false)
+		{
+			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRELEFT2);
+		}
+	}
+
+
+
+
+
+
 		// Always destroy particles that collide
 		/*if (particles[i] != nullptr && particles[i]->collider == c1)
 		{
@@ -195,18 +237,6 @@ UpdateResult ModuleParticles::Update()
 		{
 			//center
 			App->particles->AddParticle(App->particles->explosion, App->particles->bom.position.x, App->particles->bom.position.y + 6, Collider::Type::FIRE);
-			//up
-		/*	App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_up_1, App->particles->bom.position.x, App->particles->bom.position.y + -26, Collider::Type::FIRE);
-			//down
-			App->particles->AddParticle(App->particles->explosion_down_2, App->particles->bom.position.x, App->particles->bom.position.y + 22, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_down_1, App->particles->bom.position.x, App->particles->bom.position.y + 38, Collider::Type::FIRE);
-			//right
-			App->particles->AddParticle(App->particles->explosion_right_2, App->particles->bom.position.x + 16, App->particles->bom.position.y + 6, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_right_1, App->particles->bom.position.x + 32, App->particles->bom.position.y + 6, Collider::Type::FIRE);
-			//left
-			App->particles->AddParticle(App->particles->explosion_left_2, App->particles->bom.position.x + -16, App->particles->bom.position.y + 6, Collider::Type::FIRE);
-			App->particles->AddParticle(App->particles->explosion_left_1, App->particles->bom.position.x + -32, App->particles->bom.position.y + 6, Collider::Type::FIRE);*/
 			App->audio->PlayFx(App->player->blastFx);
 			App->input->ShakeController(0, 60, 1.0f);
 			App->particles->bom.isAlive = true;

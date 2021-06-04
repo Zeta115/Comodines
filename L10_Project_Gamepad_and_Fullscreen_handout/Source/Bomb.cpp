@@ -1,4 +1,4 @@
-#include "Bomb.h"
+/*#include "Bomb.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
@@ -18,3 +18,4 @@ void Bomb::Update()
 	// It will update the collider depending on the position
 	Enemy::Update();
 }
+*/
