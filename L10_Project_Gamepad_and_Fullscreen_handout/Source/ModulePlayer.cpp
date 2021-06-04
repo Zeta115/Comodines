@@ -50,12 +50,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.1f;
 
 	// Dead
-	deadAnim.PushBack({ 2, 51, 15, 20 });
-	deadAnim.PushBack({ 19, 51, 13, 19 });
-	deadAnim.PushBack({ 33, 51, 19, 20 });
-	deadAnim.PushBack({ 51, 51, 21, 19 });
-	deadAnim.PushBack({ 71, 51, 21, 19 });
-	deadAnim.PushBack({ 93, 50, 22, 21 });
+	deadAnim.PushBack({ 2, 50, 15, 20 });
+	deadAnim.PushBack({ 18, 50, 13, 19 });
+	deadAnim.PushBack({ 32, 51, 17, 18 });
+	deadAnim.PushBack({ 50, 50, 19, 20 });
+	deadAnim.PushBack({ 70, 51, 21, 19 });
+	deadAnim.PushBack({ 92, 49, 22, 21 });
 	deadAnim.loop = true;
 	deadAnim.speed = 0.035f;
 }
