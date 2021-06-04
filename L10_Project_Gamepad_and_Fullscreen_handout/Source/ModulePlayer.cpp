@@ -180,25 +180,31 @@ UpdateResult ModulePlayer::Update()
 	{
 		App->particles->bom.position.x = position.x;
 		App->particles->bom.position.y = position.y;
+
 		if (BombUp == true)
 		{
-		App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
-		App->audio->PlayFx(placeFx);
-		BombUp = false;
-		ExplosionUp = true;
+			App->particles->AddParticle(App->particles->bom, position.x, position.y + 6, Collider::Type::BOMB);
+			App->audio->PlayFx(placeFx);
+			BombUp = false;
+			ExplosionUp = true;
 		}
 		
 	}
 	if (ExplosionUp == true) {
+
+		App->input->ShakeController(0, 60, 1.0f);
+
 		if (timerE <= 100) {
 			timerE++;
 		}
+
 		if (timerE >= 100) {
 			timerE = 0;
 			App->particles->bom.isAlive = false;
 			ExplosionUp = false;
 		}
 	}
+
 	if (App->particles->bom.isAlive == false) //ara no entra aqui
 	{
 		//center

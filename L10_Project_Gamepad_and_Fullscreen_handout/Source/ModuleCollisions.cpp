@@ -17,11 +17,9 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::WALL][Collider::Type::BOMB] = true;
 	matrix[Collider::Type::WALL][Collider::Type::FIRE] = true;
-
-
-	
+		
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
-	//matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::BOMB] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::FIRE] = true;
@@ -43,7 +41,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FLOWER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::MACHINE][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::POWERUP][Collider::Type::PLAYER] = true;
-	
+
+
 
 	
 
@@ -134,23 +133,24 @@ void ModuleCollisions::DebugDraw()
 				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 255, alpha });
 			break;
 			case Collider::Type::WALL: // blue
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });
+				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });
 			break;
 			case Collider::Type::PLAYER: // green
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 0, alpha });
+				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 0, alpha });
 			break;
 			case Collider::Type::ENEMY: // red
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 0, 0, alpha });
+				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 0, 0, alpha });
 			break;
 			case Collider::Type::BOMB: // yellow
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 0, alpha });
+				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 0, alpha });
 			break;
-			case Collider::Type::FIRE: // magenta
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
-			break;
-			case Collider::Type::FLOWER: // magenta
+				case Collider::Type::FIRE: 
 				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
-				break;
+			break;
+			case Collider::Type::FLOWER: // grey
+				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 167, 161, 147, alpha });
+			break;
+
 		}
 	}
 }
