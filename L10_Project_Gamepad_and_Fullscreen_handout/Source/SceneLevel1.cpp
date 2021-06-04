@@ -193,13 +193,12 @@ UpdateResult SceneLevel1::PostUpdate()
 
 	if (App->player->destroyed == true)
 	{
-
-		App->render->DrawTexture(loseScreen, -20, 0, NULL);
+		App->fade->FadeToBlack(this, (Module*)App->sceneDeath, 160);
 	}
 
 	if (App->player->win == true)
 	{
-		App->render->DrawTexture(winScreen, -10, 0, NULL);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
 	}
 	return UpdateResult::UPDATE_CONTINUE;
 }

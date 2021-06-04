@@ -56,8 +56,8 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	deadAnim.PushBack({ 51, 51, 21, 19 });
 	deadAnim.PushBack({ 71, 51, 21, 19 });
 	deadAnim.PushBack({ 93, 50, 22, 21 });
-	deadAnim.loop = false;
-	deadAnim.speed = 0.05f;
+	deadAnim.loop = true;
+	deadAnim.speed = 0.035f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -266,7 +266,6 @@ UpdateResult ModulePlayer::Update()
 	
 	if (death == true)
 	{
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_1, 160);
 			currentAnimation = &deadAnim;
 			destroyed = true;
 			death = false;

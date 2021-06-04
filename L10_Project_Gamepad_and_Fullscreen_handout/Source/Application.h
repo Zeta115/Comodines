@@ -5,7 +5,7 @@
 #include "SceneLevel2.h"
 #include "SceneLevelBoss.h"
 
-#define NUM_MODULES 16
+#define NUM_MODULES 17
 
 class Module;
 class ModuleWindow;
@@ -15,6 +15,7 @@ class ModuleAudio;
 class ModulePlayer;
 class SceneLogo;
 class SceneIntro;
+class SceneDeath;
 class SceneLevel1;
 class ModuleParticles;
 class ModuleCollisions;
@@ -58,6 +59,7 @@ public:
 
 	SceneLogo* sceneLogo = nullptr;
 	SceneIntro* sceneIntro = nullptr;
+	SceneDeath* sceneDeath = nullptr;
 	SceneLevel1* sceneLevel_1 = nullptr;
 	SceneLevel2* sceneLevel_2 = nullptr;
 	SceneLevelBoss* sceneLevel_Boss = nullptr;

@@ -9,6 +9,7 @@
 #include "SceneLogo.h"
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
+#include "SceneDeath.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -28,18 +29,19 @@ Application::Application()
 	modules[3] =	audio =			new ModuleAudio(true);
 
 	modules[4] =	sceneLogo =		new SceneLogo(true);              // Escena de logos i animació
-	modules[5] =	sceneIntro =	new SceneIntro(false);			  // Escena menú principal
-	modules[6] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
-	modules[7] =	sceneLevel_2 =  new SceneLevel2(false);
-	modules[8] =	sceneLevel_Boss = new SceneLevelBoss(false);
-	modules[9] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[10] =	particles =		new ModuleParticles(true);
-	modules[11] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[5] =	sceneIntro =	new SceneIntro(false);			// Escena menú principal
+	modules[6] =	sceneDeath =	new SceneDeath(false);
+	modules[7] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
+	modules[8] =	sceneLevel_2 =  new SceneLevel2(false);
+	modules[9] =	sceneLevel_Boss = new SceneLevelBoss(false);
+	modules[10] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[11] =	particles =		new ModuleParticles(true);
+	modules[12] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[12] =	collisions =	new ModuleCollisions(true);
-	modules[13] =	fade =			new ModuleFadeToBlack(true);
-	modules[14] =	fonts =			new ModuleFonts(true);
-	modules[15] =	render =		new ModuleRender(true);
+	modules[13] =	collisions =	new ModuleCollisions(true);
+	modules[14] =	fade =			new ModuleFadeToBlack(true);
+	modules[15] =	fonts =			new ModuleFonts(true);
+	modules[16] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()
