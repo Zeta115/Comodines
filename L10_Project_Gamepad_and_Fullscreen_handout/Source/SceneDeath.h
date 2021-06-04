@@ -23,6 +23,11 @@ public:
 	// Updates the scene's background animations
 	UpdateResult Update() override;
 
+	SDL_Texture* gameOver = nullptr;
+	SDL_Rect BackGround;
+	SDL_Rect GameOverImg;
+
+	Animation GameOver;
 	// Called at the end of the application loop.
 	// Performs the render call of all the parts of the scene's background
 	UpdateResult PostUpdate() override;
