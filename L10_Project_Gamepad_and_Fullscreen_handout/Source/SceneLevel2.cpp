@@ -141,10 +141,12 @@ bool SceneLevel2::Start()
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 156, 192);
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::RABBIT, 150, 200);
-	App->enemies->AddEnemy(Enemy_Type::CARGOL, 182, 114);
-	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 182, 114);
-	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 53, 155);
+	App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
+	App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
+	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 89, 87);
+	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2 ,153, 119);
+	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 54, 82);
+	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT2, 160, 130);
 
 
 	App->render->camera.x = 0;
@@ -154,6 +156,9 @@ bool SceneLevel2::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
+
+	App->player->position.x = 120;
+	App->player->position.y = 24;
 
 	return ret;
 }

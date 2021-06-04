@@ -104,6 +104,9 @@ bool SceneLevelBoss::Start()
 	App->enemies->Enable();
 	App->collisions->Enable();
 
+	App->player->position.x = 120;
+	App->player->position.y = 143;
+
 	return ret;
 }
 

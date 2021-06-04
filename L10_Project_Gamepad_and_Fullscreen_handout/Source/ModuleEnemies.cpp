@@ -186,6 +186,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::BROWNROBOT:
 					enemies[i] = new Enemy_BrownRobot(info.x, info.y);
 					break;
+				case Enemy_Type::BROWNROBOT2:
+					enemies[i] = new Enemy_BrownRobot(info.x, info.y);
+					break;
 				case Enemy_Type::CARGOL:
 					enemies[i] = new Enemy_Cargol(info.x, info.y);
 					break;
@@ -201,7 +204,13 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::RABBIT:
 					enemies[i] = new Enemy_Conill(info.x, info.y);
 					break;
+				case Enemy_Type::RABBIT2:
+					enemies[i] = new Enemy_Conill(info.x, info.y);
+					break;
 				case Enemy_Type::MONKEY:
+					enemies[i] = new Enemy_Monkey(info.x, info.y);
+					break;
+				case Enemy_Type::MONKEY2:
 					enemies[i] = new Enemy_Monkey(info.x, info.y);
 					break;
 				case Enemy_Type::BANANA_BOSS:
