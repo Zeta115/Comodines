@@ -6,6 +6,9 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleFonts.h"
+
+#include <stdio.h>
 
 
 SceneDeath::SceneDeath(bool startEnabled) : Module(startEnabled)
@@ -29,9 +32,12 @@ bool SceneDeath::Start()
 	BackGround = { 256, 0, 256, 224 };
 	GameOverImg = { 0, 0, 256, 224 };
 	App->audio->PlayMusic("Assets/Audio/music/game_over.ogg", 1.0f);
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	scoreFontDeath = App->fonts->Load("Assets/Fonts/rtype_font.png", lookupTable, 1);
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 	return ret;
+	
 }
 
 UpdateResult SceneDeath::Update()
@@ -57,6 +63,7 @@ UpdateResult SceneDeath::PostUpdate()
 		App->player->destroyed = false;
 		App->player->win = false;
 	}
-
+	sprintf_s(App->player->scoreText, 100, "%7d", App->player->score);
+	App->fonts->DrawText(75, 155, scoreFontDeath, App->player->scoreText);
 	return UpdateResult::UPDATE_CONTINUE;
 }

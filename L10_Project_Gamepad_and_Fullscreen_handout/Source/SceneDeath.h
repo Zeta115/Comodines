@@ -37,6 +37,7 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 
 	int sceneCount = 0;
+	int scoreFontDeath = -1;
 
 };
 

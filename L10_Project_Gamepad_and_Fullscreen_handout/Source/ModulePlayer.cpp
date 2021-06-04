@@ -410,6 +410,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 						App->audio->PlayFx(deadFx);
 						stop = true;
 						lifes--;
+						score += 1000;
 					}
 				
 				}
