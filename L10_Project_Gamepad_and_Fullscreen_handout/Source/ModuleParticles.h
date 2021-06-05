@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "Particle.h"
 #include "Collider.h"
+#include "ModuleBomb.h"
 
 #define MAX_ACTIVE_PARTICLES 100
 
@@ -52,7 +53,6 @@ public:
 	// Param delay		- Delay time from the moment the function is called until the particle is displayed in screen
 	Particle* AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType = Collider::Type::NONE, uint delay = 0);
 
-public:
 	//Template particle for an explosion
 	Particle explosion;
 	Particle explosion_up_1;
@@ -69,8 +69,7 @@ public:
 	Particle bom;
 	Particle dead;
 
-	bool ExplosionUp = false;
-	int timerE;
+	
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
