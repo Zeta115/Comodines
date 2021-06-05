@@ -18,6 +18,7 @@ struct Collider
 		ENEMY,
 		BOMB,
 		FIRE,
+		INFIRE,
 		FLOWER,
 		DEAD,
 		MACHINE,

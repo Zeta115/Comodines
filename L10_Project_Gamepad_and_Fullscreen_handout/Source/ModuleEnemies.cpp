@@ -221,38 +221,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
-		{
-			switch (c2->type)
-			{
-			case Collider::Type::FIRE:
-				if (enemies[i]->death == false && enemies[i]->type != TypeEnemy::BROWNROBOT)
-				{
-					switch (enemies[i]->type)
-					{
-					case TypeEnemy::BROWNROBOT:
-						App->player->score += 400;
-						break;
-					/*case TypeEnemy::SNAIL:
-						App->player->score += 300;
-						break;
-					case TypeEnemy::GAS:
-						App->player->score += 500;
-						break;^*/
-					default:
-						break;
-					}
-					enemies[i]->death = true;
-				}
-				break;
-			default:
-				break;
-			}
-			break;
-		}
-	}
+
 }
 
 

@@ -23,12 +23,14 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::BOMB] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::FIRE] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::INFIRE] = true;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::BOMB] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::FIRE] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::INFIRE] = true;
 
 	matrix[Collider::Type::BOMB][Collider::Type::WALL] = true;
 	matrix[Collider::Type::BOMB][Collider::Type::PLAYER] = false;
@@ -45,6 +47,11 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::FIRE][Collider::Type::FLOWER] = true;
 	matrix[Collider::Type::FIRE][Collider::Type::WALL] = true;
+	matrix[Collider::Type::FIRE][Collider::Type::ENEMY] = true;
+
+	matrix[Collider::Type::INFIRE][Collider::Type::FLOWER] = true;
+	matrix[Collider::Type::INFIRE][Collider::Type::WALL] = true;
+	matrix[Collider::Type::INFIRE][Collider::Type::ENEMY] = true;
 
 }
 
@@ -139,11 +146,14 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::BOMB: // yellow
 				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 0, alpha });
 			break;
-				case Collider::Type::FIRE: 
+			case Collider::Type::FIRE: 
 				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
 			break;
 			case Collider::Type::FLOWER: // grey
 				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 167, 161, 147, alpha });
+			break;
+			case Collider::Type::INFIRE: 
+				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
 			break;
 
 		}

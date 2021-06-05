@@ -7,13 +7,6 @@
 struct SDL_Texture;
 struct Collider;
 
-enum TypeEnemy
-{
-	NONE = -1,
-	BROWNROBOT
-
-};
-
 class Enemy
 {
 public:
@@ -50,7 +43,6 @@ public:
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;
-	TypeEnemy type;
 
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;

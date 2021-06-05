@@ -136,9 +136,9 @@ bool ModuleParticles::CleanUp()
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
 	
-	if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::WALL)
+	if (c1->type == Collider::Type::INFIRE && c2->type == Collider::Type::ENEMY)
 	{
-		//c1->pendingToDelete = true;
+		App->player->score += 100;
 	}
 
 }

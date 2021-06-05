@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModulePlayer.h"
 
 
 #include <stdio.h>
@@ -41,6 +42,8 @@ bool ModuleBomb::Start()
 
 	CollideFireright1 = App->collisions->AddCollider({ App->particles->explosion_right_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
 	CollideFireright2 = App->collisions->AddCollider({ App->particles->explosion_right_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
+
+
 	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
 	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
 	
@@ -57,6 +60,7 @@ UpdateResult ModuleBomb::PreUpdate()
 
 UpdateResult ModuleBomb::Update()
 {
+
 	ColliderFireCenter->SetPos(App->particles->bom.position.x+ 1, App->particles->bom.position.y+6);//cc
 	ColliderFireup1->SetPos(App->particles->bom.position.x + 1, App->particles->bom.position.y -7);//c
 	ColliderFireup2->SetPos(App->particles->bom.position.x + 1, App->particles->bom.position.y -24);// e
@@ -128,8 +132,8 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 			FireUp1 = false;
 		}
 	}
-	
-	if (c1 == ColliderFireup2 && BombUp == false )
+
+	if (c1 == ColliderFireup2 && BombUp == false)
 	{
 		if (c2->type == Collider::Type::WALL)
 		{
@@ -210,8 +214,13 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireLeft2 = false;
 		}
+		
+	}
+	if (c1->type == Collider::Type::INFIRE && c2->type == Collider::Type::ENEMY) {
+		App->player->score += 100;
 	}
 }
+	
 
 void ModuleBomb::PutBomb()
 {
@@ -233,41 +242,41 @@ void ModuleBomb::DrawBomb()
 {
 	if (App->particles->bom.isAlive == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, App->particles->bom.position.x, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE);
+		App->particles->AddParticle(App->particles->explosion, App->particles->bom.position.x, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE);
 
 		if (FireUp1 == true)
 		{
-			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, { 0,0,12,12 }, Collider::Type::FIRE, 0);
+			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
 			if (FireUp2 == true)
 			{
-				App->particles->AddParticle(App->particles->explosion_up_1, App->particles->bom.position.x, App->particles->bom.position.y + -26, { 0,0,12,12 }, Collider::Type::FIRE, 0);
+				App->particles->AddParticle(App->particles->explosion_up_1, App->particles->bom.position.x, App->particles->bom.position.y + -26, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
 			}
 		}
 
 		if (FireDown1 == true)
 		{
-			App->particles->AddParticle(App->particles->explosion_down_2, App->particles->bom.position.x, App->particles->bom.position.y + 22, { 0,0,12,12 }, Collider::Type::FIRE, 0);
+			App->particles->AddParticle(App->particles->explosion_down_2, App->particles->bom.position.x, App->particles->bom.position.y + 22, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
 			if (FireDown2 == true)
 			{
-				App->particles->AddParticle(App->particles->explosion_down_1, App->particles->bom.position.x, App->particles->bom.position.y + 38, { 0,0,12,12 }, Collider::Type::FIRE, 0);
+				App->particles->AddParticle(App->particles->explosion_down_1, App->particles->bom.position.x, App->particles->bom.position.y + 38, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
 			}
 		}
 		
 		if (FireRight1 == true)
 		{
-			App->particles->AddParticle(App->particles->explosion_right_2, App->particles->bom.position.x+ + 16, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE, 0);
+			App->particles->AddParticle(App->particles->explosion_right_2, App->particles->bom.position.x+ + 16, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
 			if (FireRight2 == true)
 			{
-				App->particles->AddParticle(App->particles->explosion_right_1, App->particles->bom.position.x + 32, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE, 0);
+				App->particles->AddParticle(App->particles->explosion_right_1, App->particles->bom.position.x + 32, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
 			}
 		}
 		
 		if (FireLeft1 == true)
 		{
-			App->particles->AddParticle(App->particles->explosion_left_2, App->particles->bom.position.x + -16, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE, 0);
+			App->particles->AddParticle(App->particles->explosion_left_2, App->particles->bom.position.x + -16, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
 			if (FireLeft2 == true)
 			{
-				App->particles->AddParticle(App->particles->explosion_left_1, App->particles->bom.position.x + -32, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE, 0);
+				App->particles->AddParticle(App->particles->explosion_left_1, App->particles->bom.position.x + -32, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
 			}
 		}
 		App->audio->PlayFx(blastFx);
