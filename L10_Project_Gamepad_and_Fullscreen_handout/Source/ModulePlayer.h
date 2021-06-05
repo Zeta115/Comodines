@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Point.h"
+#include "ModuleBomb.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -82,12 +83,10 @@ public:
 	bool win = false;
 	bool powerActive = true;
 	bool powerTouch = false;
-	bool BombUp = true;
 	bool death = false;
 	bool stop = false;
 	// Sound effects indices
-	uint blastFx = 0;
-	uint placeFx = 0;
+
 	uint deadFx = 0;
 	uint winFx = 0;
 

@@ -85,9 +85,6 @@
     <ClInclude Include="Enemy_Flower.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Bomb.h">
-      <Filter>Source Files\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_BrownRobot.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
@@ -125,6 +122,9 @@
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
     <ClInclude Include="SceneDeath.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleBomb.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -192,9 +192,6 @@
     <ClCompile Include="Enemy_Flower.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Bomb.cpp">
-      <Filter>Source Files\Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_BrownRobot.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
@@ -232,6 +229,9 @@
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
     <ClCompile Include="SceneDeath.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleBomb.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>

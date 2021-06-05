@@ -11,6 +11,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
+#include "ModuleBomb.h"
+
 
 #include <stdio.h>
 #include <iostream>
@@ -74,9 +76,6 @@ bool ModulePlayer::Start()
 	currentAnimation = &idleAnim;
 
 	player = App->textures->Load("Assets/bomberman/Bomberman.png");
-	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
-	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
-	deadFx = App->audio->LoadFx("Assets/Audio/Fx/dead.wav");
 	winFx = App->audio->LoadFx("Assets/Audio/Fx/stage_clear.wav");
 	powerUpText = App->textures->Load("Assets/SpecialElements/Powerups.png");
 	//machineTraking = App->textures->Load("Assets/Hud/Machine_Traking.png");
@@ -172,6 +171,14 @@ UpdateResult ModulePlayer::Update()
 			upAnim.Reset();
 			currentAnimation = &upAnim;
 		}
+	}
+
+	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)) //|| (pad.x))
+	{
+		App->particles->bom.position.x = App->player->position.x;
+		App->particles->bom.position.y = App->player->position.y;
+		App->Placebomb->PutBomb();
+		App->Placebomb->DrawBomb();
 	}
 
 
@@ -270,15 +277,6 @@ UpdateResult ModulePlayer::Update()
 			currentAnimation = &deadAnim;
 			destroyed = true;
 			death = false;
-	}
-	if (BombUp == false) {
-		if (timerB < 150) {
-			timerB++;
-		}
-		if (timerB == 150) {
-			timerB = 0;
-			BombUp = true;
-		}
 	}
 
 	return UpdateResult::UPDATE_CONTINUE;
