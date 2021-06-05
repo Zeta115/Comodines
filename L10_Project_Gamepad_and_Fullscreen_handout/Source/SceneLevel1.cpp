@@ -173,13 +173,15 @@ bool SceneLevel1::Start()
 
 UpdateResult SceneLevel1::Update()
 {
+	
 	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
 	}
 	if (App->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
 	{
-		machines1--;
+		machine1--;
+		machine2--;
 	}
 	/*if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
 	{
@@ -197,23 +199,29 @@ UpdateResult SceneLevel1::PostUpdate()
 	App->render->DrawTexture(decoration, 0, 15, NULL);
 	App->render->DrawTexture(hud, 0, 0, NULL);   
 	App->render->DrawTexture(machineTexture, 104, 64, NULL);
-	if (machines1 <= 1)
+	
+
+	if (machine2 <= 0)
+	{
+		App->render->DrawTexture(machineTracking, 64, 8, NULL);
+	}
+	if (machine1 <= 0)
 	{
 		App->render->DrawTexture(machineTracking, 56, 8, NULL);
 	}
-	if (machines1 <= 0)
-	{
-		App->render->DrawTexture(machineTracking, 64, 8, NULL);
-		machines1 = 0;
-	}
 	if (App->player->destroyed == true)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneDeath, 160);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 160);
 	}
 
 	if (App->player->win == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
+	}
+	if (App->player->lifes == 0)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneDeath, 160);
+		CleanUp();
 	}
 	return UpdateResult::UPDATE_CONTINUE;
 }

@@ -30,7 +30,8 @@ struct Collider
 		DEAD,
 		MACHINE,
 		POWERUP,
-		BLUEMACHINE,
+		BLUE_MACHINE,
+		BLUE_MACHINE2,
 		MAX
 	};
 

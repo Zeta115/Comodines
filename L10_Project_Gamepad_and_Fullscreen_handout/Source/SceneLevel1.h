@@ -44,7 +44,8 @@ public:
 	SDL_Texture* starsTexture = nullptr;
 	SDL_Texture* machineTexture = nullptr;
 
-	int machines1 = 2;
+	int machine1 = 1;
+	int machine2 = 1;
 };
 
 #endif  // __SCENELEVEL1_H__
