@@ -6,6 +6,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "SceneLevel1.h"
 
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
@@ -39,6 +40,7 @@ UpdateResult SceneIntro::Update()
 	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN && sceneCount == 0)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->player->lifes = 3;
 	}
 
 	if (App->player->destroyed == true)sceneCount = 0;

@@ -142,14 +142,16 @@ UpdateResult ModuleCollisions::PreUpdate()
 
 UpdateResult ModuleCollisions::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN) debug = !debug;
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN) 
+		debug = !debug;
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
 UpdateResult ModuleCollisions::PostUpdate()
 {
-	if (debug) DebugDraw();
+	if (debug)
+		DebugDraw();
 
 	return UpdateResult::UPDATE_CONTINUE;
 }

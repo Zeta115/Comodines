@@ -264,12 +264,15 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 	
-	if (death == true)
+	if (death == true && lifes != 0)
 	{
-			//App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_1, 160);
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_1, 160);
 			currentAnimation = &deadAnim;
-			destroyed = true;
 			death = false;
+			destroyed = true;
+	}
+	if (lifes == 0) {
+		GameOver = true;
 	}
 	if (BombUp == false) {
 		if (timerB < 150) {
@@ -409,8 +412,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 						death = true;
 						App->audio->PlayFx(deadFx);
 						stop = true;
-						lifes--;
 						score += 1000;
+						lifes--;
 					}
 				
 				}
