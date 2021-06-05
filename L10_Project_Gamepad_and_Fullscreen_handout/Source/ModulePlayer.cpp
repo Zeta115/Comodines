@@ -175,10 +175,14 @@ UpdateResult ModulePlayer::Update()
 
 	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)) //|| (pad.x))
 	{
-		App->particles->bom.position.x = App->player->position.x;
-		App->particles->bom.position.y = App->player->position.y;
-		App->Placebomb->PutBomb();
-		App->Placebomb->DrawBomb();
+		if (App->Placebomb->BombUp == true) {
+			App->particles->bom.position.x = App->player->position.x;
+			App->particles->bom.position.y = App->player->position.y;
+			App->Placebomb->PutBomb();
+			App->Placebomb->BombUp = false;
+			App->Placebomb->ExplosionUp = true;
+		}
+		//App->Placebomb->DrawBomb();
 	}
 
 
@@ -376,22 +380,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 						position.x += speed;
 					}; break;
 				case Collider::Type::FLOWER:
-						if (c1->rect.y < c2->rect.y) // up
-						{
-							position.y -= speed;
-						}
-						else if (c1->rect.y + 2 > c2->rect.y + c2->rect.h) // down
-						{
-							position.y += speed;
-						}
-						if (c1->rect.x < c2->rect.x) // left
-						{
-							position.x -= speed;
-						}
-						else if (c1->rect.x + 2 > c2->rect.x + c2->rect.w) // right
-						{
-							position.x += speed;
-						}; break;
+					position = prevposition;
+					 break;
 				}
 				if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
 				{

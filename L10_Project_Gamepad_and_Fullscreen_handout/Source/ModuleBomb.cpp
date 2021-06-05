@@ -28,19 +28,19 @@ bool ModuleBomb::Start()
 {
 	ColliderBomb = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::BOMB);
 
-	ColliderFireCenter = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
+	ColliderFireCenter = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
 
-	ColliderFireup1 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
-	ColliderFireup2 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
+	ColliderFireup1 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
+	ColliderFireup2 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
 
-	ColliderFiredown1 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
-	ColliderFiredown2 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
+	ColliderFiredown1 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
+	ColliderFiredown2 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
 
-	ColliderFireleft1 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
-	ColliderFireleft2 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
+	ColliderFireleft1 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
+	ColliderFireleft2 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
 
-	CollideFireright1 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
-	CollideFireright2 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE);
+	CollideFireright1 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
+	CollideFireright2 = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::FIRE, this);
 	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
 	blastFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_blast.wav");
 
@@ -66,6 +66,32 @@ UpdateResult ModuleBomb::Update()
 	ColliderFireleft2->SetPos(position.x-32, position.y);;
 	CollideFireright1->SetPos(position.x+16, position.y);;
 	CollideFireright2->SetPos(position.x+32, position.y);;
+
+	if (ExplosionUp == true)
+	{
+
+		if (timerE <= 120) {
+			timerE++;
+		}
+
+		if (timerE >= 120)
+		{
+			timerE = 0;
+			App->particles->bom.isAlive = false;
+			DrawBomb();
+			ExplosionUp = false;
+		}
+	}
+
+	if (BombUp == false) {
+		if (timerB < 150) {
+			timerB++;
+		}
+		if (timerB == 150) {
+			timerB = 0;
+			BombUp = true;
+		}
+	}
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
@@ -93,7 +119,6 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireUp1 = false;
 		}
-		BombUp = true;
 	}
 
 	if (c1 == ColliderFireup2 && BombUp == false )
@@ -106,7 +131,6 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireUp2 = false;
 		}
-		BombUp = true;
 	}
 
 	if (c1 == ColliderFiredown1 && BombUp == false)
@@ -119,7 +143,6 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireDown1 = false;
 		}
-		BombUp = true;
 	}
 
 	if (c1 == ColliderFiredown2 && BombUp == false)
@@ -132,7 +155,6 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireDown2 = false;
 		}
-		BombUp = true;
 	}
 
 	if (c1 == CollideFireright1 && BombUp == false)
@@ -145,7 +167,6 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireRight1 = false;
 		}
-		BombUp = true;
 	}
 
 	if (c1 == CollideFireright2 && BombUp == false)
@@ -158,7 +179,6 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireRight2 = false;
 		}
-		BombUp = true;
 	}
 	if (c1 == ColliderFireleft1 && BombUp == false)
 	{
@@ -170,7 +190,6 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireLeft1 = false;
 		}
-		BombUp = true;
 	}
 
 	if (c1 == ColliderFireleft2 && BombUp == false)
@@ -183,7 +202,6 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		{
 			FireLeft2 = false;
 		}
-		BombUp = true;
 	}
 }
 
@@ -192,36 +210,12 @@ void ModuleBomb::PutBomb()
 	App->audio->PlayFx(placeFx);
 	App->particles->AddParticle(App->particles->bom, App->particles->bom.position.x, App->particles->bom.position.y + 6, Collider::Type::BOMB);
 	
-	if (ExplosionUp == true)
-	{
-
-		if (timerE <= 100) {
-			timerE++;
-		}
-
-		if (timerE >= 100)
-		{
-			timerE = 0;
-			App->particles->bom.isAlive = false;
-			ExplosionUp = false;
-		}
-	}
-
-	if (BombUp == true) {
-		if (timerB < 150) {
-			timerB++;
-		}
-		if (timerB == 150) {
-			timerB = 0;
-			BombUp = false;
-		}
-	}
 }
 
 
 void ModuleBomb::DrawBomb()
 {
-	if (App->particles->bom.isAlive = false)
+	if (App->particles->bom.isAlive == false)
 	{
 		App->particles->AddParticle(App->particles->explosion, App->particles->bom.position.x, App->particles->bom.position.y + 6, Collider::Type::FIRE);
 

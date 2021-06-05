@@ -33,6 +33,9 @@ public:
 
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
+	bool BombUp = true;
+	bool ExplosionUp = false;
+
 
 	// Draws gamepad debug info in the screen
 	void DrawBomb();
@@ -49,8 +52,7 @@ private:
 
 	// This enemy has one sprite and one frame
 	// We are keeping it an animation for consistency with other enemies
-	bool bomb = true;	bool ExplosionUp = false;
-	bool BombUp = true;
+	bool bomb = true;	
 	
 	bool FireUp1 = true;
 	bool FireUp2 = true;

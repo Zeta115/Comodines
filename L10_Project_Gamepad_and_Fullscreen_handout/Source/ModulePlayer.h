@@ -48,8 +48,6 @@ public:
 	int timer = 0;
 	int timerS = 00;
 	int timerM = 4;
-	int timerB = 0;
-	int timerE = 0;
 	int comodin = 0;
 
 
