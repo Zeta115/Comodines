@@ -44,47 +44,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::FIRE][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::FIRE][Collider::Type::ENEMY] = true;
-
-	/*matrix[Collider::Type::FIREUP1][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::FIREUP1][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::FIREUP1][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIREUP1][Collider::Type::WALL] = false;
-
-	matrix[Collider::Type::FIREUP2][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::FIREUP2][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::FIREUP2][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIREUP2][Collider::Type::WALL] = false;
-
-	matrix[Collider::Type::FIREDOWN1][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::FIREDOWN1][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::FIREDOWN1][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIREDOWN1][Collider::Type::WALL] = false;	
-	
-	matrix[Collider::Type::FIREDOWN2][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::FIREDOWN2][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::FIREDOWN2][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIREDOWN2][Collider::Type::WALL] = false;
-	
-	matrix[Collider::Type::FIRERIGHT1][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::FIRERIGHT1][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::FIRERIGHT1][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIRERIGHT1][Collider::Type::WALL] = false;
-	
-	matrix[Collider::Type::FIRERIGHT2][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::FIRERIGHT2][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::FIRERIGHT2][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIRERIGHT2][Collider::Type::WALL] = false;
-
-	matrix[Collider::Type::FIRELEFT1][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::FIRELEFT1][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::FIRELEFT1][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIRELEFT1][Collider::Type::WALL] = false;
-	
-	matrix[Collider::Type::FIRELEFT2][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::FIRELEFT2][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::FIRELEFT2][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIRELEFT2][Collider::Type::WALL] = false;*/
-
+	matrix[Collider::Type::FIRE][Collider::Type::FLOWER] = true;
+	matrix[Collider::Type::FIRE][Collider::Type::WALL] = false;
 
 }
 
