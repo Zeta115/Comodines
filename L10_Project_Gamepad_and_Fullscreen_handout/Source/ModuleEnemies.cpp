@@ -185,6 +185,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::BROWNROBOT:
 					enemies[i] = new Enemy_BrownRobot(info.x, info.y);
 					break;
+				case Enemy_Type::BROWNROBOT2:
+					enemies[i] = new Enemy_BrownRobot(info.x, info.y);
+					break;
 				case Enemy_Type::CARGOL:
 					enemies[i] = new Enemy_Cargol(info.x, info.y);
 					break;
@@ -197,10 +200,19 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::BLUE_MACHINE:
 					enemies[i] = new Win_Blue_Machine(info.x, info.y);
 					break;
+				case Enemy_Type::BLUE_MACHINE2:
+					enemies[i] = new Win_Blue_Machine(info.x, info.y);
+					break;
 				case Enemy_Type::RABBIT:
 					enemies[i] = new Enemy_Conill(info.x, info.y);
 					break;
+				case Enemy_Type::RABBIT2:
+					enemies[i] = new Enemy_Conill(info.x, info.y);
+					break;
 				case Enemy_Type::MONKEY:
+					enemies[i] = new Enemy_Monkey(info.x, info.y);
+					break;
+				case Enemy_Type::MONKEY2:
 					enemies[i] = new Enemy_Monkey(info.x, info.y);
 					break;
 				case Enemy_Type::BANANA_BOSS:
@@ -221,7 +233,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	/*for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
@@ -237,11 +249,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						break;
 					/*case TypeEnemy::SNAIL:
 						App->player->score += 300;
-						break;
-					case TypeEnemy::GAS:
+						break;*/
+					/*case TypeEnemy::GAS:
 						App->player->score += 500;
-						break;^*/
-					default:
+						break;*/
+					/*default:
 						break;
 					}
 					enemies[i]->death = true;
@@ -253,6 +265,33 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
+}*/
+
+/*void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
+{
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+		{
+			//App->player->score += 400;
+			switch (c2->type)
+			{
+			case Collider::Type::FIRE:
+
+				switch (enemies[i]->type)
+				{
+				case TypeEnemy::BROWNROBOT:
+					App->player->score += 400;
+					break;
+				default:
+					break;
+				}
+				enemies[i]->death = true;
+				break;
+			default:
+				break;
+			}
+			break;
+		}
+	}*/
 }
-
-

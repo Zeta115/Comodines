@@ -26,7 +26,7 @@ struct Collider
 		BLUE_MACHINE2,
 		MAX
 	};
-public:
+
 	// Methods
 	Collider(SDL_Rect rectangle, Type type, Module* listener = nullptr);
 

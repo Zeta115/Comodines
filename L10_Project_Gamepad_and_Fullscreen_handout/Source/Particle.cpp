@@ -18,8 +18,6 @@ Particle::~Particle()
 {
 	if (collider != nullptr)
 		collider->pendingToDelete = true;
-	isAlive = false;
-	SetToDelete();
 }
 
 bool Particle::Update()
@@ -51,11 +49,6 @@ bool Particle::Update()
 
 		if (collider != nullptr)
 			collider->SetPos(position.x, position.y);
-	}
-	if (lifetime < frameCount)
-	{
-		isAlive = false;
-		SetToDelete();
 	}
 
 	return ret;

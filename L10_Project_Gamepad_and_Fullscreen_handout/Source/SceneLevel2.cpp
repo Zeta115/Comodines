@@ -144,9 +144,9 @@ bool SceneLevel2::Start()
 	App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
 	App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
 	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 89, 87);
-	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2 ,153, 119);
+	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2 ,153, 119);
 	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 54, 82);
-	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT2, 160, 130);
+	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT2, 160, 130);
 
 
 	App->render->camera.x = 0;

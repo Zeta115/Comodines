@@ -136,10 +136,23 @@ bool ModuleParticles::CleanUp()
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
 	
-	if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::WALL)
+		// Always destroy particles that collide
+		/*if (particles[i] != nullptr && particles[i]->collider == c1)
+		{
+		//	particles[i]->pendingToDelete = true;
+			//particles[i]->collider->pendingToDelete = true;
+			break;
+		}*/
+	/*for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
-		//c1->pendingToDelete = true;
-	}
+		
+	}*/
+	// Here we delete enemies as they touch the fire
+
+	/*if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::ENEMY)
+	{
+		App->textures->Disable();
+	}*/
 
 }
 
@@ -179,7 +192,7 @@ UpdateResult ModuleParticles::PostUpdate()
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
-Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, SDL_Rect rec, Collider::Type colliderType, uint delay)
+Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
 	Particle* newParticle = nullptr;
 
@@ -192,11 +205,10 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, S
 			newParticle->frameCount = -(int)delay;			// We start the frameCount as the negative delay
 			newParticle->position.x = x;						// so when frameCount reaches 0 the particle will be activated
 			newParticle->position.y = y;
-			rec.x = newParticle->anim.GetCurrentFrame().x;
-			rec.y = newParticle->anim.GetCurrentFrame().y;
+
 			// Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
-				newParticle->collider = App->collisions->AddCollider(rec, colliderType, this);
+				newParticle->collider = App->collisions->AddCollider(newParticle->anim.GetCurrentFrame(), colliderType, this);
 
 			particles[i] = newParticle;
 			break;

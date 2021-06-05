@@ -42,9 +42,10 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::MACHINE][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::POWERUP][Collider::Type::PLAYER] = true;
 
-
+	matrix[Collider::Type::FIRE][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::FIRE][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::FIRE][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIRE][Collider::Type::WALL] = true;
+	matrix[Collider::Type::FIRE][Collider::Type::WALL] = false;
 
 }
 
