@@ -138,7 +138,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	
 	if (c1->type == Collider::Type::INFIRE && c2->type == Collider::Type::ENEMY)
 	{
-		App->player->score += 100;
+		
+
 	}
 
 }

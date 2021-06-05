@@ -218,11 +218,6 @@ UpdateResult SceneLevel1::PostUpdate()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
 	}
-	if (App->player->lifes == 0)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneDeath, 160);
-		CleanUp();
-	}
 	return UpdateResult::UPDATE_CONTINUE;
 }
 

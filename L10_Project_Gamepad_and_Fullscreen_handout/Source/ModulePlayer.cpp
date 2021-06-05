@@ -277,10 +277,13 @@ UpdateResult ModulePlayer::Update()
 	
 	if (death == true)
 	{
-			//App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_1, 160);
+		if (lifes != 0) {
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_1, 160);
 			currentAnimation = &deadAnim;
 			destroyed = true;
 			death = false;
+		}
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneDeath, 160);
 	}
 
 	return UpdateResult::UPDATE_CONTINUE;
