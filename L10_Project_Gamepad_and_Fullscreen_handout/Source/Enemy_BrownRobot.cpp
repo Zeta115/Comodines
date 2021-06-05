@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleEnemies.h"
 
 Enemy_BrownRobot::Enemy_BrownRobot(int x, int y) : Enemy(x, y)
 {
@@ -36,6 +37,7 @@ Enemy_BrownRobot::Enemy_BrownRobot(int x, int y) : Enemy(x, y)
 	leftAnim.PushBack({ 28, 208, 25, 25 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.05f;
+
 	//DeathAnim
 	Death.PushBack({162, 172, 23, 30});
 
@@ -53,10 +55,11 @@ Enemy_BrownRobot::Enemy_BrownRobot(int x, int y) : Enemy(x, y)
 
 void Enemy_BrownRobot::Update()
 {
-	if (death)
+	if (App->enemies->Dead)
 	{
 		currentAnim = &Death;
 	}
+
 	else {
 		path.Update();
 		position = spawnPos + path.GetRelativePosition();
