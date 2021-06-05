@@ -34,6 +34,7 @@ bool SceneLevel1::Start()
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
 	hud = App->textures->Load("Assets/Hud/hud.png");
 	machineTexture = App->textures->Load("Assets/Map/reactor_1.png");
+	machineTracking= App->textures->Load("Assets/Hud/Machine_Traking.png");
 
 	// Colliders
 
@@ -176,7 +177,10 @@ UpdateResult SceneLevel1::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
 	}
-
+	if (App->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
+	{
+		machines1--;
+	}
 	/*if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
@@ -193,7 +197,15 @@ UpdateResult SceneLevel1::PostUpdate()
 	App->render->DrawTexture(decoration, 0, 15, NULL);
 	App->render->DrawTexture(hud, 0, 0, NULL);   
 	App->render->DrawTexture(machineTexture, 104, 64, NULL);
-
+	if (machines1 <= 1)
+	{
+		App->render->DrawTexture(machineTracking, 56, 8, NULL);
+	}
+	if (machines1 <= 0)
+	{
+		App->render->DrawTexture(machineTracking, 64, 8, NULL);
+		machines1 = 0;
+	}
 	if (App->player->destroyed == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneDeath, 160);

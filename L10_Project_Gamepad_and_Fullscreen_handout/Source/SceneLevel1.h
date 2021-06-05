@@ -39,11 +39,12 @@ public:
 	SDL_Texture* winScreen = nullptr;
 	SDL_Texture* loseScreen = nullptr;
 	SDL_Texture* hud = nullptr;
+	SDL_Texture* machineTracking = nullptr;
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
 	SDL_Texture* machineTexture = nullptr;
 
-
+	int machines1 = 2;
 };
 
 #endif  // __SCENELEVEL1_H__
