@@ -10,7 +10,6 @@
 #include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
 #include "ModuleInput.h"
-#include "SceneLevel1.h"
 
 ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
 {
@@ -193,14 +192,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 
-	if (c1->type == Collider::Type::FIRELEFT1 || c1->type == Collider::Type::FIRELEFT2 || c1->type == Collider::Type::FIRERIGHT1 || c1->type == Collider::Type::FIRERIGHT2 || c1->type == Collider::Type::FIREUP1 || c1->type == Collider::Type::FIREUP2 || c1->type == Collider::Type::FIREDOWN1 || c1->type == Collider::Type::FIREDOWN2 || c1->type == Collider::Type::FIRE && c2->type == Collider::Type::BLUE_MACHINE)
-	{
-		if (App->sceneLevel_1->machine1 == 1)App->sceneLevel_1->machine1 = 0;
-	}
-	if (c1->type == Collider::Type::FIRELEFT1  c1->type == Collider::Type::FIRELEFT2  c1->type == Collider::Type::FIRERIGHT1  c1->type == Collider::Type::FIRERIGHT2  c1->type == Collider::Type::FIREUP1  c1->type == Collider::Type::FIREUP2  c1->type == Collider::Type::FIREDOWN1  c1->type == Collider::Type::FIREDOWN2  c1->type == Collider::Type::FIRE && c2->type == Collider::Type::BLUE_MACHINE2)
-	{
-		if (App->sceneLevel_1->machine2 == 1)App->sceneLevel_1->machine2 = 0;
-	}
+
 
 
 
