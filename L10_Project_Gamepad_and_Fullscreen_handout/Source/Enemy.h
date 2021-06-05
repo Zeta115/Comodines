@@ -11,7 +11,6 @@ enum TypeEnemy
 {
 	NONE = -1,
 	BROWNROBOT
-
 };
 
 class Enemy

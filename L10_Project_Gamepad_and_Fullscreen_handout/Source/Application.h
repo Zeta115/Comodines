@@ -5,7 +5,7 @@
 #include "SceneLevel2.h"
 #include "SceneLevelBoss.h"
 
-#define NUM_MODULES 18
+#define NUM_MODULES 17
 
 class Module;
 class ModuleWindow;
@@ -23,7 +23,6 @@ class ModuleEnemies;
 class ModuleFadeToBlack;
 class ModuleFonts;
 class ModuleRender;
-class ModuleBomb;
 
 class Application
 {
@@ -67,7 +66,6 @@ public:
 
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;
-	ModuleBomb* Placebomb = nullptr;
 
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;

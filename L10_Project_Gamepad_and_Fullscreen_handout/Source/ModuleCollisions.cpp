@@ -45,7 +45,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FIRE][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::FIRE][Collider::Type::ENEMY] = true;
 
-	/*matrix[Collider::Type::FIREUP1][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::FIREUP1][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::FIREUP1][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::FIREUP1][Collider::Type::FLOWER] = true;
 	matrix[Collider::Type::FIREUP1][Collider::Type::WALL] = false;
@@ -83,7 +83,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FIRELEFT2][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::FIRELEFT2][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::FIRELEFT2][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::FIRELEFT2][Collider::Type::WALL] = false;*/
+	matrix[Collider::Type::FIRELEFT2][Collider::Type::WALL] = false;
 
 
 }

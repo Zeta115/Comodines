@@ -63,7 +63,6 @@ public:
 	// Destroys all active enemies left in the array
 	bool CleanUp() override;
 
-	bool Dead = false;
 	// Called when an enemi collider hits another collider
 	// The enemy is destroyed and an explosion particle is fired
 	void OnCollision(Collider* c1, Collider* c2) override;
@@ -81,6 +80,7 @@ private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
+private:
 	// A queue with all spawn points information
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
 
