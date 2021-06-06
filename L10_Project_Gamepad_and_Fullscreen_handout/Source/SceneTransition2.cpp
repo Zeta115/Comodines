@@ -1,4 +1,4 @@
-#include "EScene2.h"
+#include "SceneTransition2.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -10,56 +10,53 @@
 #include "ModulePlayer.h"
 #include "SceneLevel2.h"
 
-EScene2::EScene2(bool startEnabled) : Module(startEnabled)
+SceneTransition2::SceneTransition2(bool startEnabled) : Module(startEnabled)
 {
 
 }
 
-EScene2::~EScene2()
+SceneTransition2::~SceneTransition2()
 {
 
 }
 
 // Load assets
-bool EScene2::Start()
+bool SceneTransition2::Start()
 {
 	LOG("Loading background assets");
 
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Map/Inter2.png");
+	App->audio->PlayMusic("Assets/Audio/music/title_theme.ogg", 1.0f);
+
+	
 
 	return ret;
 }
 
-UpdateResult EScene2::Update()
+UpdateResult SceneTransition2::Update()
 {
 
-	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
+
+	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
 	}
-	if (App->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
-	{
-		machine1--;
-		machine2--;
-	}
-	if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
-	}
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
-UpdateResult EScene2::PostUpdate()
+UpdateResult SceneTransition2::PostUpdate()
 {
 	// Draw everything	
 
+		App->render->DrawTexture(bgTexture, 0, 0, NULL);
+
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
-bool EScene2::CleanUp()
+bool SceneTransition2::CleanUp()
 {
 	// L10: DONE 2: Enable (and properly disable) the player module
 	App->player->Disable();

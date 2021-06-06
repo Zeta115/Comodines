@@ -6,6 +6,8 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "SceneTransition1.h"
+#include "SceneTransition2.h"
 #include "SceneLogo.h"
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
@@ -29,22 +31,24 @@ Application::Application()
 	modules[2] =	textures =		new ModuleTextures(true);
 	modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[4] =	sceneLogo =		new SceneLogo(true);              // Escena de logos i animació
-	modules[5] =	sceneIntro =	new SceneIntro(false);			// Escena menú principal
-	modules[6] =	sceneDeath =	new SceneDeath(false);
-	modules[7] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
-	modules[8] =	sceneLevel_2 =  new SceneLevel2(false);
-	modules[9] =	sceneLevel_Boss = new SceneLevelBoss(false);
-	modules[10] =	enemies =		new ModuleEnemies(false);
-	modules[11] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[12] =	particles =		new ModuleParticles(true);
+	modules[4] =	sceneLogo =		new SceneLogo(true);				// Escena de logos i animació
+	modules[5] =	sceneTransition1 =	new SceneTransition1(false);
+	modules[6] =	sceneTransition2 =	new SceneTransition2(false);
+	modules[7] =	sceneIntro =	new SceneIntro(false);			// Escena menú principal
+	modules[8] =	sceneDeath =	new SceneDeath(false);
+	modules[9] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
+	modules[10] =	sceneLevel_2 =  new SceneLevel2(false);
+	modules[11] =	sceneLevel_Boss = new SceneLevelBoss(false);
+	modules[12] =	enemies =		new ModuleEnemies(false);
+	modules[13] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[14] =	particles =		new ModuleParticles(true);
 		//Enemies start disabled
 
-	modules[13] =	collisions =	new ModuleCollisions(true);
-	modules[14] =	fade =			new ModuleFadeToBlack(true);
-	modules[15] =	fonts =			new ModuleFonts(true);
-	modules[16] =   Placebomb =		new ModuleBomb(true);
-	modules[17] =	render =		new ModuleRender(true);
+	modules[15] =	collisions =	new ModuleCollisions(true);
+	modules[16] =	fade =			new ModuleFadeToBlack(true);
+	modules[17] =	fonts =			new ModuleFonts(true);
+	modules[18] =   Placebomb =		new ModuleBomb(true);
+	modules[19] =	render =		new ModuleRender(true);
 	
 }
 

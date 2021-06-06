@@ -4,8 +4,10 @@
 #include "Globals.h"
 #include "SceneLevel2.h"
 #include "SceneLevelBoss.h"
+#include "SceneTransition1.h"
+#include "SceneTransition2.h"
 
-#define NUM_MODULES 18
+#define NUM_MODULES 20
 
 class Module;
 class ModuleWindow;
@@ -57,6 +59,9 @@ public:
 	ModuleAudio* audio = nullptr;
 
 	ModulePlayer* player = nullptr;
+
+	SceneTransition1* sceneTransition1 = nullptr;
+	SceneTransition2* sceneTransition2 = nullptr;
 
 	SceneLogo* sceneLogo = nullptr;
 	SceneIntro* sceneIntro = nullptr;

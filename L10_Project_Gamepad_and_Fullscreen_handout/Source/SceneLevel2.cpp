@@ -32,8 +32,8 @@ bool SceneLevel2::Start()
 
 	bgTexture = App->textures->Load("Assets/Map/Mapa_2.png");
 	App->audio->PlayMusic("Assets/Audio/music/area_1.ogg", 1.0f);
-	decoration = App->textures->Load("Assets/Map/MapaDecoration.png");
-	decoration2 = App->textures->Load("Assets/Map/MapaDecoration_Lvl2.png");
+	decoration = App->textures->Load("Assets/Map/mapa_decoration.png");
+	decoration2 = App->textures->Load("Assets/Map/mapa_decoration_Lvl2.png");
 	loseScreen = App->textures->Load("Assets/Screens/lose.PNG");
 	winScreen = App->textures->Load("Assets/Screens/win.PNG");
 	hud = App->textures->Load("Assets/Hud/hud.png");
