@@ -4,8 +4,9 @@
 #include "Globals.h"
 #include "SceneLevel2.h"
 #include "SceneLevelBoss.h"
+#include "ModuleFlower.h"
 
-#define NUM_MODULES 18
+#define NUM_MODULES 19
 
 class Module;
 class ModuleWindow;
@@ -66,6 +67,7 @@ public:
 	SceneLevelBoss* sceneLevel_Boss = nullptr;
 
 	ModuleEnemies* enemies = nullptr;
+	ModuleFlower* flowers = nullptr;
 	ModuleParticles* particles = nullptr;
 	ModuleBomb* Placebomb = nullptr;
 

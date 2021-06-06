@@ -129,7 +129,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (c2->type == Collider::Type::FLOWER)
 		{
-			FireUp1 = false;
+			FireUp1 = true;
 		}
 	}
 
@@ -141,7 +141,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (c2->type == Collider::Type::FLOWER)
 		{
-			FireUp2 = false;
+			FireUp2 = true;
 		}
 	}
 
@@ -153,7 +153,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (c2->type == Collider::Type::FLOWER)
 		{
-			FireDown1 = false;
+			FireDown1 = true;
 		}
 	}
 
@@ -165,7 +165,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (c2->type == Collider::Type::FLOWER)
 		{
-			FireDown2 = false;
+			FireDown2 = true;
 		}
 	}
 
@@ -177,7 +177,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (c2->type == Collider::Type::FLOWER)
 		{
-			FireRight1 = false;
+			FireRight1 = true;
 		}
 	}
 
@@ -189,7 +189,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (c2->type == Collider::Type::FLOWER)
 		{
-			FireRight2 = false;
+			FireRight2 = true;
 		}
 	}
 	if (c1 == ColliderFireleft1 && BombUp == false)
@@ -200,7 +200,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (c2->type == Collider::Type::FLOWER)
 		{
-			FireLeft1 = false;
+			FireLeft1 = true;
 		}
 	}
 
@@ -212,7 +212,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (c2->type == Collider::Type::FLOWER)
 		{
-			FireLeft2 = false;
+			FireLeft2 = true;
 		}
 		
 	}

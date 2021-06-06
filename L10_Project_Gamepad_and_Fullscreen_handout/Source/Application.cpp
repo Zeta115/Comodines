@@ -36,15 +36,16 @@ Application::Application()
 	modules[8] =	sceneLevel_2 =  new SceneLevel2(false);
 	modules[9] =	sceneLevel_Boss = new SceneLevelBoss(false);
 	modules[10] =	enemies =		new ModuleEnemies(false);
-	modules[11] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[12] =	particles =		new ModuleParticles(true);
+	modules[11] =	flowers =		new ModuleFlower(false);
+	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[13] =	particles =		new ModuleParticles(true);
 		//Enemies start disabled
 
-	modules[13] =	collisions =	new ModuleCollisions(true);
-	modules[14] =	fade =			new ModuleFadeToBlack(true);
-	modules[15] =	fonts =			new ModuleFonts(true);
-	modules[16] =   Placebomb =		new ModuleBomb(true);
-	modules[17] =	render =		new ModuleRender(true);
+	modules[14] =	collisions =	new ModuleCollisions(true);
+	modules[15] =	fade =			new ModuleFadeToBlack(true);
+	modules[16] =	fonts =			new ModuleFonts(true);
+	modules[17] =   Placebomb =		new ModuleBomb(true);
+	modules[18] =	render =		new ModuleRender(true);
 	
 }
 
