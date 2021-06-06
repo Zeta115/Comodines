@@ -20,6 +20,7 @@
 #include "Enemy_Monkey.h"
 #include "Enemy_Boss_Banana.h"
 #include "Enemy_Boss_Monkey.h"
+#include "ModuleCollisions.h"
 
 #include <iostream>
 using namespace std;
@@ -222,39 +223,20 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	//for (uint i = 0; i < MAX_ENEMIES; ++i)
-	//{
-	//	if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
-	//	{
-	//		enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-
-	//		Dead = true;
-	//		delete enemies[i];
-	//		enemies[i] = nullptr;
-	//		break;
-	//	}
-	//}
-
-
-
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		
-		
 		if (enemies[i] != nullptr)
 		{
 			enemies[i]->OnCollision(c1, c2);
 			if (enemies[i]->death)
 			{
+				App->collisions->RemoveCollider(enemies[i]->collider);
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}
 		}
-			
 		break;
-		
 	}
-
 }
 
 

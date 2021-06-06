@@ -49,12 +49,13 @@ public:
 	bool death = false;
 	uint cooldown = 0;
 
+	// The enemy's collider
+	Collider* collider = nullptr;
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
 
-	// The enemy's collider
-	Collider* collider = nullptr;
+	
 
 	// Original spawn position. Stored for movement calculations
 	fPoint spawnPos;
