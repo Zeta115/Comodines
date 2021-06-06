@@ -88,7 +88,7 @@ bool SceneLevel2::Start()
 	//Fila 5
 	App->collisions->AddCollider({ 104, 176, 15, 15 }, Collider::Type::WALL);//3
 	App->collisions->AddCollider({ 136, 176, 15, 15 }, Collider::Type::WALL);//4
-
+	App->collisions->AddCollider({ 200, 64, 15, 15 }, Collider::Type::MACHINE);
 
 	//PowerUp
 	//App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
@@ -145,7 +145,7 @@ bool SceneLevel2::Start()
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 156, 192);
 	*/
 	// Enemies ---
-	//App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
+	App->enemies->AddEnemy(Enemy_Type::MONKEY, 24, 112);
 	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 89, 87);
 	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2 ,153, 119);
 	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 54, 82);
@@ -173,7 +173,7 @@ bool SceneLevel2::Start()
 
 UpdateResult SceneLevel2::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN || App->player->win == true)
 	{
 		inLevel2 = false;
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_Boss, 90);

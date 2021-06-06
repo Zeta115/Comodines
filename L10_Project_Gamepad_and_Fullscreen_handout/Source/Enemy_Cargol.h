@@ -46,6 +46,7 @@ private:
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+	Animation Death;
 };
 
 #endif // __ENEMY_REDB
