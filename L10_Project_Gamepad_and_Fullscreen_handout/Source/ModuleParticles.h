@@ -57,20 +57,15 @@ public:
 	Particle explosion;
 	Particle explosion_up_1;
 	Particle explosion_up_2;
-	Particle explosion_up_3;
 
 	Particle explosion_down_1;
 	Particle explosion_down_2;
-	Particle explosion_down_3;
 
 	Particle explosion_right_1;
 	Particle explosion_right_2;
-	Particle explosion_right_3;
 
 	Particle explosion_left_1;
 	Particle explosion_left_2;
-	Particle explosion_left_3;
-
 	Particle bom;
 	Particle dead;
 

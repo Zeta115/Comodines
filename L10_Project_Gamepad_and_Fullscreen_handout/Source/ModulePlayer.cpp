@@ -214,12 +214,12 @@ UpdateResult ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_F6] == KeyState::KEY_DOWN)
 
 
-		//spawn powerUp ?
-		if (App->input->keys[SDL_SCANCODE_F7] == KeyState::KEY_DOWN)
+	//spawn powerUp ?
+	if (App->input->keys[SDL_SCANCODE_F7] == KeyState::KEY_DOWN)
 
 
-			//activate bombPlus, more fires
-			if (App->input->keys[SDL_SCANCODE_F8] == KeyState::KEY_DOWN) App->Placebomb->bombPlus = true;
+	//spawn powerUp invincible
+	if (App->input->keys[SDL_SCANCODE_F8] == KeyState::KEY_DOWN)
 
 
 
