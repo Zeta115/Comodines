@@ -186,22 +186,4 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 }
 
-//void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
-//{
-//	for (uint i = 0; i < MAX_ENEMIES; ++i)
-//	{
-//		if (enemies[i] != nullptr)
-//		{
-//			enemies[i]->OnCollision(c1, c2);
-//			if (enemies[i]->death)
-//			{
-//				App->collisions->RemoveCollider(enemies[i]->collider);
-//				delete enemies[i];
-//				enemies[i] = nullptr;
-//			}
-//		}
-//		break;
-//	}
-//}
-
 

@@ -73,7 +73,7 @@ bool Application::Init()
 
 	// Only active modules will be 'started'
 	for (int i = 0; i < NUM_MODULES && ret; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
+		ret = modules[i]->Enabled() ? modules[i]->Start() : true;
 
 	return ret;
 }
@@ -83,13 +83,13 @@ UpdateResult Application::Update()
 	UpdateResult ret = UpdateResult::UPDATE_CONTINUE;
 
 	for (int i = 0; i < NUM_MODULES && ret == UpdateResult::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UpdateResult::UPDATE_CONTINUE;
+		ret = modules[i]->Enabled() ? modules[i]->PreUpdate() : UpdateResult::UPDATE_CONTINUE;
 
 	for (int i = 0; i < NUM_MODULES && ret == UpdateResult::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UpdateResult::UPDATE_CONTINUE;
+		ret = modules[i]->Enabled() ? modules[i]->Update() : UpdateResult::UPDATE_CONTINUE;
 
 	for (int i = 0; i < NUM_MODULES && ret == UpdateResult::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UpdateResult::UPDATE_CONTINUE;
+		ret = modules[i]->Enabled() ? modules[i]->PostUpdate() : UpdateResult::UPDATE_CONTINUE;
 
 	return ret;
 }
@@ -99,7 +99,7 @@ bool Application::CleanUp()
 	bool ret = true;
 
 	for (int i = NUM_MODULES - 1; i >= 0 && ret; --i)
-		ret = modules[i]->IsEnabled() ? modules[i]->CleanUp() : true;
+		ret = modules[i]->Enabled() ? modules[i]->CleanUp() : true;
 
 	return ret;
 }
