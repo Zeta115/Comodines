@@ -398,10 +398,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					{
 						position.x += speed;
 					}; break;
+
 				case Collider::Type::FLOWER:
 					position = prevposition;
-					 break;
+					break;
 				}
+
 				if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
 				{
 					powerActive = false;
@@ -410,6 +412,19 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 				//player and enemies
 				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
+				{
+					if (powerTouch == false)
+					{
+						death = true;
+						App->audio->PlayFx(deadFx);
+						stop = true;
+						lifes--;
+						score += 1000;
+					}
+				
+				}
+				
+				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::FIRE))
 				{
 					if (powerTouch == false)
 					{

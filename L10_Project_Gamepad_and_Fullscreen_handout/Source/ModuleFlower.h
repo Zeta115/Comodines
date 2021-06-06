@@ -11,14 +11,14 @@
 struct SDL_Texture;
 
 struct Flower {
-	Collider* colliderT = nullptr;
+	Collider* collider = nullptr;
 	SDL_Texture* flowerT = nullptr;
 
 	int x;
 	int y;
-	bool isDestroyed = false;
+	bool Destroyed = false;
 	uint dCount = 0;
-	bool destroyed = false;
+	bool dead = false;
 };
 
 class ModuleFlower : public Module
@@ -47,9 +47,9 @@ public:
 	iPoint position;
 
 
-	SDL_Texture* flowerTexture = nullptr;
+	SDL_Texture* TextureFlower = nullptr;
 
-	Flower flowers[NUM_FLOWERS] = { nullptr };
+	Flower pasiveflower[NUM_FLOWERS] = { nullptr };
 
 	Flower CreateFlower(int x, int y, SDL_Texture* t);
 

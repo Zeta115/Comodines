@@ -41,7 +41,7 @@ public:
 	// Switches isEnabled and calls CleanUp() method
 	void Disable();
 
-	inline bool IsEnabled() const { return isEnabled; }
+	inline bool Enabled() const { return isEnabled; }
 
 private:
 	bool isEnabled = true;
