@@ -41,14 +41,14 @@ Enemy_BrownRobot::Enemy_BrownRobot(int x, int y) : Enemy(x, y)
 	//DeathAnim
 	Death.PushBack({162, 172, 23, 30});
 
-	path.PushBack({ 0.4f, 0.0f }, 40 * 6, &rightAnim);
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	/*path.PushBack({ 0.4f, 0.0f }, 40 * 6, &rightAnim);
 	path.PushBack({ 0.0f, 0.4f }, 40 * 2, &downAnim);
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
 	path.PushBack({ -0.4f, 0.0f }, 40 * 6, &leftAnim);
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
 	path.PushBack({ 0.0f, -0.4f }, 40 * 2, &upAnim);
-	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);*/
 
 	collider = App->collisions->AddCollider({0, 0, 19, 19}, Collider::Type::ENEMY, (Module*)App->enemies);
 }

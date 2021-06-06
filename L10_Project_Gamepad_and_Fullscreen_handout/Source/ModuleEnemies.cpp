@@ -246,13 +246,13 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::INFIRE)
+		if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::FIRE)
 		{
 
 			Dead = true;
 			delete enemies[i];
 			enemies[i] = nullptr;
-
+			break;
 		}
 	}
 

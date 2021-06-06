@@ -29,19 +29,19 @@ bool ModuleBomb::Start()
 {
 	ColliderBomb = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::BOMB);
 
-	ColliderFireCenter = App->collisions->AddCollider({ App->particles->explosion.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
+	ColliderFireCenter = App->collisions->AddCollider({ App->particles->explosion.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
 
-	ColliderFireup1 = App->collisions->AddCollider({ App->particles->explosion_up_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
-	ColliderFireup2 = App->collisions->AddCollider({ App->particles->explosion_up_2.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
+	ColliderFireup1 = App->collisions->AddCollider({ App->particles->explosion_up_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
+	ColliderFireup2 = App->collisions->AddCollider({ App->particles->explosion_up_2.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
 
-	ColliderFiredown1 = App->collisions->AddCollider({ App->particles->explosion_down_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
-	ColliderFiredown2 = App->collisions->AddCollider({ App->particles->explosion_down_2.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
+	ColliderFiredown1 = App->collisions->AddCollider({ App->particles->explosion_down_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
+	ColliderFiredown2 = App->collisions->AddCollider({ App->particles->explosion_down_2.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
 
-	ColliderFireleft1 = App->collisions->AddCollider({ App->particles->explosion_left_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
-	ColliderFireleft2 = App->collisions->AddCollider({ App->particles->explosion_left_2.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
+	ColliderFireleft1 = App->collisions->AddCollider({ App->particles->explosion_left_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
+	ColliderFireleft2 = App->collisions->AddCollider({ App->particles->explosion_left_2.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
 
-	CollideFireright1 = App->collisions->AddCollider({ App->particles->explosion_right_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
-	CollideFireright2 = App->collisions->AddCollider({ App->particles->explosion_right_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::FIRE, this);
+	CollideFireright1 = App->collisions->AddCollider({ App->particles->explosion_right_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
+	CollideFireright2 = App->collisions->AddCollider({ App->particles->explosion_right_1.position.x, App->particles->explosion.position.y, 12, 12 }, Collider::Type::INFIRE, this);
 
 
 	placeFx = App->audio->LoadFx("Assets/Audio/Fx/bomb_plant.wav");
@@ -216,9 +216,7 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 		}
 		
 	}
-	if (c1->type == Collider::Type::INFIRE && c2->type == Collider::Type::ENEMY) {
-		App->player->score += 100;
-	}
+
 }
 	
 
@@ -242,41 +240,41 @@ void ModuleBomb::DrawBomb()
 {
 	if (App->particles->bom.isAlive == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, App->particles->bom.position.x, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE);
+		App->particles->AddParticle(App->particles->explosion, App->particles->bom.position.x, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE);
 
 		if (FireUp1 == true)
 		{
-			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
+			App->particles->AddParticle(App->particles->explosion_up_2, App->particles->bom.position.x, App->particles->bom.position.y + -10, { 0,0,12,12 }, Collider::Type::FIRE, 0);
 			if (FireUp2 == true)
 			{
-				App->particles->AddParticle(App->particles->explosion_up_1, App->particles->bom.position.x, App->particles->bom.position.y + -26, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
+				App->particles->AddParticle(App->particles->explosion_up_1, App->particles->bom.position.x, App->particles->bom.position.y + -26, { 0,0,12,12 }, Collider::Type::FIRE, 0);
 			}
 		}
 
 		if (FireDown1 == true)
 		{
-			App->particles->AddParticle(App->particles->explosion_down_2, App->particles->bom.position.x, App->particles->bom.position.y + 22, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
+			App->particles->AddParticle(App->particles->explosion_down_2, App->particles->bom.position.x, App->particles->bom.position.y + 22, { 0,0,12,12 }, Collider::Type::FIRE, 0);
 			if (FireDown2 == true)
 			{
-				App->particles->AddParticle(App->particles->explosion_down_1, App->particles->bom.position.x, App->particles->bom.position.y + 38, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
+				App->particles->AddParticle(App->particles->explosion_down_1, App->particles->bom.position.x, App->particles->bom.position.y + 38, { 0,0,12,12 }, Collider::Type::FIRE, 0);
 			}
 		}
 		
 		if (FireRight1 == true)
 		{
-			App->particles->AddParticle(App->particles->explosion_right_2, App->particles->bom.position.x+ + 16, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
+			App->particles->AddParticle(App->particles->explosion_right_2, App->particles->bom.position.x+ + 16, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE, 0);
 			if (FireRight2 == true)
 			{
-				App->particles->AddParticle(App->particles->explosion_right_1, App->particles->bom.position.x + 32, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
+				App->particles->AddParticle(App->particles->explosion_right_1, App->particles->bom.position.x + 32, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE, 0);
 			}
 		}
 		
 		if (FireLeft1 == true)
 		{
-			App->particles->AddParticle(App->particles->explosion_left_2, App->particles->bom.position.x + -16, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
+			App->particles->AddParticle(App->particles->explosion_left_2, App->particles->bom.position.x + -16, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE, 0);
 			if (FireLeft2 == true)
 			{
-				App->particles->AddParticle(App->particles->explosion_left_1, App->particles->bom.position.x + -32, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::INFIRE, 0);
+				App->particles->AddParticle(App->particles->explosion_left_1, App->particles->bom.position.x + -32, App->particles->bom.position.y + 6, { 0,0,12,12 }, Collider::Type::FIRE, 0);
 			}
 		}
 		App->audio->PlayFx(blastFx);
