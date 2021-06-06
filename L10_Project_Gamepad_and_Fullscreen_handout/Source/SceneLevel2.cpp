@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
 
 SceneLevel2::SceneLevel2(bool startEnabled) : Module(startEnabled)
 {
@@ -44,9 +45,9 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 22, 175, 67, 35 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 167, 175, 67, 35 }, Collider::Type::WALL);
 	//Top
-	App->collisions->AddCollider({ 0, 0, 400, 31 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 22, 28, 67, 37 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 167, 28, 67, 37 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, -5, 400, 31 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 22, 23, 67, 37 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 167, 23, 67, 37 }, Collider::Type::WALL);
 	//Left
 	App->collisions->AddCollider({ 0, 0, 25, 400 }, Collider::Type::WALL);
 	//Right
@@ -141,12 +142,11 @@ bool SceneLevel2::Start()
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 156, 192);
 
 	// Enemies ---
-	/*App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
-	App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
-	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 89, 87);
+	//App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
+	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 89, 87);
 	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2 ,153, 119);
-	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 54, 82);
-	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT2, 160, 130);*/
+	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 54, 82);
+	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT2, 160, 130);
 
 
 	App->render->camera.x = 0;
@@ -156,6 +156,8 @@ bool SceneLevel2::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
+	App->particles->Enable();
+	App->Placebomb->Enable();
 
 	App->player->position.x = 120;
 	App->player->position.y = 24;
@@ -168,11 +170,19 @@ UpdateResult SceneLevel2::Update()
 	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_Boss, 90);
+		App->player->Disable();
+		App->enemies->Disable();
+		App->collisions->Disable();
+		App->Placebomb->Disable();
 	}
 
 	if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->player->Disable();
+		App->enemies->Disable();
+		App->collisions->Disable();
+		App->particles->Disable();
 	}
 
 	return UpdateResult::UPDATE_CONTINUE;

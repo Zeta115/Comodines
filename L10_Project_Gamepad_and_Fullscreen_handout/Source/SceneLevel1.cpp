@@ -9,6 +9,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "SceneLevel2.h"
+#include "ModuleParticles.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -70,7 +71,7 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 104, 79, 48, 22 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 104, 101, 16, 26 }, Collider::Type::FLOWER);
 	App->collisions->AddCollider({ 136, 101, 16, 26 }, Collider::Type::FLOWER);
-	//App->collisions->AddCollider({ 120, 99, 14, 14 }, Collider::Type::MACHINE);
+	App->collisions->AddCollider({ 120, 99, 14, 14 }, Collider::Type::MACHINE);
 
 	//PowerUp
 	App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
@@ -152,7 +153,7 @@ bool SceneLevel1::Start()
 	
 
 	// Enemies ---
-	//App->enemies->AddEnemy(Enemy_Type::RABBIT, 121, 11);
+	App->enemies->AddEnemy(Enemy_Type::RABBIT, 121, 11);
 	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 121, 189); // 104, 31
 	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 184, 36);
 	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2, 55, 150);
@@ -167,6 +168,8 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
+	App->particles->Enable();
+	App->Placebomb->Enable();
 
 	return ret;
 }
@@ -177,6 +180,11 @@ UpdateResult SceneLevel1::Update()
 	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
+		App->player->Disable();
+		App->enemies->Disable();
+		App->collisions->Disable();
+		App->particles->Disable();
+		App->Placebomb->Disable();
 	}
 	if (App->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
 	{

@@ -9,6 +9,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
+#include "ModuleBomb.h"
 
 SceneLevelBoss::SceneLevelBoss(bool startEnabled) : Module(startEnabled)
 {
@@ -51,7 +53,6 @@ bool SceneLevelBoss::Start()
 	// Stones
 	/// 1r: donde empieza la piedra a partir de la x - 2n: donde empieza la piedra a partir de la y - 3r: ample de la pedra - 4rt: alçada de la pedra
 
-	//First two columns colliders
 	//Fila 1
 	App->collisions->AddCollider({ 40, 47, 16, 16 }, Collider::Type::WALL);//1
 	App->collisions->AddCollider({ 72, 47, 16, 16 }, Collider::Type::WALL);//2
@@ -103,6 +104,8 @@ bool SceneLevelBoss::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
+	App->particles->Enable();
+	App->Placebomb->Enable();
 
 	App->player->position.x = 120;
 	App->player->position.y = 143;
@@ -112,14 +115,16 @@ bool SceneLevelBoss::Start()
 
 UpdateResult SceneLevelBoss::Update()
 {
-	/*if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneBoss, 90);
-	}*/
 
 	if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->player->Disable();
+		App->enemies->Disable();
+		App->collisions->Disable();
+		App->particles->Disable();
+		App->Placebomb->Disable();
+	
 	}
 
 	return UpdateResult::UPDATE_CONTINUE;
