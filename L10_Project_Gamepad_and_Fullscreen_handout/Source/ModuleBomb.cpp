@@ -61,15 +61,15 @@ UpdateResult ModuleBomb::PreUpdate()
 UpdateResult ModuleBomb::Update()
 {
 
-	ColliderFireCenter->SetPos(App->particles->bom.position.x+ 1, App->particles->bom.position.y+6);//cc
+	ColliderFireCenter->SetPos(App->particles->bom.position.x + 1, App->particles->bom.position.y+6);//cc
 	ColliderFireup1->SetPos(App->particles->bom.position.x + 1, App->particles->bom.position.y -7);//c
 	ColliderFireup2->SetPos(App->particles->bom.position.x + 1, App->particles->bom.position.y -24);// e
 	ColliderFiredown1->SetPos(App->particles->bom.position.x +1, App->particles->bom.position.y + 21);//c
 	ColliderFiredown2->SetPos(App->particles->bom.position.x +1, App->particles->bom.position.y + 36);//e
-	ColliderFireleft1->SetPos(App->particles->bom.position.x-12, App->particles->bom.position.y + 9);//c
-	ColliderFireleft2->SetPos(App->particles->bom.position.x-29, App->particles->bom.position.y + 9);//e
-	CollideFireright1->SetPos(App->particles->bom.position.x+12, App->particles->bom.position.y + 9);//c
-	CollideFireright2->SetPos(App->particles->bom.position.x+29, App->particles->bom.position.y + 9);//e
+	ColliderFireleft1->SetPos(App->particles->bom.position.x-12, App->particles->bom.position.y + 6);//c
+	ColliderFireleft2->SetPos(App->particles->bom.position.x-29, App->particles->bom.position.y + 6);//e
+	CollideFireright1->SetPos(App->particles->bom.position.x+12, App->particles->bom.position.y + 6);//c
+	CollideFireright2->SetPos(App->particles->bom.position.x+29, App->particles->bom.position.y + 6);//e
 
 	if (ExplosionUp == true)
 	{

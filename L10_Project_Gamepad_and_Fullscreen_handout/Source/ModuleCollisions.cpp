@@ -147,7 +147,6 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::FLOWER: // grey
 				App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 167, 161, 147, alpha });
 			break;
-
 		}
 	}
 }
