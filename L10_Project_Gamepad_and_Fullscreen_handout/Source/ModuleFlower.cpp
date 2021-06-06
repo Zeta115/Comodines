@@ -9,10 +9,10 @@
 
 ModuleFlower::ModuleFlower(bool startEnabled) : Module(startEnabled)
 {
-	// Idle
+	
 	idle.PushBack({ 0, 0, 16, 16 });
 
-	// Dead
+
 	dead.PushBack({ 16, 0, 16, 16 });
 }
 
@@ -21,7 +21,6 @@ ModuleFlower::~ModuleFlower()
 
 }
 
-// Load assets
 bool ModuleFlower::Start()
 {
 	LOG("Loading background assets");
@@ -96,7 +95,6 @@ bool ModuleFlower::Start()
 	if (App->sceneLevel_2->IsEnabled() == true)
 	{
 		App->sceneLevel_1->Disable();
-		//LEFT OF THE BRIDGE
 
 		flowers[0] = CreateFlower(120, 112, flowerTexture);
 
@@ -209,18 +207,12 @@ void ModuleFlower::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (flowers[i].colliderT == c1 && !flowers[i].isDestroyed)
 		{
-			switch (c2->type)
+			if (c2->type == Collider::Type::FIRE)
 			{
-			case Collider::Type::FIRE:
-			{
+			
 				flowers[i].isDestroyed = true;
 				currentAnimation[i] = &dead;
-			} break;
-
-			default:
-				break;
 			}
-			break;
 		}
 	}
 }

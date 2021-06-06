@@ -48,7 +48,6 @@ Enemy_Conill::Enemy_Conill(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.4f, 0.0f }, 20 * 2, &rightAnim);
 
 	collider = App->collisions->AddCollider({ 0, 0, 16, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
-	type = EnemyType2::RABBIT;
 }
 
 void Enemy_Conill::Update()

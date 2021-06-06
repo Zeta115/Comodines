@@ -175,31 +175,15 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			switch (c2->type)
+			if (c2->type == Collider::Type::FIRE)
 			{
-			case Collider::Type::FIRE:
-				if (enemies[i]->death == false && enemies[i]->type != EnemyType2::BANANA_BOSS)
-				{
-					switch (enemies[i]->type)
-					{
-					case EnemyType2::BROWNROBOT:
-						App->player->score += 400;
-						break;
-					case EnemyType2::RABBIT:
-						App->player->score += 300;
-						break;
-					default:
-						break;
-					}
-					enemies[i]->death = true;
-				}
-				break;
-			default:
-				break;
+				enemies[i]->death = true;
 			}
-			break;
+			
 		}
+
 	}
+
 }
 
 //void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)

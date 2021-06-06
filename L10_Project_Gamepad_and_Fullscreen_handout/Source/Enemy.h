@@ -7,18 +7,6 @@
 struct SDL_Texture;
 struct Collider;
 
-enum EnemyType2
-{
-	NONE = -1,
-	BROWNROBOT,
-	CARGOL,
-	BLUE_MACHINE,
-	RABBIT,
-	MONKEY,
-	BANANA_BOSS,
-	MONKEY_BOSS
-	
-};
 
 class Enemy
 {
@@ -48,7 +36,6 @@ public:
 	// The current position in the world
 	fPoint position;
 
-	EnemyType2 type;
 
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;

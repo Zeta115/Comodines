@@ -44,10 +44,9 @@ public:
 
 public:
 
-	// Rock position in map
 	iPoint position;
 
-	// The sprite rectangle for the rocks
+
 	SDL_Texture* flowerTexture = nullptr;
 
 	Flower flowers[NUM_FLOWERS] = { nullptr };
