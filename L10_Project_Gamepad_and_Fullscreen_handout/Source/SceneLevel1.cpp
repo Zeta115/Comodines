@@ -70,8 +70,8 @@ bool SceneLevel1::Start()
 
 	//machine
 	App->collisions->AddCollider({ 104, 79, 48, 22 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 104, 101, 16, 26 }, Collider::Type::FLOWER);
-	App->collisions->AddCollider({ 136, 101, 16, 26 }, Collider::Type::FLOWER);
+	App->collisions->AddCollider({ 104, 101, 16, 26 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 136, 101, 16, 26 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 120, 99, 14, 14 }, Collider::Type::MACHINE);
 
 	//PowerUp
@@ -130,7 +130,7 @@ bool SceneLevel1::Start()
 UpdateResult SceneLevel1::Update()
 {
 	
-	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN || App->player->win == true)
 	{
 		inLevel1 = false;
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
@@ -139,6 +139,7 @@ UpdateResult SceneLevel1::Update()
 		App->collisions->Disable();
 		App->particles->Disable();
 		App->Placebomb->Disable();
+		App->flowers->Disable();
 	}
 	if (App->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
 	{

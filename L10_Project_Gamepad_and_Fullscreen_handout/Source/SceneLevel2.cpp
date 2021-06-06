@@ -94,6 +94,7 @@ bool SceneLevel2::Start()
 	//App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
 
 	//Flowers
+	/*
 	App->enemies->AddEnemy(Enemy_Type::PLANT, 120, 112);
 	
 	//1
@@ -142,7 +143,7 @@ bool SceneLevel2::Start()
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 192);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 192);
 	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 156, 192);
-
+	*/
 	// Enemies ---
 	//App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
 	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 89, 87);
@@ -160,6 +161,7 @@ bool SceneLevel2::Start()
 	App->collisions->Enable();
 	App->particles->Enable();
 	App->Placebomb->Enable();
+	App->flowers->Enable();
 	App->sceneLevel_1->inLevel1 = false;
 	inLevel2 = true;
 
@@ -191,6 +193,7 @@ UpdateResult SceneLevel2::Update()
 		App->collisions->Disable();
 		App->particles->Disable();
 		App->Placebomb->Disable();
+		App->flowers->Disable();
 	}
 
 	return UpdateResult::UPDATE_CONTINUE;

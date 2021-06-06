@@ -30,8 +30,6 @@ bool ModuleFlower::Start()
 
 	flowerTexture = App->textures->Load("Assets/SpecialElements/YellowFlower.png");
 
-	position.x = 24;  //Esquina arriba izq
-	position.y = 40;  //primera fila
 
 	for (int i = 0; i < NUM_FLOWERS; i++)
 	{
@@ -40,12 +38,12 @@ bool ModuleFlower::Start()
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-
+		App->sceneLevel_2->Disable();
 		flowers[0] = CreateFlower(88, 63, flowerTexture);
 		flowers[1] = CreateFlower(152, 63, flowerTexture);
 		flowers[2] = CreateFlower(88, 159, flowerTexture);
 		flowers[3] = CreateFlower(152, 159, flowerTexture);
-		//flowers[4] = CreateFlower(position.x + 160, position.y, flowerTexture);
+	
 
 		flowers[5] = CreateFlower(88, 31, flowerTexture);
 		flowers[6] = CreateFlower(72, 31, flowerTexture);
@@ -95,9 +93,9 @@ bool ModuleFlower::Start()
 		flowers[42] = CreateFlower(88, 191, flowerTexture);
 
 	}
-	else if (App->sceneLevel_2->IsEnabled() == true)
+	if (App->sceneLevel_2->IsEnabled() == true)
 	{
-
+		App->sceneLevel_1->Disable();
 		//LEFT OF THE BRIDGE
 
 		flowers[0] = CreateFlower(120, 112, flowerTexture);
@@ -147,14 +145,14 @@ bool ModuleFlower::Start()
 		flowers[35] = CreateFlower(88, 192, flowerTexture);
 		flowers[36] = CreateFlower(156, 192, flowerTexture);
 		flowers[37] = CreateFlower(184, 192, flowerTexture);
+		flowers[38] = CreateFlower(1000, 1000, flowerTexture);
+		flowers[39] = CreateFlower(1000, 1000, flowerTexture);
+		flowers[40] = CreateFlower(1000, 1000, flowerTexture);
+
+		flowers[41] = CreateFlower(1000, 1000, flowerTexture);
+		flowers[42] = CreateFlower(1000, 1000, flowerTexture);
 		
-		/*
-		for (int i = 30; i < NUM_FLOWERS; i++)
-		{
-			// i = numero de flores de este nivel
-			flowers[i].flowerT = nullptr;
-		}
-		*/
+	
 	}
 
 	return ret;
@@ -184,17 +182,17 @@ UpdateResult ModuleFlower::Update()
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
-// Update: draw background
+
 UpdateResult ModuleFlower::PostUpdate()
 {
-	// Draw everything --------------------------------------
+
 	for (int i = 0; i < NUM_FLOWERS; i++)
 	{
 		if (App->sceneLevel_1->IsEnabled() == true && !flowers[i].destroyed)
 		{
 			App->render->DrawTexture(flowers[i].flowerT, flowers[i].x, flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
 		}
-		else if (App->sceneLevel_2->IsEnabled() == true && !flowers[i].destroyed)
+		if (App->sceneLevel_2->IsEnabled() == true && !flowers[i].destroyed)
 		{
 			App->render->DrawTexture(flowers[i].flowerT, flowers[i].x, flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
 		}
