@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
+#include "ModuleFlower.h"
 #include "ModulePlayer.h"
 #include "SceneLevel2.h"
 #include "ModuleParticles.h"
@@ -98,64 +99,12 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 168, 175, 16, 16 }, Collider::Type::WALL);//5
 	App->collisions->AddCollider({ 200, 175, 16, 16 }, Collider::Type::WALL);//6
 	
-	//Flowers
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 63);
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 63);
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 88, 159);	
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 152, 159);
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 31);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 31);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 136, 31);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 31); //64
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 47);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 47); //80
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 47);
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 63);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 63);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 63);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 63);
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 79);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 79);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 79);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 79);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 79);
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 95);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 95);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 95);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 95);
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 127);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 127);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 127);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 127);
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 159);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 159);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 159);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 159);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 159);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 159);
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 175);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 175);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 175);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 175);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 175);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 175);
-
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 191);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 191);
 	
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::RABBIT, 40, 85);
 	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 149, 130); // 104, 31
-	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 184, 36);
+	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 184, 36);
 	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2, 55, 150);
 	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 16, 44);
 	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT2, 70, 140);
@@ -170,6 +119,7 @@ bool SceneLevel1::Start()
 	App->collisions->Enable();
 	App->particles->Enable();
 	App->Placebomb->Enable();
+	App->flowers->Enable();
 
 	inLevel1 = true;
 	App->sceneLevel_2->inLevel2 = false;

@@ -133,6 +133,9 @@
     <ClInclude Include="EScene2.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFlower.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -247,6 +250,9 @@
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
     <ClCompile Include="EScene2.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFlower.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>

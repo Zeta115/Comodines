@@ -2,6 +2,8 @@
 #define __MODULERENDER_H__
 
 #include "Module.h"
+#include "Point.h"
+#include "SDL/include/SDL_Rect.h"
 
 #include "SDL/include/SDL_Rect.h"
 
