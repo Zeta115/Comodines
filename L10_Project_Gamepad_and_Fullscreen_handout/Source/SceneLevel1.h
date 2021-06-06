@@ -46,6 +46,7 @@ public:
 
 	int machine1 = 1;
 	int machine2 = 1;
+	bool inLevel1 = false;
 };
 
 #endif  // __SCENELEVEL1_H__

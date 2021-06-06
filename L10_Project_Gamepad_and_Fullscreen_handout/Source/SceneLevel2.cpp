@@ -10,6 +10,8 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include"SceneLevel1.h"
+#include"SceneLevelBoss.h"
 
 SceneLevel2::SceneLevel2(bool startEnabled) : Module(startEnabled)
 {
@@ -158,6 +160,8 @@ bool SceneLevel2::Start()
 	App->collisions->Enable();
 	App->particles->Enable();
 	App->Placebomb->Enable();
+	App->sceneLevel_1->inLevel1 = false;
+	inLevel2 = true;
 
 	App->player->position.x = 120;
 	App->player->position.y = 24;
@@ -169,20 +173,24 @@ UpdateResult SceneLevel2::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
 	{
+		inLevel2 = false;
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_Boss, 90);
 		App->player->Disable();
 		App->enemies->Disable();
 		App->collisions->Disable();
+		App->particles->Disable();
 		App->Placebomb->Disable();
 	}
 
 	if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
 	{
+		inLevel2 = false;
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
 		App->player->Disable();
 		App->enemies->Disable();
 		App->collisions->Disable();
 		App->particles->Disable();
+		App->Placebomb->Disable();
 	}
 
 	return UpdateResult::UPDATE_CONTINUE;

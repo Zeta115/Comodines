@@ -44,6 +44,8 @@ public:
 	SDL_Texture* machineTexture = nullptr;
 
 
+	bool inLevel3 = false;
+
 };
 
 #endif  // __SCENELEVEL1_H__

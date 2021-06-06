@@ -171,6 +171,9 @@ bool SceneLevel1::Start()
 	App->particles->Enable();
 	App->Placebomb->Enable();
 
+	inLevel1 = true;
+	App->sceneLevel_2->inLevel2 = false;
+	App->sceneLevel_Boss->inLevel3 = false;
 	return ret;
 }
 
@@ -179,6 +182,7 @@ UpdateResult SceneLevel1::Update()
 	
 	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
 	{
+		inLevel1 = false;
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 90);
 		App->player->Disable();
 		App->enemies->Disable();

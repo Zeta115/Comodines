@@ -43,6 +43,7 @@ public:
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
 	SDL_Texture* machineTexture = nullptr;
+	bool inLevel2 = false;
 
 
 };

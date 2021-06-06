@@ -12,6 +12,9 @@
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
 #include "ModuleBomb.h"
+#include "SceneLevel1.h"
+#include "SceneLevel2.h"
+#include "SceneLevelBoss.h"
 
 
 #include <stdio.h>
@@ -278,7 +281,19 @@ UpdateResult ModulePlayer::Update()
 	if (death == true)
 	{
 		if (lifes != 0) {
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_1, 160);
+			if (App->sceneLevel_1->inLevel1==true) 
+			{
+				App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneLevel_1, 160);
+			}
+			if (App->sceneLevel_2->inLevel2 == true)
+			{
+				App->fade->FadeToBlack((Module*)App->sceneLevel_2, (Module*)App->sceneLevel_2, 160);
+			}
+			if (App->sceneLevel_Boss->inLevel3 == true)
+			{
+				App->fade->FadeToBlack((Module*)App->sceneLevel_Boss, (Module*)App->sceneLevel_Boss, 160);
+			}
+			
 			currentAnimation = &deadAnim;
 			destroyed = true;
 			death = false;

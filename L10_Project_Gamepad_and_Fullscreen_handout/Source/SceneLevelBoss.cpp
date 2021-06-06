@@ -11,6 +11,8 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleBomb.h"
+#include"SceneLevel1.h"
+#include"SceneLevel2.h"
 
 SceneLevelBoss::SceneLevelBoss(bool startEnabled) : Module(startEnabled)
 {
@@ -106,6 +108,9 @@ bool SceneLevelBoss::Start()
 	App->collisions->Enable();
 	App->particles->Enable();
 	App->Placebomb->Enable();
+	App->sceneLevel_1->inLevel1 = false;
+	App->sceneLevel_2->inLevel2 = false;
+	inLevel3 = true;
 
 	App->player->position.x = 120;
 	App->player->position.y = 143;
@@ -118,6 +123,7 @@ UpdateResult SceneLevelBoss::Update()
 
 	if (App->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
 	{
+		inLevel3 = false;
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
 		App->player->Disable();
 		App->enemies->Disable();
