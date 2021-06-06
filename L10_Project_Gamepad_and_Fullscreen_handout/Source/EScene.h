@@ -1,5 +1,5 @@
-#ifndef __SCENETRANSITION2_H__
-#define __SCENETRANSITION2_H__
+#ifndef __ESCENE1_H__
+#define __ESCENE1_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -7,14 +7,14 @@
 
 struct SDL_Texture;
 
-class SceneTransition2 : public Module
+class EScene1 : public Module
 {
 public:
 	// Constructor
-	SceneTransition2(bool startEnabled);
+	EScene1(bool startEnabled);
 
 	// Destructor
-	~SceneTransition2();
+	~EScene1();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -46,8 +46,6 @@ public:
 
 	int machine1 = 1;
 	int machine2 = 1;
-
-	int sceneCount = 0;
 };
 
-#endif  // __SCENETRANSITION2_H__
+#endif  // __ESCENE1_H__

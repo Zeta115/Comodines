@@ -96,8 +96,8 @@
     <ClInclude Include="Enemy_Conill.h" />
     <ClInclude Include="Enemy_Flower.h" />
     <ClInclude Include="Enemy_Monkey.h" />
-    <ClInclude Include="SceneTransition1.h" />
-    <ClInclude Include="SceneTransition2.h" />
+    <ClInclude Include="EScene.h" />
+    <ClInclude Include="EScene2.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleEnemies.h" />
@@ -136,8 +136,8 @@
     <ClCompile Include="Enemy_Conill.cpp" />
     <ClCompile Include="Enemy_Flower.cpp" />
     <ClCompile Include="Enemy_Monkey.cpp" />
-    <ClCompile Include="SceneTransition1.cpp" />
-    <ClCompile Include="SceneTransition2.cpp" />
+    <ClCompile Include="EScene1.cpp" />
+    <ClCompile Include="EScene2.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />

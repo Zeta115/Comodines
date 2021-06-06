@@ -127,10 +127,10 @@
     <ClInclude Include="ModuleBomb.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="SceneTransition1.h">
+    <ClInclude Include="EScene.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="SceneTransition2.h">
+    <ClInclude Include="EScene2.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -243,10 +243,10 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="SceneTransition1.cpp">
+    <ClCompile Include="EScene1.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="SceneTransition2.cpp">
+    <ClCompile Include="EScene2.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>
