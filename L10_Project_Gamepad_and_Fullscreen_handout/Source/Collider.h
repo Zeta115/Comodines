@@ -4,7 +4,7 @@
 #include "SDL/include/SDL_Rect.h"
 #include "Point.h"
 
-#define MAX_LISTENERS 5
+#define MAX_LISTENERS 12
 
 class Module;
 

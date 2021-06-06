@@ -96,6 +96,8 @@
     <ClInclude Include="Enemy_Conill.h" />
     <ClInclude Include="Enemy_Flower.h" />
     <ClInclude Include="Enemy_Monkey.h" />
+    <ClInclude Include="EScene.h" />
+    <ClInclude Include="EScene2.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleEnemies.h" />
@@ -134,6 +136,8 @@
     <ClCompile Include="Enemy_Conill.cpp" />
     <ClCompile Include="Enemy_Flower.cpp" />
     <ClCompile Include="Enemy_Monkey.cpp" />
+    <ClCompile Include="EScene1.cpp" />
+    <ClCompile Include="EScene2.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />
@@ -158,6 +162,7 @@
     <ClCompile Include="SceneLevel1.cpp" />
     <ClCompile Include="SceneLevel2.cpp" />
     <ClCompile Include="SceneLogo.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Win_Blue_Machine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
