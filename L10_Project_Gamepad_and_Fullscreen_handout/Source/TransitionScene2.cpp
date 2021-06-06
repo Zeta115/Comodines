@@ -1,4 +1,4 @@
-#include "EScene2.h"
+#include "TransitionScene2.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"

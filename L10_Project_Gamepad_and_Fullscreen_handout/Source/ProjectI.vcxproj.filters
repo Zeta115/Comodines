@@ -127,13 +127,13 @@
     <ClInclude Include="ModuleBomb.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="EScene.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="EScene2.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleFlower.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionScene1.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionScene2.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -246,13 +246,13 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="EScene1.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="EScene2.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleFlower.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionScene1.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionScene2.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>
