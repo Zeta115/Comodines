@@ -80,7 +80,8 @@ bool ModulePlayer::Start()
 
 	player = App->textures->Load("Assets/bomberman/Bomberman.png");
 	winFx = App->audio->LoadFx("Assets/Audio/Fx/stage_clear.wav");
-	powerUpText = App->textures->Load("Assets/SpecialElements/Powerups.png");
+	powerTouchText = App->textures->Load("Assets/SpecialElements/Powerups.png");
+	BombPlusText = App->textures->Load("Assets/SpecialElements/Powerups2.png");
 	//machineTraking = App->textures->Load("Assets/Hud/Machine_Traking.png");
 
 
