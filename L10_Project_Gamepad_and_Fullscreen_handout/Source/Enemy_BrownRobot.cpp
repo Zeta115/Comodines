@@ -56,15 +56,14 @@ Enemy_BrownRobot::Enemy_BrownRobot(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
 	path.PushBack({ 0.0f, 0.4f }, 20 * 2, &downAnim);
 	
-	
-	
-
 	collider = App->collisions->AddCollider({0, 0, 16, 15}, Collider::Type::ENEMY, (Module*)App->enemies);
+	type = EnemyType2::BROWNROBOT;
+
 }
 
 void Enemy_BrownRobot::Update()
 {
-	if (App->enemies->Dead)
+	if (death)
 	{
 		currentAnim = &Death;
 	}

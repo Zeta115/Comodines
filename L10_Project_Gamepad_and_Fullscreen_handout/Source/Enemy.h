@@ -7,6 +7,19 @@
 struct SDL_Texture;
 struct Collider;
 
+enum EnemyType2
+{
+	NONE = -1,
+	BROWNROBOT,
+	CARGOL,
+	BLUE_MACHINE,
+	RABBIT,
+	MONKEY,
+	BANANA_BOSS,
+	MONKEY_BOSS
+	
+};
+
 class Enemy
 {
 public:
@@ -31,12 +44,11 @@ public:
 	// Triggers an animation and a sound fx
 	virtual void OnCollision(Collider* c1, Collider* c2);
 
-	// Sets flag for deletion and for the collider aswell
-	virtual void SetToDelete();
-
 public:
 	// The current position in the world
 	fPoint position;
+
+	EnemyType2 type;
 
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;
@@ -45,17 +57,16 @@ public:
 	int destroyedFx = 0;
 
 	// A flag for the enemy removal. Important! We do not delete objects instantly
-	bool pendingToDelete = false;
+	//bool pendingToDelete = false;
 	bool death = false;
 	uint cooldown = 0;
 
-	// The enemy's collider
-	Collider* collider = nullptr;
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
 
-	
+	// The enemy's collider
+	Collider* collider = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	fPoint spawnPos;

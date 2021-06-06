@@ -1,15 +1,13 @@
 #include "ModuleEnemies.h"
 
 #include "Application.h"
-#include "ModuleInput.h"
 
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
-
-#include "Collider.h"
-
+#include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+
 #include "Enemy.h"
 #include "Enemy_BrownRobot.h"
 #include "Enemy_Cargol.h"
@@ -20,10 +18,7 @@
 #include "Enemy_Monkey.h"
 #include "Enemy_Boss_Banana.h"
 #include "Enemy_Boss_Monkey.h"
-#include "ModuleCollisions.h"
 
-#include <iostream>
-using namespace std;
 
 #define SPAWN_MARGIN 50
 
@@ -41,32 +36,25 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("Assets/enemies/enemies.png");
-	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
+	enemyTexture = App->textures->Load("Assets/enemies/enemies.png");
+	//enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (spawnQueue[i].type != Enemy_Type::NO_TYPE)
+		{
+			LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
+
+			SpawnEnemy(spawnQueue[i]);
+			spawnQueue[i].type = Enemy_Type::NO_TYPE; // Removing the newly spawned enemy from the queue
+		}
+	}
 
 	return true;
 }
 
-
-UpdateResult ModuleEnemies::PreUpdate()
-{
-	// Remove all enemies scheduled for deletion
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->pendingToDelete)
-		{
-			delete enemies[i];
-			enemies[i] = nullptr;
-		}
-	}
-
-	return UpdateResult::UPDATE_CONTINUE;
-}
-
 UpdateResult ModuleEnemies::Update()
 {
-	HandleEnemiesSpawn();
-
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)
@@ -88,8 +76,6 @@ UpdateResult ModuleEnemies::Update()
 		}
 	}
 
-	HandleEnemiesDespawn();
-
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
@@ -109,9 +95,9 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(enemies[i] != nullptr)
+		if (enemies[i] != nullptr)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -125,9 +111,9 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 {
 	bool ret = false;
 
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(spawnQueue[i].type == Enemy_Type::NO_TYPE)
+		if (spawnQueue[i].type == Enemy_Type::NO_TYPE)
 		{
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
@@ -138,43 +124,6 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 	}
 
 	return ret;
-}
-
-void ModuleEnemies::HandleEnemiesSpawn()
-{
-	// Iterate all the enemies queue
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (spawnQueue[i].type != Enemy_Type::NO_TYPE)
-		{
-			// Spawn a new enemy if the screen has reached a spawn position
-			if (spawnQueue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
-			{
-				LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
-
-				SpawnEnemy(spawnQueue[i]);
-				spawnQueue[i].type = Enemy_Type::NO_TYPE; // Removing the newly spawned enemy from the queue
-			}
-		}
-	}
-}
-
-void ModuleEnemies::HandleEnemiesDespawn()
-{
-	// Iterate existing enemies
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr)
-		{
-			// Delete the enemy when it has reached the end of the screen
-			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
-			{
-				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
-
-				enemies[i]->SetToDelete();
-			}
-		}
-	}
 }
 
 void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
@@ -214,29 +163,61 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					enemies[i] = new Enemy_Boss_Monkey(info.x, info.y);
 					break;
 			}
-			enemies[i]->texture = texture;
+			enemies[i]->texture = enemyTexture;
 			break;
 		}
 	}
 }
 
-
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			enemies[i]->OnCollision(c1, c2);
-			if (enemies[i]->death)
+			switch (c2->type)
 			{
-				App->collisions->RemoveCollider(enemies[i]->collider);
-				delete enemies[i];
-				enemies[i] = nullptr;
+			case Collider::Type::FIRE:
+				if (enemies[i]->death == false && enemies[i]->type != EnemyType2::BANANA_BOSS)
+				{
+					switch (enemies[i]->type)
+					{
+					case EnemyType2::BROWNROBOT:
+						App->player->score += 400;
+						break;
+					case EnemyType2::RABBIT:
+						App->player->score += 300;
+						break;
+					default:
+						break;
+					}
+					enemies[i]->death = true;
+				}
+				break;
+			default:
+				break;
 			}
+			break;
 		}
-		break;
 	}
 }
+
+//void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
+//{
+//	for (uint i = 0; i < MAX_ENEMIES; ++i)
+//	{
+//		if (enemies[i] != nullptr)
+//		{
+//			enemies[i]->OnCollision(c1, c2);
+//			if (enemies[i]->death)
+//			{
+//				App->collisions->RemoveCollider(enemies[i]->collider);
+//				delete enemies[i];
+//				enemies[i] = nullptr;
+//			}
+//		}
+//		break;
+//	}
+//}
 
 

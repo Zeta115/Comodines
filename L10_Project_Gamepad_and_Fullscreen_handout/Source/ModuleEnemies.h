@@ -43,10 +43,6 @@ public:
 	// Loads the necessary textures for the enemies
 	bool Start() override;
 
-	// Called at the beginning of the application loop
-	// Removes all enemies pending to delete
-	UpdateResult PreUpdate() override;
-
 	// Called at the middle of the application loop
 	// Handles all enemies logic and spawning/despawning
 	UpdateResult Update() override;
@@ -59,7 +55,6 @@ public:
 	// Destroys all active enemies left in the array
 	bool CleanUp() override;
 
-	bool Dead = false;
 	// Called when an enemi collider hits another collider
 	// The enemy is destroyed and an explosion particle is fired
 	void OnCollision(Collider* c1, Collider* c2) override;
@@ -67,16 +62,11 @@ public:
 	// Add an enemy into the queue to be spawned later
 	bool AddEnemy(Enemy_Type type, int x, int y);
 
-	// Iterates the queue and checks for camera position
-	void HandleEnemiesSpawn();
-
-	// Destroys any enemies that have moved outside the camera limits
-	void HandleEnemiesDespawn();
-
 private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
+private:
 	// A queue with all spawn points information
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
 
@@ -84,11 +74,8 @@ private:
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 
 	// The enemies sprite sheet
-	SDL_Texture* texture = nullptr;
-	SDL_Texture* Flower = nullptr;
+	SDL_Texture* enemyTexture = nullptr;
 
-	// The audio fx for destroying an enemy
-	int enemyDestroyedFx = 0;
 };
 
 #endif // __MODULE_ENEMIES_H__
