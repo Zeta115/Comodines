@@ -153,13 +153,13 @@ bool SceneLevel1::Start()
 	
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::RABBIT, 121, 11);
-	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 121, 189); // 104, 31
+	App->enemies->AddEnemy(Enemy_Type::RABBIT, 40, 85);
+	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 149, 130); // 104, 31
 	App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 184, 36);
 	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2, 55, 150);
 	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 16, 44);
 	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT2, 70, 140);
-	App->enemies->AddEnemy(Enemy_Type::CARGOL, 70, 140);
+	//App->enemies->AddEnemy(Enemy_Type::CARGOL, 70, 140);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

@@ -2,11 +2,12 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleEnemies.h"
 
 Enemy_Conill::Enemy_Conill(int x, int y) : Enemy(x, y)
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 15, 27, 2, 2 });
+	idleAnim.PushBack({ 2, 2, 15, 27 });
 
 	// Up
 	upAnim.PushBack({ 121, 2, 15, 26 });
@@ -37,58 +38,34 @@ Enemy_Conill::Enemy_Conill(int x, int y) : Enemy(x, y)
 	leftAnim.loop = true;
 	leftAnim.speed = 0.05f;
 
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ -0.4f, 0.0f }, 20 * 2, &leftAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.0f, 0.4f }, 60 * 2, &downAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.0f, -0.4f }, 60 * 2, &upAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.4f, 0.0f }, 20 * 2, &rightAnim);
 
 
-	collider = App->collisions->AddCollider({ 0, 0, 16, 26 }, Collider::Type::ENEMY, (Module*)App->enemies);
+
+	collider = App->collisions->AddCollider({ 0, 0, 16, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Conill::Update()
 {
-	if (right == true) {
-		currentAnim = &rightAnim;
-		if (position.x >= 20) {
-			position.x += speed;
-			if (position.x == 150) {
-				right = false;
-				left = true;
-			}
-		}
+	if (App->enemies->Dead)
+	{
+		currentAnim = &Death;
 	}
 
-	if (left == true) {
-		currentAnim = &leftAnim;
-		if (position.x < 300) {
-			position.x -= speed;
-			if (position.x == 50) {
-				up = true;
-				left = false;
-			}
-		}
-
+	else {
+		path.Update();
+		position = spawnPos + path.GetRelativePosition();
+		currentAnim = path.GetCurrentAnimation();
 	}
-	if (up == true) {
-		currentAnim = &upAnim;
-		if (position.y < 270) {
-			position.y -= speed;
-			if (position.y == 50) {
-				up = false;
-				down = true;
-			}
-		}
 
-	}
-	if (down == true) {
-		currentAnim = &downAnim;
-		if (position.y >= 10) {
-			position.y += speed;
-			if (position.y == 215) {
-				down = false;
-				right = true;
-			}
-		}
-
-	}
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x, position.y + 10);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();

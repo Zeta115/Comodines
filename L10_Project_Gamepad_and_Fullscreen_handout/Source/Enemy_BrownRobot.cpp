@@ -42,15 +42,24 @@ Enemy_BrownRobot::Enemy_BrownRobot(int x, int y) : Enemy(x, y)
 	Death.PushBack({162, 172, 23, 30});
 
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
-	/*path.PushBack({ 0.4f, 0.0f }, 40 * 6, &rightAnim);
-	path.PushBack({ 0.0f, 0.4f }, 40 * 2, &downAnim);
+	path.PushBack({ 0.0f, -0.4f }, 60 * 2, &upAnim);
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
-	path.PushBack({ -0.4f, 0.0f }, 40 * 6, &leftAnim);
+	path.PushBack({ 0.4f, 0.0f }, 40 * 2, &rightAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.0f, 0.4f }, 40 * 4, &downAnim);
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
 	path.PushBack({ 0.0f, -0.4f }, 40 * 2, &upAnim);
-	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);*/
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ -0.4f, 0.0f }, 60 * 2, &leftAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.4f, 0.0f }, 20 * 2, &rightAnim);
+	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
+	path.PushBack({ 0.0f, 0.4f }, 20 * 2, &downAnim);
+	
+	
+	
 
-	collider = App->collisions->AddCollider({0, 0, 19, 19}, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({0, 0, 16, 15}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_BrownRobot::Update()
@@ -66,7 +75,7 @@ void Enemy_BrownRobot::Update()
 		currentAnim = path.GetCurrentAnimation();
 	}
 
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x + 3, position.y+ 15);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();

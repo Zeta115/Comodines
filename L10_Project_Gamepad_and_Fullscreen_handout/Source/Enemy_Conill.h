@@ -2,6 +2,7 @@
 #define __ENEMY_CONILL_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_Conill : public Enemy
 {
@@ -32,6 +33,7 @@ private:
 
 	// The total height of the wave
 	int waveHeight = 0;
+	Path path;
 
 	// The enemy animation
 	Animation idleAnim;
@@ -39,6 +41,7 @@ private:
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+	Animation Death;
 };
 
 #endif // __ENEMY_REDBIRD_H__
