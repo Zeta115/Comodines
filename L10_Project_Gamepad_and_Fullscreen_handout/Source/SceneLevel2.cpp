@@ -89,67 +89,7 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 104, 176, 15, 15 }, Collider::Type::WALL);//3
 	App->collisions->AddCollider({ 136, 176, 15, 15 }, Collider::Type::WALL);//4
 
-
-	//PowerUp
-	//App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
-
-	//Flowers
-	/*
-	App->enemies->AddEnemy(Enemy_Type::PLANT, 120, 112);
-	
-	//1
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 48);
-	//2
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 136, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 64);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 64);
-	//3
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 80);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 80);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 80);
-	//4
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 24, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 72, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 96);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 96);
-	//5
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 112);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 112);
-	//6
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 56, 128);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 128);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 168, 128);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 216, 128);
-	//7
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 144);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 152, 144);
-	//8
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 40, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 104, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 184, 160);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 200, 160);
-	//9
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 88, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 120, 192);
-	App->enemies->AddEnemy(Enemy_Type::PASIVEPLANT, 156, 192);
-	*/
-	// Enemies ---
-	//App->enemies->AddEnemy(Enemy_Type::MONKEY, 159, 73);
-	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE, 89, 87);
-	//App->enemies->AddEnemy(Enemy_Type::BLUE_MACHINE2 ,153, 119);
-	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 54, 82);
-	//App->enemies->AddEnemy(Enemy_Type::BROWNROBOT2, 160, 130);
+	App->collisions->AddCollider({ 200, 64, 15, 15 }, Collider::Type::MACHINE);
 
 
 	App->render->camera.x = 0;
@@ -173,7 +113,7 @@ bool SceneLevel2::Start()
 
 UpdateResult SceneLevel2::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_0] == KeyState::KEY_DOWN || App->player->win == true)
 	{
 		inLevel2 = false;
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_Boss, 90);

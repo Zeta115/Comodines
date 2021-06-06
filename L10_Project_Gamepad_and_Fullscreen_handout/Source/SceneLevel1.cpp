@@ -37,7 +37,8 @@ bool SceneLevel1::Start()
 	hud = App->textures->Load("Assets/Hud/hud.png");
 	machineTexture = App->textures->Load("Assets/Map/reactor_1.png");
 	machineTracking= App->textures->Load("Assets/Hud/Machine_Traking.png");
-
+	powerupText== App->textures->Load("Assets/SpecialElements/Powerups.png");
+		
 	// Colliders
 
 //Limits
@@ -74,8 +75,7 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 136, 101, 16, 26 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 120, 99, 14, 14 }, Collider::Type::MACHINE);
 
-	//PowerUp
-	App->collisions->AddCollider({ 89 ,80, 15,15 }, Collider::Type::POWERUP);
+	
 
 	//Fila 3
 	App->collisions->AddCollider({ 40, 111, 16, 16 }, Collider::Type::WALL);
@@ -100,7 +100,6 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 200, 175, 16, 16 }, Collider::Type::WALL);//6
 	
 	
-
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::RABBIT, 40, 85);
 	App->enemies->AddEnemy(Enemy_Type::BROWNROBOT, 149, 130); // 104, 31

@@ -5,35 +5,39 @@
 Enemy_Monkey::Enemy_Monkey(int x, int y) : Enemy(x, y)
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 132, 138, 26, 27 });
+	idleAnim.PushBack({ 110, 172, 23, 30 });
 
 	// Up
-	upAnim.PushBack({ 132, 138, 26, 27 });
-	upAnim.PushBack({ 165, 138, 26, 27 });
+	upAnim.PushBack({ 84, 174, 23, 28 });
+	upAnim.PushBack({ 110, 172, 23, 30 });
+	upAnim.PushBack({ 135, 174, 23, 28 });
 	upAnim.loop = true;
-	upAnim.speed = 0.1f;
+	upAnim.speed = 0.05f;
 
 	// Down
 	//downAnim.PushBack({ 110, 172, 23, 30 });
-	downAnim.PushBack({ 132, 138, 26, 27 });
-	downAnim.PushBack({165, 138, 26, 27});
+	downAnim.PushBack({ 84, 206, 23, 27 });
+	downAnim.PushBack({ 134, 204, 23, 28 });
+	downAnim.PushBack({ 109, 206, 23, 27 });
 	downAnim.loop = true;
-	downAnim.speed = 0.1f;
+	downAnim.speed = 0.05f;
 
 	// Right
-	rightAnim.PushBack({ 132, 138, 26, 27 });
-	rightAnim.PushBack({165, 138, 26, 27});
+	rightAnim.PushBack({ 28, 179, 25, 25 });
+	rightAnim.PushBack({ 2, 177, 24, 27 });
+	rightAnim.PushBack({ 55, 179, 24, 25 });
 	rightAnim.loop = true;
-	rightAnim.speed = 0.1f;
+	rightAnim.speed = 0.05f;
 
 	// Left 
-	leftAnim.PushBack({ 132, 138, 26, 27 });
-	leftAnim.PushBack({ 165, 138, 26, 27 });
+	leftAnim.PushBack({ 2, 208, 24, 25 });
+	leftAnim.PushBack({ 55, 206, 24, 27 });
+	leftAnim.PushBack({ 28, 208, 25, 25 });
 	leftAnim.loop = true;
-	leftAnim.speed = 0.1f;
+	leftAnim.speed = 0.05f;
+
 	//DeathAnim
-	Death.PushBack({ 198, 138, 26, 37 });
-	Death.PushBack({ 233, 140, 22, 18 });
+	Death.PushBack({ 162, 172, 23, 30 });
 
 	/*path.PushBack({ 0.4f, 0.0f }, 40 * 6, &rightAnim);
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
