@@ -3,7 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
-
+#include "ModulePlayer.h"
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
 
@@ -234,6 +234,7 @@ void ModuleFlower::OnCollision(Collider* c1, Collider* c2)
 			{
 			case Collider::Type::FIRE:
 			{
+				App->player->score += 100;
 				flowers[i].isDestroyed = true;
 				currentAnimation[i] = &dead;
 			} break;
