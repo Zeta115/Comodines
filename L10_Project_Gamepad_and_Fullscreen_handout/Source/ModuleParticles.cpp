@@ -49,12 +49,19 @@ bool ModuleParticles::Start()
 	explosion_up_1.anim.speed = 0.5f;
 	explosion_up_1.lifetime = 60;
 
-	explosion_down_2.anim.PushBack({ 3, 38, 14, 16 });
-	explosion_down_2.anim.PushBack({ 4, 112, 14, 16 });
-	explosion_down_2.anim.PushBack({ 2, 188, 16, 16 });
-	explosion_down_2.anim.loop = false;
-	explosion_down_2.anim.speed = 0.5f;
-	explosion_down_2.lifetime = 60;
+	explosion_up_2.anim.PushBack({ 3, 57, 16, 14 });
+	explosion_up_2.anim.PushBack({ 4, 131, 16, 14 });
+	explosion_up_2.anim.PushBack({ 2, 207, 16, 16 });
+	explosion_up_2.anim.loop = false;
+	explosion_up_2.anim.speed = 0.5f;
+	explosion_up_2.lifetime = 60;
+
+	explosion_up_3.anim.PushBack({ 3, 57, 16, 14 });
+	explosion_up_3.anim.PushBack({ 4, 131, 16, 14 });
+	explosion_up_3.anim.PushBack({ 2, 207, 16, 16 });
+	explosion_up_3.anim.loop = false;
+	explosion_up_3.anim.speed = 0.5f;
+	explosion_up_3.lifetime = 60;
 
 	explosion_down_1.anim.PushBack({ 20, 57, 14, 16 });
 	explosion_down_1.anim.PushBack({ 21, 131, 14, 16 });
@@ -63,12 +70,19 @@ bool ModuleParticles::Start()
 	explosion_down_1.anim.speed = 0.5f;
 	explosion_down_1.lifetime = 60;
 
-	explosion_up_2.anim.PushBack({ 3, 57, 16, 14 });
-	explosion_up_2.anim.PushBack({ 4, 131, 16, 14 });
-	explosion_up_2.anim.PushBack({ 2, 207, 16, 16 });
-	explosion_up_2.anim.loop = false;
-	explosion_up_2.anim.speed = 0.5f;
-	explosion_up_2.lifetime = 60;
+	explosion_down_2.anim.PushBack({ 3, 38, 14, 16 });
+	explosion_down_2.anim.PushBack({ 4, 112, 14, 16 });
+	explosion_down_2.anim.PushBack({ 2, 188, 16, 16 });
+	explosion_down_2.anim.loop = false;
+	explosion_down_2.anim.speed = 0.5f;
+	explosion_down_2.lifetime = 60;
+
+	explosion_down_3.anim.PushBack({ 3, 38, 14, 16 });
+	explosion_down_3.anim.PushBack({ 4, 112, 14, 16 });
+	explosion_down_3.anim.PushBack({ 2, 188, 16, 16 });
+	explosion_down_3.anim.loop = false;
+	explosion_down_3.anim.speed = 0.5f;
+	explosion_down_3.lifetime = 60;
 
 	explosion_right_1.anim.PushBack({ 40, 3, 16, 14 });
 	explosion_right_1.anim.PushBack({ 41, 77, 16, 14 });
@@ -84,6 +98,13 @@ bool ModuleParticles::Start()
 	explosion_right_2.anim.speed = 0.5f;
 	explosion_right_2.lifetime = 60;
 
+	explosion_right_3.anim.PushBack({ 21, 3, 16, 14 });
+	explosion_right_3.anim.PushBack({ 22, 3, 16, 14 });
+	explosion_right_3.anim.PushBack({ 22, 150, 16, 16 });
+	explosion_right_3.anim.loop = false;
+	explosion_right_3.anim.speed = 0.5f;
+	explosion_right_3.lifetime = 60;
+
 	explosion_left_1.anim.PushBack({ 2, 21, 15, 14 });
 	explosion_left_1.anim.PushBack({ 21, 95, 16, 14 });
 	explosion_left_1.anim.PushBack({ 22, 169, 16, 16 });
@@ -97,6 +118,14 @@ bool ModuleParticles::Start()
 	explosion_left_2.anim.loop = false;
 	explosion_left_2.anim.speed = 0.5f;
 	explosion_left_2.lifetime = 60;
+
+	explosion_left_3.anim.PushBack({ 20, 21, 16, 16 });
+	explosion_left_3.anim.PushBack({ 3, 95, 16, 14 });
+	explosion_left_3.anim.PushBack({ 2, 169, 16, 16 });
+	explosion_left_3.anim.loop = false;
+	explosion_left_3.anim.speed = 0.5f;
+	explosion_left_3.lifetime = 60;
+
 
 	return true;
 }
@@ -136,10 +165,9 @@ bool ModuleParticles::CleanUp()
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
 	
-	if (c1->type == Collider::Type::INFIRE && c2->type == Collider::Type::ENEMY)
+	if (c1->type == Collider::Type::FIRE && c2->type == Collider::Type::ENEMY)
 	{
-		
-
+		App->player->score += 100;
 	}
 
 }

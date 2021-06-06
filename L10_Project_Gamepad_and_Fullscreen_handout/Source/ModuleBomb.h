@@ -41,6 +41,7 @@ public:
 	void DrawBomb();
 	void PutBomb();
 
+	bool bombPlus = true;
 private:
 	// Position of the player in the map
 	fPoint position;
@@ -56,12 +57,20 @@ private:
 	
 	bool FireUp1 = true;
 	bool FireUp2 = true;
+	bool FireUp3 = true;
+
 	bool FireDown1 = true;
 	bool FireDown2 = true;
+	bool FireDown3 = true;
+
 	bool FireRight1 = true;
 	bool FireRight2 = true;
+	bool FireRight3 = true;
+
 	bool FireLeft1 = true;
 	bool FireLeft2 = true;
+	bool FireLeft3 = true;
+
 	int timerB = 0;
 	int timerE = 0;
 	uint blastFx = 0;
@@ -70,15 +79,19 @@ private:
 
 	Collider* ColliderFireup1 = nullptr;
 	Collider* ColliderFireup2 = nullptr;
+	Collider* ColliderFireup3 = nullptr;
 
 	Collider* ColliderFiredown1 = nullptr;
 	Collider* ColliderFiredown2 = nullptr;
+	Collider* ColliderFiredown3 = nullptr;
 
 	Collider* CollideFireright1 = nullptr;
 	Collider* CollideFireright2 = nullptr;
+	Collider* CollideFireright3 = nullptr;
 
 	Collider* ColliderFireleft1 = nullptr;
 	Collider* ColliderFireleft2 = nullptr;
+	Collider* ColliderFireleft3 = nullptr;
 
 	Collider* ColliderBomb = nullptr;
 };
