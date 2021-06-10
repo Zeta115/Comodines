@@ -40,7 +40,6 @@ public:
 	SDL_Texture* loseScreen = nullptr;
 	SDL_Texture* hud = nullptr;
 	SDL_Texture* machineTracking = nullptr;
-	SDL_Texture* powerupText = nullptr;
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
 	SDL_Texture* machineTexture = nullptr;
