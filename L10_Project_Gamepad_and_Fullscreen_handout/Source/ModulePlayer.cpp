@@ -135,9 +135,11 @@ UpdateResult ModulePlayer::Update()
 
 	// L10: TODO: Implement gamepad support
 
-	//if ((pad->left_x<0.0f) || (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT))
+	/*if (pads->left_x < 0.0f) {
+		(App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT))
+	}*/
 
-	if ((App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT && stop == false) || (pad.left && stop == false))
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT || pad.left_x < 0.0f)
 	{
 		position.x -= speed;
 		if (currentAnimation != &rightAnim)
@@ -147,7 +149,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT && stop == false) || (pad.right && stop == false))
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT || pad.left_x > 0.0f)
 	{
 		position.x += speed;
 		if (currentAnimation != &leftAnim)
@@ -157,7 +159,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT && stop == false) || (pad.down && stop == false))
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT || pad.left_y > 0.0f)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -167,7 +169,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT && stop == false) || (pad.up && stop == false))
+	if (App->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT || pad.left_y < 0.0f)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -177,7 +179,7 @@ UpdateResult ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN)) //|| (pad.x))
+	if ((App->input->keys[SDL_SCANCODE_D] == KeyState::KEY_DOWN || pad.x == true)) //|| (pad.x))
 	{
 		if (App->Placebomb->BombUp == true) {
 			App->particles->bom.position.x = App->player->position.x;
@@ -188,7 +190,6 @@ UpdateResult ModulePlayer::Update()
 		}
 		//App->Placebomb->DrawBomb();
 	}
-
 
 	//Debbug Keys
 	
@@ -398,10 +399,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					{
 						position.x += speed;
 					}; break;
+
 				case Collider::Type::FLOWER:
 					position = prevposition;
-					 break;
+					break;
 				}
+
 				if (c1->type == Collider::Type::PLAYER != c2->type == Collider::Type::POWERUP)
 				{
 					powerActive = false;
@@ -410,6 +413,19 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 				//player and enemies
 				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY))
+				{
+					if (powerTouch == false)
+					{
+						death = true;
+						App->audio->PlayFx(deadFx);
+						stop = true;
+						lifes--;
+						score += 1000;
+					}
+				
+				}
+				
+				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::FIRE))
 				{
 					if (powerTouch == false)
 					{

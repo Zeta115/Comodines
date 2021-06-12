@@ -3,16 +3,12 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
-
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
 
 ModuleFlower::ModuleFlower(bool startEnabled) : Module(startEnabled)
 {
-	
 	idle.PushBack({ 0, 0, 16, 16 });
-
-
 	dead.PushBack({ 16, 0, 16, 16 });
 }
 
@@ -27,128 +23,127 @@ bool ModuleFlower::Start()
 
 	bool ret = true;
 
-	flowerTexture = App->textures->Load("Assets/SpecialElements/YellowFlower.png");
-
+	TextureFlower = App->textures->Load("Assets/SpecialElements/YellowFlower.png");
 
 	for (int i = 0; i < NUM_FLOWERS; i++)
 	{
 		currentAnimation[i] = &idle;
 	}
 
-	if (App->sceneLevel_1->IsEnabled() == true)
+	if (App->sceneLevel_1->Enabled() == true)
 	{
 		App->sceneLevel_2->Disable();
-		flowers[0] = CreateFlower(88, 63, flowerTexture);
-		flowers[1] = CreateFlower(152, 63, flowerTexture);
-		flowers[2] = CreateFlower(88, 159, flowerTexture);
-		flowers[3] = CreateFlower(152, 159, flowerTexture);
+		pasiveflower[0] = CreateFlower(88, 63, TextureFlower	);
+		pasiveflower[1] = CreateFlower(152, 63, TextureFlower);
+		pasiveflower[2] = CreateFlower(88, 159, TextureFlower);
+		pasiveflower[3] = CreateFlower(152, 159, TextureFlower);
 	
 
-		flowers[5] = CreateFlower(88, 31, flowerTexture);
-		flowers[6] = CreateFlower(72, 31, flowerTexture);
-		flowers[7] = CreateFlower(136, 31, flowerTexture);
-		flowers[8] = CreateFlower(152, 31, flowerTexture);
+		pasiveflower[5] = CreateFlower(88, 31, TextureFlower);
+		pasiveflower[6] = CreateFlower(72, 31, TextureFlower);
+		pasiveflower[7] = CreateFlower(136, 31, TextureFlower);
+		pasiveflower[8] = CreateFlower(152, 31, TextureFlower);
 
-		flowers[9] = CreateFlower(88, 47, flowerTexture);
-		flowers[10] = CreateFlower(56, 47, flowerTexture);
-		flowers[11] = CreateFlower(216, 47, flowerTexture);
+		pasiveflower[9] = CreateFlower(88, 47, TextureFlower);
+		pasiveflower[10] = CreateFlower(56, 47, TextureFlower);
+		pasiveflower[11] = CreateFlower(216, 47, TextureFlower);
 
-		flowers[12] = CreateFlower(72, 63, flowerTexture);
-		flowers[13] = CreateFlower(104, 63, flowerTexture);
-		flowers[14] = CreateFlower(168, 63, flowerTexture);
-		flowers[15] = CreateFlower(184, 63, flowerTexture);
+		pasiveflower[12] = CreateFlower(72, 63, TextureFlower);
+		pasiveflower[13] = CreateFlower(104, 63, TextureFlower);
+		pasiveflower[14] = CreateFlower(168, 63, TextureFlower);
+		pasiveflower[15] = CreateFlower(184, 63, TextureFlower);
 
-		flowers[16] = CreateFlower(24, 79, flowerTexture);
-		flowers[17] = CreateFlower(56, 79, flowerTexture);
-		flowers[18] = CreateFlower(88, 79, flowerTexture);
-		flowers[19] = CreateFlower(152, 79, flowerTexture);
-		flowers[20] = CreateFlower(184, 79, flowerTexture);
+		pasiveflower[16] = CreateFlower(24, 79, TextureFlower);
+		pasiveflower[17] = CreateFlower(56, 79, TextureFlower);
+		pasiveflower[18] = CreateFlower(88, 79, TextureFlower);
+		pasiveflower[19] = CreateFlower(152, 79, TextureFlower);
+		pasiveflower[20] = CreateFlower(184, 79, TextureFlower);
 
-		flowers[21] = CreateFlower(56, 95, flowerTexture);
-		flowers[22] = CreateFlower(72, 95, flowerTexture);
-		flowers[23] = CreateFlower(200, 95, flowerTexture);
-		flowers[24] = CreateFlower(216, 95, flowerTexture);
+		pasiveflower[21] = CreateFlower(56, 95, TextureFlower);
+		pasiveflower[22] = CreateFlower(72, 95, TextureFlower);
+		pasiveflower[23] = CreateFlower(200, 95, TextureFlower);
+		pasiveflower[24] = CreateFlower(216, 95, TextureFlower);
 
-		flowers[25] = CreateFlower(40, 127, flowerTexture);
-		flowers[26] = CreateFlower(88, 127, flowerTexture);
-		flowers[27] = CreateFlower(120, 127, flowerTexture);
-		flowers[28] = CreateFlower(216, 127, flowerTexture);
+		pasiveflower[25] = CreateFlower(40, 127, TextureFlower);
+		pasiveflower[26] = CreateFlower(88, 127, TextureFlower);
+		pasiveflower[27] = CreateFlower(120, 127, TextureFlower);
+		pasiveflower[28] = CreateFlower(216, 127, TextureFlower);
 
-		flowers[29] = CreateFlower(24, 159, flowerTexture);
-		flowers[30] = CreateFlower(40, 159, flowerTexture);
-		flowers[31] = CreateFlower(104, 159, flowerTexture);
-		flowers[32] = CreateFlower(168, 159, flowerTexture);
-		flowers[33] = CreateFlower(200, 159, flowerTexture);
-		flowers[34] = CreateFlower(216, 159, flowerTexture);
+		pasiveflower[29] = CreateFlower(24, 159, TextureFlower);
+		pasiveflower[30] = CreateFlower(40, 159, TextureFlower);
+		pasiveflower[31] = CreateFlower(104, 159, TextureFlower);
+		pasiveflower[32] = CreateFlower(168, 159, TextureFlower);
+		pasiveflower[33] = CreateFlower(200, 159, TextureFlower);
+		pasiveflower[34] = CreateFlower(216, 159, TextureFlower);
 
-		flowers[35] = CreateFlower(56, 175, flowerTexture);
-		flowers[36] = CreateFlower(88, 175, flowerTexture);
-		flowers[37] = CreateFlower(120, 175, flowerTexture);
-		flowers[38] = CreateFlower(152, 175, flowerTexture);
-		flowers[39] = CreateFlower(184, 175, flowerTexture);
-		flowers[40] = CreateFlower(216, 175, flowerTexture);
+		pasiveflower[35] = CreateFlower(56, 175, TextureFlower);
+		pasiveflower[36] = CreateFlower(88, 175, TextureFlower);
+		pasiveflower[37] = CreateFlower(120, 175, TextureFlower);
+		pasiveflower[38] = CreateFlower(152, 175, TextureFlower);
+		pasiveflower[39] = CreateFlower(184, 175, TextureFlower);
+		pasiveflower[40] = CreateFlower(216, 175, TextureFlower);
 
-		flowers[41] = CreateFlower(40, 191, flowerTexture);
-		flowers[42] = CreateFlower(88, 191, flowerTexture);
+		pasiveflower[41] = CreateFlower(40, 191, TextureFlower);
+		pasiveflower[42] = CreateFlower(88, 191, TextureFlower);
 
 	}
-	if (App->sceneLevel_2->IsEnabled() == true)
+	if (App->sceneLevel_2->Enabled() == true)
 	{
 		App->sceneLevel_1->Disable();
 
-		flowers[0] = CreateFlower(120, 112, flowerTexture);
+		pasiveflower[0] = CreateFlower(120, 112, TextureFlower);
 
-		flowers[1] = CreateFlower(152, 48, flowerTexture);
+		pasiveflower[1] = CreateFlower(152, 48, TextureFlower);
 
-		flowers[2] = CreateFlower(24, 64, flowerTexture);
-		flowers[3] = CreateFlower(56, 64, flowerTexture);
-		flowers[4] = CreateFlower(88, 64, flowerTexture);
-		flowers[5] = CreateFlower(104, 64, flowerTexture);
-		flowers[6] = CreateFlower(120, 64, flowerTexture);
-		flowers[7] = CreateFlower(136, 64, flowerTexture);
-		flowers[8] = CreateFlower(168, 64, flowerTexture);
-		flowers[9] = CreateFlower(200, 64, flowerTexture);
-		flowers[10] = CreateFlower(216, 64, flowerTexture);
+		pasiveflower[2] = CreateFlower(24, 64, TextureFlower);
+		pasiveflower[3] = CreateFlower(56, 64, TextureFlower);
+		pasiveflower[4] = CreateFlower(88, 64, TextureFlower);
+		pasiveflower[5] = CreateFlower(104, 64, TextureFlower);
+		pasiveflower[6] = CreateFlower(120, 64, TextureFlower);
+		pasiveflower[7] = CreateFlower(136, 64, TextureFlower);
+		pasiveflower[8] = CreateFlower(168, 64, TextureFlower);
+		pasiveflower[9] = CreateFlower(200, 64, TextureFlower);
+		pasiveflower[10] = CreateFlower(216, 64, TextureFlower);
 
-		flowers[11] = CreateFlower(152, 80, flowerTexture);
-		flowers[12] = CreateFlower(184, 80, flowerTexture);
-		flowers[13] = CreateFlower(216, 80, flowerTexture);
+		pasiveflower[11] = CreateFlower(152, 80, TextureFlower);
+		pasiveflower[12] = CreateFlower(184, 80, TextureFlower);
+		pasiveflower[13] = CreateFlower(216, 80, TextureFlower);
 
-		flowers[14] = CreateFlower(24, 96, flowerTexture);
-		flowers[15] = CreateFlower(72, 96, flowerTexture);
-		flowers[16] = CreateFlower(120, 96, flowerTexture);
-		flowers[17] = CreateFlower(152, 96, flowerTexture);
-		flowers[18] = CreateFlower(168, 96, flowerTexture);
-		flowers[19] = CreateFlower(184, 96, flowerTexture);
-		flowers[20] = CreateFlower(216, 96, flowerTexture);
+		pasiveflower[14] = CreateFlower(24, 96, TextureFlower);
+		pasiveflower[15] = CreateFlower(72, 96, TextureFlower);
+		pasiveflower[16] = CreateFlower(120, 96, TextureFlower);
+		pasiveflower[17] = CreateFlower(152, 96, TextureFlower);
+		pasiveflower[18] = CreateFlower(168, 96, TextureFlower);
+		pasiveflower[19] = CreateFlower(184, 96, TextureFlower);
+		pasiveflower[20] = CreateFlower(216, 96, TextureFlower);
 
-		flowers[21] = CreateFlower(56, 112, flowerTexture);
-		flowers[22] = CreateFlower(104, 112, flowerTexture);
+		pasiveflower[21] = CreateFlower(56, 112, TextureFlower);
+		pasiveflower[22] = CreateFlower(24, 112, TextureFlower);
 
-		flowers[23] = CreateFlower(168, 128, flowerTexture);
-		flowers[24] = CreateFlower(216, 128, flowerTexture);
-		flowers[25] = CreateFlower(120, 128, flowerTexture);
-		flowers[26] = CreateFlower(152, 128, flowerTexture);
+		pasiveflower[23] = CreateFlower(168, 128, TextureFlower);
+		pasiveflower[24] = CreateFlower(216, 128, TextureFlower);
+		pasiveflower[25] = CreateFlower(120, 128, TextureFlower);
+		pasiveflower[26] = CreateFlower(152, 128, TextureFlower);
 
-		flowers[27] = CreateFlower(120, 144, flowerTexture);
-		flowers[28] = CreateFlower(152, 144, flowerTexture);
+		pasiveflower[27] = CreateFlower(120, 144, TextureFlower);
+		pasiveflower[28] = CreateFlower(152, 144, TextureFlower);
 
-		flowers[29] = CreateFlower(40, 160, flowerTexture);
-		flowers[30] = CreateFlower(88, 160, flowerTexture);
-		flowers[31] = CreateFlower(104, 160, flowerTexture);
-		flowers[32] = CreateFlower(120, 160, flowerTexture);
-		flowers[33] = CreateFlower(184, 160, flowerTexture);
-		flowers[34] = CreateFlower(200, 160, flowerTexture);
+		pasiveflower[29] = CreateFlower(40, 160, TextureFlower);
+		pasiveflower[30] = CreateFlower(88, 160, TextureFlower);
+		pasiveflower[31] = CreateFlower(104, 160, TextureFlower);
+		pasiveflower[32] = CreateFlower(120, 160, TextureFlower);
+		pasiveflower[33] = CreateFlower(184, 160, TextureFlower);
+		pasiveflower[34] = CreateFlower(200, 160, TextureFlower);
 
-		flowers[35] = CreateFlower(88, 192, flowerTexture);
-		flowers[36] = CreateFlower(156, 192, flowerTexture);
-		flowers[37] = CreateFlower(184, 192, flowerTexture);
-		flowers[38] = CreateFlower(1000, 1000, flowerTexture);
-		flowers[39] = CreateFlower(1000, 1000, flowerTexture);
-		flowers[40] = CreateFlower(1000, 1000, flowerTexture);
+		pasiveflower[35] = CreateFlower(88, 192, TextureFlower);
+		pasiveflower[36] = CreateFlower(120, 192, TextureFlower);
+		pasiveflower[37] = CreateFlower(152, 192, TextureFlower);
+		pasiveflower[38] = CreateFlower(1000, 1000, TextureFlower);
+		pasiveflower[39] = CreateFlower(1000, 1000, TextureFlower);
+		pasiveflower[40] = CreateFlower(1000, 1000, TextureFlower);
 
-		flowers[41] = CreateFlower(1000, 1000, flowerTexture);
-		flowers[42] = CreateFlower(1000, 1000, flowerTexture);
+		pasiveflower[41] = CreateFlower(1000, 1000, TextureFlower);
+		pasiveflower[42] = CreateFlower(1000, 1000, TextureFlower);
 		
 	
 	}
@@ -162,21 +157,12 @@ UpdateResult ModuleFlower::Update()
 	{
 		currentAnimation[i]->Update();
 
-		if (flowers[i].isDestroyed)
+		if (pasiveflower[i].Destroyed)
 		{
-			flowers[i].dCount++;
-			if (flowers[i].dCount >= 90)
-			{
-				flowers[i].destroyed = true;
-			}
-			if (flowers[i].destroyed)
-			{
-				flowers[i].colliderT->pendingToDelete = true;
-			}
+				pasiveflower[i].dead = true;
+				pasiveflower[i].collider->pendingToDelete = true;
 		}
 	}
-
-
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
@@ -186,16 +172,15 @@ UpdateResult ModuleFlower::PostUpdate()
 
 	for (int i = 0; i < NUM_FLOWERS; i++)
 	{
-		if (App->sceneLevel_1->IsEnabled() == true && !flowers[i].destroyed)
+		if (App->sceneLevel_1->Enabled() == true && pasiveflower[i].dead == false)
 		{
-			App->render->DrawTexture(flowers[i].flowerT, flowers[i].x, flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
+			App->render->DrawTexture(pasiveflower[i].flowerT, pasiveflower[i].x, pasiveflower[i].y, &(currentAnimation[i]->GetCurrentFrame()));
 		}
-		if (App->sceneLevel_2->IsEnabled() == true && !flowers[i].destroyed)
+		if (App->sceneLevel_2->Enabled() == true && pasiveflower[i].dead == false)
 		{
-			App->render->DrawTexture(flowers[i].flowerT, flowers[i].x, flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
+			App->render->DrawTexture(pasiveflower[i].flowerT, pasiveflower[i].x, pasiveflower[i].y, &(currentAnimation[i]->GetCurrentFrame()));
 		}
 	}
-
 	return UpdateResult::UPDATE_CONTINUE;
 }
 
@@ -205,12 +190,11 @@ void ModuleFlower::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < NUM_FLOWERS; ++i)
 	{
-		if (flowers[i].colliderT == c1 && !flowers[i].isDestroyed)
+		if (pasiveflower[i].collider == c1 && !pasiveflower[i].Destroyed)
 		{
 			if (c2->type == Collider::Type::FIRE)
 			{
-			
-				flowers[i].isDestroyed = true;
+				pasiveflower[i].Destroyed = true;
 				currentAnimation[i] = &dead;
 			}
 		}
@@ -219,13 +203,12 @@ void ModuleFlower::OnCollision(Collider* c1, Collider* c2)
 
 Flower ModuleFlower::CreateFlower(int x, int y, SDL_Texture* t)
 {
-	Flower f;
+	Flower Flowers;
 
-	f.colliderT = App->collisions->AddCollider({ x, y, 16, 16 }, Collider::Type::FLOWER, this);
-	f.flowerT = t;
-	f.x = x;
-	f.y = y;
-	f.isDestroyed = false;
+	Flowers.collider = App->collisions->AddCollider({ x, y, 16, 16 }, Collider::Type::FLOWER, this);
+	Flowers.flowerT = t;
+	Flowers.x = x;
+	Flowers.y = y;
 
-	return f;
+	return Flowers;
 }
