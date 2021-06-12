@@ -425,7 +425,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				
 				}
 				
-				if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::FIRE))
+				/*if (c1 == collider && destroyed == false && (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::FIRE))
 				{
 					if (powerTouch == false)
 					{
@@ -436,7 +436,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 						score += 1000;
 					}
 				
-				}
+				}*/
 			}
 			
 		}
