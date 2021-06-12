@@ -43,13 +43,12 @@ public:
 	fPoint prevposition;
 
 	// The speed in which we move the player (pixels per frame)
-	float speed = 0.8f;
+	float speed = 0.5f;
 	int lifes = 3;
 	int timer = 0;
 	int timerS = 00;
 	int timerM = 4;
 	int comodin = 0;
-	int bombCount = 0;
 
 
 	// Countdown to handle shot spacing
@@ -59,7 +58,6 @@ public:
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* player = nullptr;
 	SDL_Texture* powerTouchText = nullptr;
-	bool bombPlusPower = false;
 	SDL_Texture* BombPlusText = nullptr;
 	SDL_Texture* machineTraking = nullptr;
 	// The pointer to the current player animation

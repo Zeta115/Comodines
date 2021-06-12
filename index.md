@@ -97,13 +97,11 @@ Our version includes:
 - F2: Show debugg gamepad info and colliders
 - F3: Instant Win
 - F4: Instant Lose
-- F9: Add enemy robot.
-- F10: Add enemy rabbit.
-- F11: Add enemy snai.
+- F5
+- F6
+- F7
+- F8
+- F9
+- F10
 - P: Toggle fullscreen
 - 0: Go to next level
-
-
-###Link to the release:
-
-[DOWNLOAD HERE](https://github.com/Zeta115/Comodines/releases/tag/1.0)

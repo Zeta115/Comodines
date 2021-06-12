@@ -38,9 +38,7 @@ bool SceneLogo::Start()
 UpdateResult SceneLogo::Update()
 {
 
-	GamePad& pad = App->input->pads[0];
-
-	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN || pad.a == true && sceneCount == 1)
+	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN && sceneCount == 1)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
@@ -52,6 +50,8 @@ UpdateResult SceneLogo::Update()
 
 UpdateResult SceneLogo::PostUpdate()
 {
+
+
 	if (sceneCount == 0)
 	{
 		App->render->DrawTexture(logoTexture, 0, 0, NULL);

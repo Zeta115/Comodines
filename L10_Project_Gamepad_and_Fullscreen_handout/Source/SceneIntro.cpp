@@ -35,9 +35,8 @@ bool SceneIntro::Start()
 
 UpdateResult SceneIntro::Update()
 {
-	GamePad& pad = App->input->pads[0];
 
-	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN || pad.a == true && sceneCount == 0)
+	if (App->input->keys[SDL_SCANCODE_RETURN] == KeyState::KEY_DOWN && sceneCount == 0)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
 	}

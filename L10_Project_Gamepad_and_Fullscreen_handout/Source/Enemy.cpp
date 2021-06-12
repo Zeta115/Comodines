@@ -41,4 +41,17 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* c1, Collider* c2)
 {
+	/*if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::FIRE)
+	{
+		death = true;
+		LOG("Funciona")
+	}*/
 }
+
+
+//void Enemy::SetToDelete()
+//{
+//	pendingToDelete = true;
+//	if (collider != nullptr)
+//		collider->pendingToDelete = true;
+//}

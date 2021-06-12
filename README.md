@@ -23,15 +23,19 @@ In this game you control the Bomberman and you need to go to the center the mach
 - **Right pad:** Moves the character right.
 - **&#9421; (Xbox controller) / ▢ (PS controller):** Bomb placing.
 ### Debug keys:
-- **P** toggle fullscreen.
+
 - **F1:** Godmode.
 - **F2:** Debug info on/off.
 - **F3:** Instant win.
 - **F4:** Instant lose.
 - **F5:** Reset to initial position.
-- **F9:** Add enemy robot.
-- **F10:** Add enemy rabbit.
-- **F11:** Add enemy snai.
+- **F6:**
+- **F7:**
+- **F8:**
+- **F9:**
+- **F10:**
+- **F11:**
+- **F12:**
 - **0:** Next level.
 - **9:** Previous level.
 
