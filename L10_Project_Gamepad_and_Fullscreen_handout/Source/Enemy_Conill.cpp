@@ -38,17 +38,6 @@ Enemy_Conill::Enemy_Conill(int x, int y) : Enemy(x, y)
 	leftAnim.loop = true;
 	leftAnim.speed = 0.05f;
 
-	Death.PushBack({ 2, 33, 15, 26 });
-	Death.PushBack({ 19, 33, 15, 28 });
-	Death.PushBack({ 36, 39, 15, 9 });
-	Death.PushBack({ 71, 46, 15, 9 });
-	Death.PushBack({ 90, 45, 11, 7 });
-	Death.PushBack({ 90, 45, 11, 7 });
-	Death.PushBack({ 109, 45, 7, 7 });
-	Death.PushBack({ 123, 49, 13, 7 });
-	Death.loop = true;
-	Death.speed = true;
-
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
 	path.PushBack({ -0.4f, 0.0f }, 20 * 2, &leftAnim);
 	path.PushBack({ 0.0f, 0.0f }, 40 * 2, &idleAnim);
@@ -74,7 +63,7 @@ void Enemy_Conill::Update()
 		currentAnim = path.GetCurrentAnimation();
 	}
 
-	collider->SetPos(position.x, position.y + 20);
+	collider->SetPos(position.x, position.y + 10);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();
