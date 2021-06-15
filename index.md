@@ -138,6 +138,6 @@ Our version includes:
 - 9: Go to previous level
 
 
-###Link to the release:
+###Link to the latest release:
 
-[DOWNLOAD HERE](https://github.com/Zeta115/Comodines/releases/tag/1.0)
+[DOWNLOAD HERE](https://github.com/Zeta115/Comodines/releases/tag/1.1)
