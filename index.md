@@ -7,7 +7,7 @@
 ### Members and roles of the Comodines Team:
 
 
-![TeamPhoto](https://github.com/Zeta115/Comodines/blob/main/wiki/Images/TeamPhoto/TeamPhoto.jpg)
+![](https://github.com/Zeta115/Comodines/blob/main/wiki/Images/TeamPhoto/TeamPhoto.png)
 
 From left to right:
 
