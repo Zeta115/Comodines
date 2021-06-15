@@ -141,7 +141,7 @@ Our version includes:
 - 0: Go to next level
 - 9: Go to previous level
 
-<video src="video.mp4" width="320" height="200" controls preload>wiki/audio/Nivell1.mp4</video>
+<video src="video.mp4" width="320" height="200" controls preload>wiki/Images/Nivell1.mp4</video>
 ###Link to the latest release:
 
 [DOWNLOAD HERE](https://github.com/Zeta115/Comodines/releases/tag/1.1)
