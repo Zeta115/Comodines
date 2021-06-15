@@ -141,9 +141,8 @@ Our version includes:
 - 0: Go to next level
 - 9: Go to previous level
 
-<video src="video.mp4" width="320" height="200" controls preload>wiki/Images/Nivell1.mp4</video>
-
-<video src="video.mp4" width="320" height="200" controls preload>wiki/Images/Nivell2.mp4</video>
+[Trailer nivell 1](https://www.youtube.com/watch?v=dL3zSRbfRqc&ab_channel=RogerRusMoreno)
+[Trailer nivell 2](https://www.youtube.com/watch?v=7xleHIXrbeI&ab_channel=RogerRusMoreno)
 
 ###Link to the latest release:
 
