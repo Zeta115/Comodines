@@ -18,6 +18,14 @@ From left to right:
 - Music and sounds
 - Win/Lose conditions
 - Colliders management
+- Fire mechanics
+- Colliders management
+- Bomb fixes
+- SceneManagement
+- Fullscreen
+- Flower spawns
+- Enemy death
+
 
 
 [Pol Pallares Mur](https://github.com/Zeta115)
@@ -30,6 +38,15 @@ From left to right:
 - Main UI implementation
 - Debug functionalities
 - Colliders management
+- New UI functions
+- Webpage manager
+- Fire mechanics
+- Colliders management
+- Bomb fixes
+- SceneManagement
+- Flower spawns
+- Enemy death
+
 
 
 [Roger Rus](https://github.com/rusroger)
@@ -37,6 +54,14 @@ From left to right:
 - Basic player mechanics
 - Colliders management
 - Gamepad functionalities
+- Gamepad functionalities
+- Colliders management
+- Fire mechanics
+- Bomb fixes
+- SceneManagement
+- Flower spawns
+- Enemy death
+
 
 
 [Pol Maresch Marxuach](https://github.com/rayolop20)
@@ -50,6 +75,14 @@ From left to right:
 - Ui implementation
 - Colliders management
 - Particle management
+- Fire mechanics
+- New UI functions
+- Colliders management
+- Main Bomb fixes
+- Main SceneManagement
+- Flower spawns
+- Enemy death
+
 
 
 ## About our tribute to Mega Bomberman
@@ -102,6 +135,7 @@ Our version includes:
 - F11: Add enemy snail.
 - P: Toggle fullscreen
 - 0: Go to next level
+- 9: Go to previous level
 
 
 ###Link to the release:
