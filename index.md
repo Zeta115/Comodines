@@ -99,7 +99,7 @@ Our version includes:
 - F4: Instant Lose
 - F9: Add enemy robot.
 - F10: Add enemy rabbit.
-- F11: Add enemy snai.
+- F11: Add enemy snail.
 - P: Toggle fullscreen
 - 0: Go to next level
 
