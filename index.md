@@ -141,8 +141,9 @@ Our version includes:
 - 0: Go to next level
 - 9: Go to previous level
 
-[Trailer nivell 1](https://www.youtube.com/watch?v=dL3zSRbfRqc&ab_channel=RogerRusMoreno)
-[Trailer nivell 2](https://www.youtube.com/watch?v=7xleHIXrbeI&ab_channel=RogerRusMoreno)
+# [Trailer nivell 1](https://www.youtube.com/watch?v=dL3zSRbfRqc&ab_channel=RogerRusMoreno)
+
+# [Trailer nivell 2](https://www.youtube.com/watch?v=7xleHIXrbeI&ab_channel=RogerRusMoreno)
 
 ###Link to the latest release:
 
