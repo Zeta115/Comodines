@@ -4,6 +4,8 @@
 
 - In this page you can find out what we did during our time in Project 1 in the CITM.
 
+![](wiki/Images%20Audio/Title%20Therme(2).png)
+
 ### Members and roles of the Comodines Team:
 
 
@@ -86,6 +88,8 @@ From left to right:
 
 
 ## About our tribute to Mega Bomberman
+
+![](wiki/Images%20Audio/Battle-Victory(31).PNG)
 
 We started out as a team in our project 1 classes in the CITM and in around 11 weeks we completed an Alpha version of the Mega Bomberman game.
 
